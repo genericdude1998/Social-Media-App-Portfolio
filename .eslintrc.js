@@ -9,13 +9,15 @@ module.exports = {
             version: '17.0.2',
         },
     },
-    parser:"@babel/eslint-parser",
+    parser:'@babel/eslint-parser',
     env: {
-        react: true,
+        node:true,
+        browser:true,
     },
     rules: {
         quotes: ['error', 'single', { avoidEscape: true }],
         'comma-dangle': ['error', 'always-multiline'],
         'indent': ['error', 4],
     },
+    ignorePatterns: ['dist', 'node_modules'],
 };
