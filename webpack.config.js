@@ -21,6 +21,19 @@ module.exports = {
                 // use the babel-loader for transpiling JavaScript to a suitable format
                 loader: 'babel-loader',
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                    loader: 'css-loader',
+                    options: {
+                        importLoaders: 1,
+                        modules: true
+                    }
+                    
+                }],
+            },
         ],
     },
     devServer:{
