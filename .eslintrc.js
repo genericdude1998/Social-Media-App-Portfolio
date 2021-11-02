@@ -1,5 +1,6 @@
 module.exports = {
-    extends: ['eslint:recommended'],
+    extends: ['eslint:recommended','plugin:jest/recommended'],
+    plugins:['jest'],
     parserOptions: {
         ecmaVersion: 6,
     },
