@@ -7,9 +7,14 @@ const devServer = (devServer) => {
     app.use(require('cookie-parser')(credentials.cookieSecret));
 
     app.get('/', (req,res) => {
-        res.cookie('test_cookie', 'test_value');
-        res.send();
+        const token = generateJWT('sample_username');
+        res.cookie('test_JWT_Token', token);
+        res.send('sent a JWT token via cookie');
     })
+}
+
+function generateJWT(username){
+    return jwt.sign(username, credentials.cookieSecret);
 }
 
 module.exports = devServer;
