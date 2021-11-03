@@ -3,28 +3,35 @@
   padding: 0px; 
 }
 
-.baseDiv{
-    background-color: indigo;
+.baseForm{
+    background-image: url('/assets/background-login.jpg');
+    background-size: cover;
     height: 100vh;
     width: 100vw;
-}
-.baseForm{
     align-items:center;
     display: flex;
     flex-direction: column;
     height: 100vh;
     justify-content: center;
 }
-.baseInput{
-   margin:5px; 
-}
 .baseLabel{
-    color:white;
+    color: black;
     margin: 10px;
     text-align: center;
+    font-weight: bold;
+}
+.baseInput{
+   margin:5px;
+   border: 0px;
+   border: 1px solid black;
+
 }
 .baseButton{
     margin:20px;
+    height: 20px;
+    width: 50px;
+    border: 1px solid black;
+    background-color: white;
 }
 
 .light{
