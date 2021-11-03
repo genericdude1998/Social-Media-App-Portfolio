@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './LoginForm.css'
 
 const LoginForm = () => {
-    const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    // const [username, setUsername] = React.useState('');
+    // const [password, setPassword] = React.useState('');
 
     return (
         <form className={styles.baseForm}>

@@ -4,14 +4,11 @@
 }
 
 .baseForm{
-    background-image: url('/assets/background-login.jpg');
-    background-size: cover;
-    height: 100vh;
+    height: 50vh;
     width: 100vw;
     align-items:center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
     justify-content: center;
 }
 .baseLabel{
