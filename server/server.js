@@ -12,7 +12,7 @@ const devServer = (devServer) => {
         const username = req.body.username;
         const password = req.body.password;
 
-        if(authenticateUser(username, password)){
+        if(authenticateUserLogin(username, password)){
             const token = generateJWT(username);
             res.cookie('Mock_JWT_token', token);
             res.send('sent a JWT token via cookie');
@@ -23,7 +23,7 @@ const devServer = (devServer) => {
     })
 }
 
-function authenticateUser(username,password){
+function authenticateUserLogin(username,password){
     if(username && password){
         return username === 'Adam' && password === 1234 ? true:false
     }
