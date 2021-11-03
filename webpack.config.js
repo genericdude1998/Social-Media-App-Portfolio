@@ -13,6 +13,9 @@ module.exports = {
         // the filename of the JS bundle will be bundle.js
         filename: 'bundle.js',
     },
+    resolve:{
+        extensions:['.js', '.jsx'],
+    },
     module: {
         rules: [
             {
