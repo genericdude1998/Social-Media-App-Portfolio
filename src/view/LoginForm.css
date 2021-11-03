@@ -1,0 +1,36 @@
+*{
+  box-sizing: border-box;
+  padding: 0px; 
+}
+
+.baseDiv{
+    background-color: indigo;
+    height: 100vh;
+    width: 100vw;
+}
+.baseForm{
+    align-items:center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+.baseInput{
+   margin:5px; 
+}
+.baseLabel{
+    color:white;
+    margin: 10px;
+    text-align: center;
+}
+.baseButton{
+    margin:20px;
+}
+
+.light{
+
+}
+
+.dark{
+
+}
