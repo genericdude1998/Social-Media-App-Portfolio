@@ -6,7 +6,13 @@ const LoginForm = () => {
 
     return (
         <div>
-            Form
+            <form>
+                <label>Username:</label>
+                <input type='text'/>
+                <label>Username:</label>
+                <input type='text'/>
+                <button type='submit'>Login</button>
+            </form>
         </div>
     );
 }

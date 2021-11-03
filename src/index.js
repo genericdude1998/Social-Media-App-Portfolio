@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import LoginForm from './view/LoginForm';
 
-ReactDOM.render(<h1>Social media App portfolio!</h1>, document.getElementById('root'));
+ReactDOM.render(<LoginForm></LoginForm>, document.getElementById('root'));
