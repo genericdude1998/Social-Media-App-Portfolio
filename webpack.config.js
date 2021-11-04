@@ -13,6 +13,9 @@ module.exports = {
         // the filename of the JS bundle will be bundle.js
         filename: 'bundle.js',
     },
+    resolve:{
+        extensions:['.js', '.jsx'],
+    },
     module: {
         rules: [
             {
@@ -34,6 +37,10 @@ module.exports = {
                         },
                     
                     }],
+            },
+            {
+                test:/\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
             },
         ],
     },
