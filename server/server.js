@@ -17,7 +17,7 @@ const devServer = (devServer) => {
             res.json(token);
         }
         else{
-            res.send('Failed Authentication');
+            res.send(401, {error: 'bad login'});
         }
     })
 }
