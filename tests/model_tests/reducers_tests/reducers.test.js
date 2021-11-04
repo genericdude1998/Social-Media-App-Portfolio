@@ -5,8 +5,6 @@ import { applySetPassword, applySetUsername } from '../../../src/model/appliers/
 
 jest.mock('../../../src/model/appliers/loginReducerAppliers');
 
-jest.spyOn()
-
 const setUsernameAction = doSetUsername(mockUsername);
 const setPasswordAction = doSetPassword(mockPassword);
 const defaultAction = {type: 'default'}
