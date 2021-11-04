@@ -5,11 +5,16 @@ import { applySetPassword, applySetUsername } from '../../../src/model/appliers/
 
 jest.mock('../../../src/model/appliers/loginReducerAppliers');
 
+jest.spyOn()
+
 const setUsernameAction = doSetUsername(mockUsername);
 const setPasswordAction = doSetPassword(mockPassword);
 const defaultAction = {type: 'default'}
 
 describe('loginReducer', () => {
+    it('should have expected initialState and default action', () => {
+        expect(loginReducer(undefined,undefined)).toEqual(mockLoginReducerInitialState);
+    });
     it('should call applySetUsername with expected params when given SET_USERNAME action', () => {
         loginReducer(mockLoginReducerInitialState, setUsernameAction);
         expect(applySetUsername).toHaveBeenCalledWith(mockLoginReducerInitialState, setUsernameAction);
