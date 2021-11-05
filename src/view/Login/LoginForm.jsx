@@ -1,8 +1,11 @@
 import React from 'react';
-import styles from './LoginForm.css'
+import styles from './LoginForm.css';
+import PropTypes from 'prop-types';
 
-const LoginForm = () => {
-
+const LoginForm = ({
+    onChangeUsername,
+    onChangePassword,
+}) => {
     return (
         <form className={styles.baseForm}>
             <label className={styles.baseLabel}>Username:</label>
@@ -12,6 +15,11 @@ const LoginForm = () => {
             <button type='submit' className={styles.baseButton}>Login</button>
         </form>
     );
+}
+
+LoginForm.propTypes = {
+    onChangeUsername: PropTypes.func.isRequired,
+    onChangePassword: PropTypes.func.isRequired,
 }
 
 export default LoginForm;

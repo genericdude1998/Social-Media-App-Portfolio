@@ -1,6 +1,6 @@
-import { doSetPassword, doSetUsername } from '../../src/model/actionCreators/actionCreators';
-import { mapLoginDispatchToProps, mapLoginStateToProps } from '../../src/view/mappers/mappers';
-import {mockLoginReducerInitialState, mockPassword, mockUsername} from '../mockValues'
+import { doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
+import { mapLoginDispatchToProps, mapLoginStateToProps } from '../../../src/view/mappers/mappers';
+import {mockLoginReducerInitialState, mockPassword, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
 
