@@ -9,9 +9,9 @@ const LoginForm = ({
     return (
         <form className={styles.baseForm}>
             <label className={styles.baseLabel}>Username:</label>
-            <input type='text' className={styles.baseInput}/>
+            <input type='text' className={styles.baseInput} onChange={onChangeUsername}/>
             <label className={styles.baseLabel}>Password:</label>
-            <input type='password'className={styles.baseInput}/>
+            <input type='password'className={styles.baseInput} onChange={onChangePassword}/>
             <button type='submit' className={styles.baseButton}>Login</button>
         </form>
     );

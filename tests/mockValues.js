@@ -5,3 +5,5 @@ export const correctUsername = 'Adam';
 export const correctPassword = 1234;
 export const mockToken = 'mock_token';
 export const mockErrorMessage = 'Mock Error Message!';
+export const mockOnChangePassword = jest.fn(); 
+export const mockOnChangeUsername = jest.fn(); 

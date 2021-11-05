@@ -2,10 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Login } from '../../src/view/Login/Login';
 import LoginForm from '../../src/view/Login/LoginForm';
-
-const mockOnChangePassword = jest.fn(); 
-const mockOnChangeUsername = jest.fn(); 
-
+import {mockOnChangeUsername, mockOnChangePassword} from '../mockValues';
 
 let loginWrapper;
 beforeEach(() => {
