@@ -14,11 +14,10 @@ const devServer = (devServer) => {
 
         if(authenticateUserLogin(username, password)){
             const token = generateJWT(username);
-            res.cookie('Mock_JWT_token', token);
-            res.send('sent a JWT token via cookie');
+            res.json(token);
         }
         else{
-            res.send('Failed Authentication');
+            res.send(401, {error: 'bad login'});
         }
     })
 }
