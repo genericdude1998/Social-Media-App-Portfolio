@@ -10,7 +10,6 @@ export function loginReducer(state = loginReducerInitialState, action = 'default
     case actionTypes.SEND_LOGIN_REQUEST: return applySendLoginRequest(state);
     case actionTypes.LOGIN_REQUEST_SUCCESS: return applyLoginRequestSuccess(state,action);
     case actionTypes.LOGIN_REQUEST_FAILURE: return applyLoginRequestFailure(state,action);
-
     default: return state;
     }
 }

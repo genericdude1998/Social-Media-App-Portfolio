@@ -1,7 +1,7 @@
 import { doSetUsername, doSetPassword, doSendLoginRequest, doLoginRequestSuccess, doLoginRequestFailure } from '../../../src/model/actionCreators/actionCreators';
 import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage } from '../../mockValues';
 import { loginReducer } from '../../../src/model/reducers/reducers';
-import { applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../../../src/model/appliers/loginReducerAppliers';
+import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../../../src/model/appliers/loginReducerAppliers';
 
 jest.mock('../../../src/model/appliers/loginReducerAppliers');
 
@@ -35,7 +35,7 @@ describe('loginReducer', () => {
     });
     it('should call applyLoginRequestFailure with expected params when given LOGIN_REQUEST_FAILURE action', () => {
         loginReducer(mockLoginReducerInitialState, loginRequestFailureAction);
-        expect(applyLoginRequestSuccess).toHaveBeenCalledWith(mockLoginReducerInitialState, loginRequestFailureAction);
+        expect(applyLoginRequestFailure).toHaveBeenCalledWith(mockLoginReducerInitialState, loginRequestFailureAction);
     });
     it('should return initial state when default case', () => {
         expect(loginReducer(mockLoginReducerInitialState, defaultAction)).toBe(mockLoginReducerInitialState);

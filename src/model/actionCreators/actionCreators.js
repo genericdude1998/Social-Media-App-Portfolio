@@ -17,7 +17,7 @@ export function doLoginRequestSuccess(token){
     return {type: actionTypes.LOGIN_REQUEST_SUCCESS, token: token}
 }
 export function doLoginRequestFailure(error){
-    return {type: actionTypes.LOGIN_REQUEST_SUCCESS, error: error}
+    return {type: actionTypes.LOGIN_REQUEST_FAILURE, error: error}
 }
 
 export function doSendUsernameAndPasswordThunk(username, password){
