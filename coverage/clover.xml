@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636110305067" clover="3.2.0">
-  <project timestamp="1636110305067" name="All files">
+<coverage generated="1636111368459" clover="3.2.0">
+  <project timestamp="1636111368459" name="All files">
     <metrics statements="33" coveredstatements="33" conditionals="8" coveredconditionals="8" methods="15" coveredmethods="15" elements="56" coveredelements="56" complexity="0" loc="33" ncloc="33" packages="5" files="5" classes="5"/>
     <package name="src.model.actionCreators">
       <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
