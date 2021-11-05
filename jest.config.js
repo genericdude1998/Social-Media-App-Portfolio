@@ -3,4 +3,5 @@ module.exports = {
     moduleNameMapper: {
         '\\.(css|less)$': '<rootDir>/tests/mockStyles.js',
     },
+    snapshotSerializers: ['enzyme-to-json/serializer'],
 };

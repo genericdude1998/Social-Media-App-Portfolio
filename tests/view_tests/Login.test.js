@@ -26,4 +26,7 @@ describe('Login', () => {
         expect(onChangeUsername).toBe(mockOnChangeUsername);
         expect(onChangePassword).toBe(mockOnChangePassword);
     });
+    it('should matchsnapshot', () => {
+        expect(loginWrapper).toMatchSnapshot();
+    });
 });
