@@ -1,13 +1,11 @@
 import { doSetUsername, doSetPassword, doSendLoginRequest, doSendUsernameAndPasswordThunk, doLoginRequestSuccess, doLoginRequestFailure } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
-import {mockUsername, mockPassword, correctUsername, correctPassword} from '../../mockValues';
+import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage} from '../../mockValues';
 import axios from 'axios';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
 const expectedSetUsernameAction = {type: actionTypes.SET_USERNAME, username: mockUsername};
 const expectedSetPasswordAction = {type: actionTypes.SET_PASSWORD, password: mockPassword};
-const mockToken = 'mock_token';
-const mockErrorMessage = 'Mock Error Message!';
 
 const mockDispatch = jest.fn();
 jest.mock('axios');
