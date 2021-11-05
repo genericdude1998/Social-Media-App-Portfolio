@@ -9,6 +9,10 @@ export function doSetPassword(password){
     return {type: actionTypes.SET_PASSWORD, password:password};
 }
 
+export function doSendLoginRequest(){
+    return {type: actionTypes.SEND_LOGIN_REQUEST}
+}
+
 export function doLoginRequestSuccess(token){
     return {type: actionTypes.LOGIN_REQUEST_SUCCESS, token: token}
 }
@@ -18,8 +22,8 @@ export function doLoginRequestFailure(error){
 
 export function doSendUsernameAndPasswordThunk(username, password){
     return function(dispatch){
-        dispatch(actionTypes.SEND_LOGIN_REQUEST);
-        axios.post('/login', {
+        dispatch(doSendLoginRequest());
+        return axios.post('/login', {
             username:username,
             password:password,
         }).then((res) => {
