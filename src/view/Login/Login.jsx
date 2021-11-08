@@ -13,11 +13,18 @@ export const Login = ({
     token,
     onChangePassword,
     onChangeUsername,
+    onSubmitLogin,
 }) => {
     return (
         <div className={styles.baseLogin}>
             <LoginHeader />
-            <LoginForm username={username} password={password} onChangeUsername={onChangeUsername} onChangePassword={onChangePassword}/>
+            <LoginForm 
+                username={username} 
+                password={password} 
+                onChangeUsername={onChangeUsername} 
+                onChangePassword={onChangePassword}
+                onSubmitLogin={onSubmitLogin}
+            />
             <LoginFooter />
         </div>
     );

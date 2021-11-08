@@ -8,6 +8,7 @@ exports[`Login should matchsnapshot 1`] = `
   <LoginForm
     onChangePassword={[MockFunction]}
     onChangeUsername={[MockFunction]}
+    onSubmitLogin={[MockFunction]}
     password=""
     username=""
   />

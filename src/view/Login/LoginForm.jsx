@@ -7,9 +7,10 @@ const LoginForm = ({
     password,
     onChangeUsername,
     onChangePassword,
+    onSubmitLogin,
 }) => {
     return (
-        <form className={styles.baseForm}>
+        <form className={styles.baseForm} onSubmit={onSubmitLogin(username, password)}>
             <label className={styles.baseLabel}>Username:</label>
             <input type='text' className={styles.baseInput} onChange={onChangeUsername}/>
             <label className={styles.baseLabel}>Password:</label>
