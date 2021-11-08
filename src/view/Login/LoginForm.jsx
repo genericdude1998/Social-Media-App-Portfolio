@@ -3,6 +3,8 @@ import styles from './LoginForm.css';
 import PropTypes from 'prop-types';
 
 const LoginForm = ({
+    username,
+    password,
     onChangeUsername,
     onChangePassword,
 }) => {

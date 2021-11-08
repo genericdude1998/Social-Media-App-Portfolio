@@ -17,7 +17,7 @@ export const Login = ({
     return (
         <div className={styles.baseLogin}>
             <LoginHeader />
-            <LoginForm onChangeUsername={onChangeUsername} onChangePassword={onChangePassword}/>
+            <LoginForm username={username} password={password} onChangeUsername={onChangeUsername} onChangePassword={onChangePassword}/>
             <LoginFooter />
         </div>
     );
