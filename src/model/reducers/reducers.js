@@ -13,3 +13,9 @@ export function loginReducer(state = loginReducerInitialState, action = 'default
     default: return state;
     }
 }
+
+export function feedReducer(state = [],action) {
+    switch (action.type) {    
+    default: return state;
+    }
+}

@@ -8,5 +8,5 @@ export function mapLoginDispatchToProps(dispatch){
     };
 }
 export function mapLoginStateToProps(state){
-    return state;
+    return state.login;
 }
