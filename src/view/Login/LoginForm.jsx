@@ -21,8 +21,11 @@ const LoginForm = ({
 }
 
 LoginForm.propTypes = {
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
+    onSubmitLogin: PropTypes.func.isRequired,
 }
 
 export default LoginForm;

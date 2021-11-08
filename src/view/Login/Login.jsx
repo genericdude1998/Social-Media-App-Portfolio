@@ -31,8 +31,12 @@ export const Login = ({
 }
 
 Login.propTypes = {
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    token: PropTypes.string,
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
+    onSubmitLogin: PropTypes.func.isRequired,
 }
 
 const ConnectedLogin = connect(mapLoginStateToProps, mapLoginDispatchToProps)(Login);
