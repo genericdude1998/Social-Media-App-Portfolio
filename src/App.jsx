@@ -8,8 +8,7 @@ const App = () => {
         <div>
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<ConnectedLogin />}>
-                    </Route>
+                    <Route path='/' element={<ConnectedLogin />}/>
                     <Route path='/feed' element={<Feed/>}/>
                 </Routes>
             </BrowserRouter>
