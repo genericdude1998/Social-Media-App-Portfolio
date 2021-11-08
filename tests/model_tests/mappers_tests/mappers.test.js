@@ -1,6 +1,6 @@
 import { doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
 import { mapLoginDispatchToProps, mapLoginStateToProps } from '../../../src/view/mappers/mappers';
-import {mockEvent, mockLoginReducerInitialState, mockPassword, mockUsername} from '../../mockValues'
+import {mockEvent, mockLoginReducerInitialState, mockPassword, mockStoreInitialState, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
 
@@ -50,6 +50,6 @@ describe('onSubmitLogin', () => {
 
 describe('mapLoginStateToProps', () => {
     it('should return state', () => {
-        expect(mapLoginStateToProps(mockLoginReducerInitialState)).toEqual(mockLoginReducerInitialState);
+        expect(mapLoginStateToProps(mockStoreInitialState)).toEqual(mockLoginReducerInitialState);
     });
 });
