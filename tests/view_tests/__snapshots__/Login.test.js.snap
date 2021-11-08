@@ -14,5 +14,9 @@ exports[`Login should matchsnapshot 1`] = `
   />
   <LoginError />
   <LoginFooter />
+  <Redirect
+    path="/feed"
+    token={null}
+  />
 </div>
 `;
