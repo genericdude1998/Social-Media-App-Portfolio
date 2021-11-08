@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636365527532" clover="3.2.0">
-  <project timestamp="1636365527532" name="All files">
-    <metrics statements="54" coveredstatements="54" conditionals="8" coveredconditionals="8" methods="26" coveredmethods="25" elements="88" coveredelements="87" complexity="0" loc="54" ncloc="54" packages="7" files="10" classes="10"/>
+<coverage generated="1636365858142" clover="3.2.0">
+  <project timestamp="1636365858142" name="All files">
+    <metrics statements="54" coveredstatements="54" conditionals="8" coveredconditionals="8" methods="26" coveredmethods="26" elements="88" coveredelements="88" complexity="0" loc="54" ncloc="54" packages="7" files="10" classes="10"/>
     <package name="src.model.actionCreators">
       <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
       <file name="actionCreators.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/model/actionCreators/actionCreators.js">
@@ -80,9 +80,9 @@
       </file>
     </package>
     <package name="src.view.mappers">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <file name="mappers.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/view/mappers/mappers.js">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
         <line num="4" count="5" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>

@@ -163,12 +163,12 @@ FN:7,(anonymous_3)
 FN:7,(anonymous_4)
 FN:10,mapLoginStateToProps
 FNF:6
-FNH:5
+FNH:6
 FNDA:5,mapLoginDispatchToProps
 FNDA:1,(anonymous_1)
 FNDA:1,(anonymous_2)
 FNDA:1,(anonymous_3)
-FNDA:0,(anonymous_4)
+FNDA:1,(anonymous_4)
 FNDA:1,mapLoginStateToProps
 DA:4,5
 DA:5,1

@@ -13,6 +13,10 @@ beforeEach(() => {
     mappedObject = mapLoginDispatchToProps(mockDispatch);
 })
 
+afterEach(() => {
+    jest.clearAllMocks();
+})
+
 describe('mapLoginDispatchToProps', () => {
     it('should return an object with onChangePassword and onChangeUsername handlers', () => {
         expect(typeof(mappedObject)).toBe('object');
@@ -37,7 +41,9 @@ describe('onChangePassword', () => {
 
 describe('onSubmitLogin', () => {
     it('should call dispatch with expected params', () => {
-        mappedObject.onSubmitLogin(mockUsername,mockPassword);
+        const eventHandler = mappedObject.onSubmitLogin(mockUsername,mockPassword);
+        expect(typeof(eventHandler)).toBe('function');
+        eventHandler(mockEvent);
         expect(mockDispatch).toHaveBeenCalledWith(doSendUsernameAndPasswordThunk(mockUsername,mockPassword));    
     });
 });
