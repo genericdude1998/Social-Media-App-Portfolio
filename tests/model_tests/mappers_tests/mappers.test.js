@@ -3,6 +3,9 @@ import { mapLoginDispatchToProps, mapLoginStateToProps } from '../../../src/view
 import {mockLoginReducerInitialState, mockPassword, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
+const mockInputPasswordEvent = {target:{value:mockPassword}};
+const mockInputUsernameEvent = {target:{value:mockUsername}};
+
 
 let mappedObject;
 
@@ -19,14 +22,14 @@ describe('mapLoginDispatchToProps', () => {
 });
 describe('onChangeUsername', () => {
     it('should call dispatch with expected params', () => {
-        mappedObject.onChangeUsername(mockUsername);
-        expect(mockDispatch).toHaveBeenCalledWith(doSetUsername(mockUsername));
+        mappedObject.onChangeUsername(mockInputUsernameEvent);
+        expect(mockDispatch).toHaveBeenCalledWith(doSetUsername(mockInputUsernameEvent.target.value));
     });
 });
 describe('onChangePassword', () => {
     it('should call dispatch with expected params', () => {
-        mappedObject.onChangePassword(mockPassword);
-        expect(mockDispatch).toHaveBeenCalledWith(doSetPassword(mockPassword));
+        mappedObject.onChangePassword(mockInputPasswordEvent);
+        expect(mockDispatch).toHaveBeenCalledWith(doSetPassword(mockInputPasswordEvent.target.value));
     });
 });
 
