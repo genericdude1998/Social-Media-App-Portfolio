@@ -6,11 +6,13 @@ import LoginHeader from './LoginHeader';
 import LoginFooter from './LoginFooter';
 import { connect } from 'react-redux';
 import { mapLoginDispatchToProps, mapLoginStateToProps } from '../mappers/mappers';
+import LoginError from './LoginError';
 
 export const Login = ({
     username,
     password,
     token,
+    error,
     onChangePassword,
     onChangeUsername,
     onSubmitLogin,
@@ -25,6 +27,7 @@ export const Login = ({
                 onChangePassword={onChangePassword}
                 onSubmitLogin={onSubmitLogin}
             />
+            <LoginError error={error}/>
             <LoginFooter />
         </div>
     );

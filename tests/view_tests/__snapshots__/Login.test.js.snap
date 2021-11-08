@@ -12,6 +12,7 @@ exports[`Login should matchsnapshot 1`] = `
     password=""
     username=""
   />
+  <LoginError />
   <LoginFooter />
 </div>
 `;
