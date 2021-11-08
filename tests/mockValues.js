@@ -12,3 +12,4 @@ export const mockOnSubmitLogin = jest.fn();
 export const mockEvent = {target:{value:'mock_value'}, preventDefault: () => {}};
 export const mockErrorMessage = 'Mock Error Message!';
 export const mockError = {errorMessage: mockErrorMessage};
+export const mockPath = '/';

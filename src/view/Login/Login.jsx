@@ -7,6 +7,7 @@ import LoginFooter from './LoginFooter';
 import { connect } from 'react-redux';
 import { mapLoginDispatchToProps, mapLoginStateToProps } from '../mappers/mappers';
 import LoginError from './LoginError';
+import { Redirect } from '../../helpers/Redirect';
 
 export const Login = ({
     username,
@@ -29,6 +30,7 @@ export const Login = ({
             />
             <LoginError error={error}/>
             <LoginFooter />
+            <Redirect token={token} path='/feed'/>
         </div>
     );
 }
@@ -37,6 +39,7 @@ Login.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     token: PropTypes.string,
+    error: PropTypes.string,
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
     onSubmitLogin: PropTypes.func.isRequired,

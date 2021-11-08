@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Redirect should matchSnapshot when given token 1`] = `
+<Navigate
+  to="/"
+/>
+`;
+
+exports[`Redirect should matchSnapshot when not given token 1`] = `""`;
