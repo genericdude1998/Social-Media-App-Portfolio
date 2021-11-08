@@ -2,8 +2,8 @@ import { doSetPassword, doSetUsername } from '../../model/actionCreators/actionC
 
 export function mapLoginDispatchToProps(dispatch){
     return {
-        onChangeUsername: (username) => dispatch(doSetUsername(username)),
-        onChangePassword: (password) => dispatch(doSetPassword(password)),
+        onChangeUsername: (e) => dispatch(doSetUsername(e.target.value)),
+        onChangePassword: (e) => dispatch(doSetPassword(e.target.value)),
     };
 }
 export function mapLoginStateToProps(state){
