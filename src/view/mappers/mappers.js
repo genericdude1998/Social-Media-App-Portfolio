@@ -1,4 +1,5 @@
 import { doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../model/actionCreators/actionCreators';
+import { loginStateSelector } from '../../model/selectors/selectors';
 
 export function mapLoginDispatchToProps(dispatch){
     return {
@@ -8,5 +9,5 @@ export function mapLoginDispatchToProps(dispatch){
     };
 }
 export function mapLoginStateToProps(state){
-    return state.login;
+    return loginStateSelector(state);
 }
