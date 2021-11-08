@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../Login/LoginError.css'
 
 const LoginError = ({error}) => {
     return (
-        <div>
+        <div className={styles.baseError}>
             {error ? error.errorMessage: null}
         </div>
     );
