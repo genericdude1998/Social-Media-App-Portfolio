@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match the snapshot 1`] = `
+<div
+  className="baseFooter"
+>
+  Please type Adam as username and 1234 as password to begin!
+</div>
+`;
