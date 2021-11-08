@@ -1,10 +1,14 @@
 const credentials = require('./credentials.js');
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const posts = require('./posts.js');
+
+var token;
+
 
 const devServer = (devServer) => {
     const app = devServer.app;
-    
+
     app.use(require('cookie-parser')(credentials.cookieSecret));
     app.use(express.json());
 
@@ -13,11 +17,22 @@ const devServer = (devServer) => {
         const password = req.body.password;
 
         if(authenticateUserLogin(username, password)){
-            const token = generateJWT(username);
+            token = generateJWT(username);
             res.json(token);
         }
         else{
             res.send(401, {errorMessage: 'username or password are wrong please try again!'});
+        }
+    });
+
+    app.get('/posts', (req,res) => {
+        const userToken = req.body.token;
+    
+        if(userToken && userToken === token){
+            res.json(posts);
+        }
+        else{
+            res.send(401, 'not Authorised!')
         }
     })
 }
