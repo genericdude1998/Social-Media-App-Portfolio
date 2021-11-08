@@ -1,6 +1,6 @@
 import { doSetUsername, doSetPassword, doSendLoginRequest, doSendUsernameAndPasswordThunk, doLoginRequestSuccess, doLoginRequestFailure } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
-import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage} from '../../mockValues';
+import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent} from '../../mockValues';
 import axios from 'axios';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
@@ -40,7 +40,7 @@ describe('doSendUsernameAndPasswordThunk', () => {
     it('should call dispatch with SEND_LOGIN_REQUEST_OBJECT and LOGIN_REQUEST_SUCCESS when given correct credentials', () => {
         axios.post.mockImplementation(() => Promise.resolve({data: mockToken}));
 
-        const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword);
+        const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword, mockEvent);
         return thunk(mockDispatch).then(() => {
             expect(mockDispatch).toHaveBeenCalledWith(doSendLoginRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doLoginRequestSuccess(mockToken))});
@@ -48,7 +48,7 @@ describe('doSendUsernameAndPasswordThunk', () => {
     it('should call dispatch with SEND_LOGIN_REQUEST_OBJECT and LOGIN_REQUEST_FAILURE when given correct credentials', () => {
         axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
-        const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword);
+        const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword, mockEvent);
         return thunk(mockDispatch).then(() => {
             expect(mockDispatch).toHaveBeenCalledWith(doSendLoginRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doLoginRequestFailure(mockErrorMessage))});

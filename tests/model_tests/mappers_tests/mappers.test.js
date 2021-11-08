@@ -1,10 +1,8 @@
 import { doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
 import { mapLoginDispatchToProps, mapLoginStateToProps } from '../../../src/view/mappers/mappers';
-import {mockLoginReducerInitialState, mockPassword, mockUsername} from '../../mockValues'
+import {mockEvent, mockLoginReducerInitialState, mockPassword, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
-const mockInputPasswordEvent = {target:{value:mockPassword}};
-const mockInputUsernameEvent = {target:{value:mockUsername}};
 
 jest.mock('../../../src/model/actionCreators/actionCreators');
 
@@ -26,14 +24,14 @@ describe('mapLoginDispatchToProps', () => {
 });
 describe('onChangeUsername', () => {
     it('should call dispatch with expected params', () => {
-        mappedObject.onChangeUsername(mockInputUsernameEvent);
-        expect(mockDispatch).toHaveBeenCalledWith(doSetUsername(mockInputUsernameEvent.target.value));
+        mappedObject.onChangeUsername(mockEvent);
+        expect(mockDispatch).toHaveBeenCalledWith(doSetUsername(mockEvent.target.value));
     });
 });
 describe('onChangePassword', () => {
     it('should call dispatch with expected params', () => {
-        mappedObject.onChangePassword(mockInputPasswordEvent);
-        expect(mockDispatch).toHaveBeenCalledWith(doSetPassword(mockInputPasswordEvent.target.value));
+        mappedObject.onChangePassword(mockEvent);
+        expect(mockDispatch).toHaveBeenCalledWith(doSetPassword(mockEvent.target.value));
     });
 });
 

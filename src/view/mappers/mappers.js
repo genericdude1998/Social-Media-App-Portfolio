@@ -4,7 +4,7 @@ export function mapLoginDispatchToProps(dispatch){
     return {
         onChangeUsername: (e) => dispatch(doSetUsername(e.target.value)),
         onChangePassword: (e) => dispatch(doSetPassword(e.target.value)),
-        onSubmitLogin: (username, password) => () => dispatch(doSendUsernameAndPasswordThunk(username,password)),
+        onSubmitLogin: (username, password) => (event) => dispatch(doSendUsernameAndPasswordThunk(username,password, event)),
     };
 }
 export function mapLoginStateToProps(state){
