@@ -1,24 +1,20 @@
-import { loginStateSelector } from '../selectors/selectors';
+
 
 export function applySetUsername(state,action){
-    const loginState = loginStateSelector(state);
-    return {...loginState, username: action.username}
+    return {...state, username: action.username}
 }
 export function applySetPassword(state,action){
-    const loginState = loginStateSelector(state);
-    return {...loginState, password: action.password}
+    return {...state, password: action.password}
 }
 
 export function applySendLoginRequest(state){
-    return loginStateSelector(state);
+    return state;
 }
 
 export function applyLoginRequestSuccess(state,action){
-    const loginState = loginStateSelector(state);
-    return {...loginState, token: action.token}
+    return {...state, token: action.token}
 }
 
 export function applyLoginRequestFailure(state,action){
-    const loginState = loginStateSelector(state);
-    return {...loginState, error: action.error}
+    return {...state, error: action.error}
 }
