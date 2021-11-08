@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render an error message when given an error 1`] = `
+<div
+  className="baseError"
+>
+  Mock Error Message!
+</div>
+`;
+
+exports[`should render nothing when no error is given 1`] = `
+<div
+  className="baseError"
+/>
+`;

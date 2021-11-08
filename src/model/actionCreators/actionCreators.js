@@ -20,8 +20,9 @@ export function doLoginRequestFailure(error){
     return {type: actionTypes.LOGIN_REQUEST_FAILURE, error: error}
 }
 
-export function doSendUsernameAndPasswordThunk(username, password){
+export function doSendUsernameAndPasswordThunk(username, password, event){
     return function(dispatch){
+        event.preventDefault();
         dispatch(doSendLoginRequest());
         return axios.post('/login', {
             username:username,

@@ -17,14 +17,14 @@ const devServer = (devServer) => {
             res.json(token);
         }
         else{
-            res.send(401, {error: 'bad login'});
+            res.send(401, {errorMessage: 'username or password are wrong please try again!'});
         }
     })
 }
 
 function authenticateUserLogin(username,password){
     if(username && password){
-        return username === 'Adam' && password === 1234 ? true:false
+        return username === 'Adam' && password === '1234' ? true:false
     }
 }
 
