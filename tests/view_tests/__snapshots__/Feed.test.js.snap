@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feed should match snapshot 1`] = `
+<div
+  className="baseFeed"
+>
+  <ul>
+    <li
+      key="1"
+    >
+      <Post
+        content="mock_content"
+        date="mock_date"
+        name="mock_name"
+      />
+    </li>
+    <li
+      key="2"
+    >
+      <Post
+        content="mock_content"
+        date="mock_date"
+        name="mock_name"
+      />
+    </li>
+    <li
+      key="3"
+    >
+      <Post
+        content="mock_content"
+        date="mock_date"
+        name="mock_name"
+      />
+    </li>
+  </ul>
+</div>
+`;

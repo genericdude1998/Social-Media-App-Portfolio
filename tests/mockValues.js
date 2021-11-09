@@ -13,4 +13,12 @@ export const mockEvent = {target:{value:'mock_value'}, preventDefault: () => {}}
 export const mockErrorMessage = 'Mock Error Message!';
 export const mockError = {errorMessage: mockErrorMessage};
 export const mockPath = '/';
-export const mockPosts = ['1','2','3'];
+export const mockName = 'mock_name';
+export const mockContent = 'mock_content';
+export const mockDate = 'mock_date';
+
+export const mockPosts = [
+    {id:'1' , name:mockName, content: mockContent, date:mockDate},
+    {id:'2' , name:mockName, content: mockContent, date:mockDate},
+    {id:'3' , name:mockName, content: mockContent, date:mockDate},
+];
