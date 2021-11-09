@@ -37,6 +37,27 @@ export function doSendUsernameAndPasswordThunk(username, password, event){
     }
 }
 
-export function doGetPosts() {
+export function doGetPostsRequest() {
     return {type: actionTypes.GET_POSTS_REQUEST}
+}
+
+export function doGetPostsSuccess(posts){
+    return {type: actionTypes.GET_POSTS_SUCCESS, posts:posts}
+}
+
+export function doGetPostsFailure(error){
+    return {type: actionTypes.GET_POSTS_FAILURE, error:error}
+}
+
+export function doGetPostsThunk(){
+    return function(dispatch){
+        dispatch(doGetPostsRequest());
+        return axios.get('/login').then((res) => {
+            const posts = res.data;
+            dispatch(doGetPostsSuccess(posts));
+        }).catch(error => {
+            const errorMessage = error.response.data;
+            dispatch(doGetPostsFailure(errorMessage));
+        });
+    }
 }
