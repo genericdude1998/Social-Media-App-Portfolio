@@ -18,8 +18,6 @@ beforeEach(() => {
     );
 });
 
-
-
 describe('Login', () => {
     it('should pass onChange handlers to LoginForm component', () => {
         const {onChangeUsername, onChangePassword, onSubmitLogin} = loginWrapper.find(LoginForm).props();
