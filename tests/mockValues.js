@@ -16,6 +16,7 @@ export const mockPath = '/';
 export const mockName = 'mock_name';
 export const mockContent = 'mock_content';
 export const mockDate = 'mock_date';
+export const mockId = 0;
 
 export const mockPosts = [
     {id:'1' , name:mockName, content: mockContent, date:mockDate},

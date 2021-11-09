@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserLink should match snapshot 1`] = `
+<Link
+  to="/userInfo/0"
+>
+  mock_name
+</Link>
+`;

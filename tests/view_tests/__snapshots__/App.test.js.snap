@@ -12,6 +12,10 @@ exports[`App should match snapshot 1`] = `
         element={<Memo(Connect(Feed)) />}
         path="/feed"
       />
+      <Route
+        element={<User />}
+        path="/userInfo/:id"
+      />
     </Routes>
   </BrowserRouter>
 </div>

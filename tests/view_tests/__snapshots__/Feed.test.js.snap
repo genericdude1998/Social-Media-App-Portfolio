@@ -11,6 +11,7 @@ exports[`Feed should match snapshot if list is not undefined 1`] = `
       <Post
         content="mock_content"
         date="mock_date"
+        id="1"
         name="mock_name"
       />
     </li>
@@ -20,6 +21,7 @@ exports[`Feed should match snapshot if list is not undefined 1`] = `
       <Post
         content="mock_content"
         date="mock_date"
+        id="2"
         name="mock_name"
       />
     </li>
@@ -29,6 +31,7 @@ exports[`Feed should match snapshot if list is not undefined 1`] = `
       <Post
         content="mock_content"
         date="mock_date"
+        id="3"
         name="mock_name"
       />
     </li>
