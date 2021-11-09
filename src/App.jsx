@@ -2,6 +2,8 @@ import React from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import ConnectedLogin from './view/Login/Login';
 import ConnectedFeed from './view/Feed/Feed';
+import { connect } from 'react-redux';
+import { mapAppStateToProps } from './view/mappers/mappers';
 
 const App = () => {
     return (
@@ -16,4 +18,6 @@ const App = () => {
     );
 }
 
-export default App;
+const ConnectedApp = connect(mapAppStateToProps)(App);
+
+export default ConnectedApp;
