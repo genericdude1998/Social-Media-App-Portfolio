@@ -4,11 +4,9 @@ exports[`Post should match snapshot 1`] = `
 <div
   className="basePost"
 >
-  <h2
-    className="basePostTitle"
-  >
-    mock_name
-  </h2>
+  <UserLink
+    name="mock_name"
+  />
   <p
     className="basePostContent"
   >
