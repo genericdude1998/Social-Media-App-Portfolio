@@ -7,6 +7,7 @@ module.exports = {
     mode: 'development',
     // the app entry point is /src/index.js
     entry: path.resolve(__dirname, 'src', 'index.js'),
+    devtool:'source-map',
     output: {
  
         path: path.resolve(__dirname, 'dist'),
