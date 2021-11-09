@@ -15,7 +15,14 @@ describe('Feed', () => {
     it('should call OnFetchPosts with expected params', () => {
         expect(mockOnFetchPosts).toHaveBeenCalled();
     });
-    it('should match snapshot', () => {
+    it('should match snapshot if list is not undefined', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
+    it('should match snapshot if list is undefined', () => {
+        let wrapper = shallow(<ConnectedFeed.WrappedComponent
+            posts={{module: undefined}}
+            onFetchPosts={mockOnFetchPosts}
+        />);
         expect(wrapper).toMatchSnapshot();
     });
 });

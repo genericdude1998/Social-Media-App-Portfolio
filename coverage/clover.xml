@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636458000659" clover="3.2.0">
-  <project timestamp="1636458000659" name="All files">
-    <metrics statements="88" coveredstatements="87" conditionals="18" coveredconditionals="18" methods="42" coveredmethods="41" elements="148" coveredelements="146" complexity="0" loc="88" ncloc="88" packages="11" files="16" classes="16"/>
+<coverage generated="1636473505974" clover="3.2.0">
+  <project timestamp="1636473505974" name="All files">
+    <metrics statements="109" coveredstatements="109" conditionals="20" coveredconditionals="20" methods="50" coveredmethods="50" elements="179" coveredelements="179" complexity="0" loc="109" ncloc="109" packages="11" files="18" classes="18"/>
     <package name="src">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.jsx" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/App.jsx">
@@ -11,12 +11,18 @@
       </file>
     </package>
     <package name="src.helpers">
-      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="Redirect.jsx" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/helpers/Redirect.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="9" count="3" type="stmt"/>
+      </file>
+      <file name="cookieHelper.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/helpers/cookieHelper.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.model.actionCreators">
@@ -52,7 +58,7 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="actionTypes.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/model/actionTypes/actionTypes.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="6" type="stmt"/>
+        <line num="1" count="7" type="stmt"/>
       </file>
     </package>
     <package name="src.model.appliers">
@@ -73,47 +79,62 @@
       </file>
     </package>
     <package name="src.model.reducers">
-      <metrics statements="13" coveredstatements="13" conditionals="14" coveredconditionals="14" methods="2" coveredmethods="2"/>
+      <metrics statements="14" coveredstatements="14" conditionals="14" coveredconditionals="14" methods="2" coveredmethods="2"/>
       <file name="reducers.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/model/reducers/reducers.js">
-        <metrics statements="13" coveredstatements="13" conditionals="14" coveredconditionals="14" methods="2" coveredmethods="2"/>
+        <metrics statements="14" coveredstatements="14" conditionals="14" coveredconditionals="14" methods="2" coveredmethods="2"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="8" count="7" type="cond" truecount="6" falsecount="0"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="10" count="7" type="cond" truecount="6" falsecount="0"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="19" count="5" type="cond" truecount="4" falsecount="0"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="21" count="5" type="cond" truecount="4" falsecount="0"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.model.selectors">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="selectors.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/model/selectors/selectors.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="2" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.view.Feed">
-      <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <file name="Feed.jsx" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/view/Feed/Feed.jsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+      </file>
+      <file name="Post.jsx" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/view/Feed/Post.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.view.Login">
-      <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+      <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
       <file name="Login.jsx" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/view/Login/Login.jsx">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
       </file>
       <file name="LoginError.jsx" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/view/Login/LoginError.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -139,36 +160,42 @@
       </file>
     </package>
     <package name="src.view.mappers">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
       <file name="mappers.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/view/mappers/mappers.js">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <line num="5" count="5" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
+        <line num="5" count="8" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
       </file>
     </package>
     <package name="tests">
-      <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="mockValues.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/tests/mockValues.js">
-        <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="9" type="stmt"/>
-        <line num="2" count="9" type="stmt"/>
-        <line num="3" count="9" type="stmt"/>
-        <line num="4" count="9" type="stmt"/>
-        <line num="5" count="9" type="stmt"/>
-        <line num="6" count="9" type="stmt"/>
-        <line num="7" count="9" type="stmt"/>
-        <line num="8" count="9" type="stmt"/>
-        <line num="9" count="9" type="stmt"/>
-        <line num="10" count="9" type="stmt"/>
-        <line num="11" count="9" type="stmt"/>
-        <line num="12" count="9" type="stmt"/>
-        <line num="13" count="9" type="stmt"/>
-        <line num="14" count="9" type="stmt"/>
-        <line num="15" count="9" type="stmt"/>
-        <line num="16" count="9" type="stmt"/>
+        <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
       </file>
     </package>
   </project>

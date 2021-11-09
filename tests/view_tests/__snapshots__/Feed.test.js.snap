@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Feed should match snapshot 1`] = `
+exports[`Feed should match snapshot if list is not undefined 1`] = `
 <div
   className="baseFeed"
 >
@@ -32,6 +32,18 @@ exports[`Feed should match snapshot 1`] = `
         name="mock_name"
       />
     </li>
+  </ul>
+</div>
+`;
+
+exports[`Feed should match snapshot if list is undefined 1`] = `
+<div
+  className="baseFeed"
+>
+  <ul>
+    <h1>
+      Loading
+    </h1>
   </ul>
 </div>
 `;

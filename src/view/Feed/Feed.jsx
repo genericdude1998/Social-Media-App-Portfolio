@@ -17,7 +17,7 @@ const Feed = ({posts, onFetchPosts}) => {
                     return (<li key={post.id}>
                         <Post name={post.name} content={post.content} date={post.date}/>
                     </li>)
-                }): null}
+                }): <h1>Loading</h1>}
             </ul>
         </div>
     );
