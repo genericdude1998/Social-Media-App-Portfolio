@@ -56,6 +56,10 @@ describe('doSendUsernameAndPasswordThunk', () => {
 
         const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword, mockEvent);
         return thunk(mockDispatch).then(() => {
+            expect(axios.post).toHaveBeenCalledWith('/login', {
+                username: correctUsername,
+                password: correctPassword,
+            });
             expect(mockDispatch).toHaveBeenCalledWith(doSendLoginRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doLoginRequestSuccess(mockToken))});
     });
