@@ -1,10 +1,13 @@
 import { doGetPostsThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
+import { feedStateSelector, loginStateSelector } from '../../../src/model/selectors/selectors';
 import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps } from '../../../src/view/mappers/mappers';
-import {mockEvent, mockFeedInitialState, mockLoginReducerInitialState, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
+import {mockEvent, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
 
 jest.mock('../../../src/model/actionCreators/actionCreators');
+jest.mock('../../../src/model/selectors/selectors');
+
 
 
 let mappedLoginDispatchObject;
@@ -13,7 +16,6 @@ let mappedFeedDispatchObject;
 beforeEach(() => {
     mappedLoginDispatchObject = mapLoginDispatchToProps(mockDispatch);
     mappedFeedDispatchObject = mapFeedDispatchToProps(mockDispatch);
-
 })
 
 afterEach(() => {
@@ -53,7 +55,8 @@ describe('onSubmitLogin', () => {
 
 describe('mapLoginStateToProps', () => {
     it('should return expected state', () => {
-        expect(mapLoginStateToProps(mockStoreInitialState)).toEqual(mockLoginReducerInitialState);
+        mapLoginStateToProps(mockStoreInitialState);
+        expect(loginStateSelector).toHaveBeenCalledWith(mockStoreInitialState)
     });
 });
 
@@ -70,6 +73,7 @@ describe('mapFeedDispatchToProps', () => {
 
 describe('mapFeedStateToProps', () => {
     it('should return expected state', () => {
-        expect(mapFeedStateToProps(mockStoreInitialState)).toEqual(mockFeedInitialState);
+        mapFeedStateToProps(mockStoreInitialState);
+        expect(feedStateSelector).toHaveBeenCalledWith(mockStoreInitialState);
     });
 });
