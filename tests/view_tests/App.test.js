@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme';
-import ConnectedApp from '../../src/App';
+import App from '../../src/App';
 
-let wrapper = shallow(<ConnectedApp.WrappedComponent/>);
+let wrapper = shallow(<App/>);
 
 describe('App', () => {
     it('should match snapshot', () => {

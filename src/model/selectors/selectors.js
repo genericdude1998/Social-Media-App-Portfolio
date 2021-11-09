@@ -4,6 +4,3 @@ export function loginStateSelector(state) {
 export function feedStateSelector(state) {
     return state.feed;
 }
-export function appStateSelector(state){
-    return {token: state.login.token}
-}

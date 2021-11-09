@@ -1,6 +1,6 @@
 import { doGetPostsThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
-import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps, mapAppStateToProps } from '../../../src/view/mappers/mappers';
-import {mockAppInitialState, mockEvent, mockFeedInitialState, mockLoginReducerInitialState, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
+import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps } from '../../../src/view/mappers/mappers';
+import {mockEvent, mockFeedInitialState, mockLoginReducerInitialState, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
 
@@ -71,11 +71,5 @@ describe('mapFeedDispatchToProps', () => {
 describe('mapFeedStateToProps', () => {
     it('should return expected state', () => {
         expect(mapFeedStateToProps(mockStoreInitialState)).toEqual(mockFeedInitialState);
-    });
-});
-
-describe('mapAppStateToProps', () => {
-    it('should return expected state', () => {
-        expect(mapAppStateToProps(mockStoreInitialState)).toEqual(mockAppInitialState);
     });
 });
