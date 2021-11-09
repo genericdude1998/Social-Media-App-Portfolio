@@ -1,11 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { mapFeedDispatchToProps, mapFeedStateToProps } from '../mappers/mappers';
 
-const Feed = () => {
+const Feed = ({posts, onFetchPosts}) => {
     return (
         <div>
-            Feed
+            
         </div>
     );
 }
 
-export default Feed;
+const ConnectedFeed = connect(mapFeedStateToProps, mapFeedDispatchToProps)(Feed);
+
+export default ConnectedFeed;

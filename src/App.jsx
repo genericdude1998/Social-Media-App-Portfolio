@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import ConnectedLogin from './view/Login/Login';
-import Feed from './view/Feed/Feed';
+import ConnectedFeed from './view/Feed/Feed';
 
 const App = () => {
     return (
@@ -9,7 +9,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<ConnectedLogin />}/>
-                    <Route path='/feed' element={<Feed/>}/>
+                    <Route path='/feed' element={<ConnectedFeed/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

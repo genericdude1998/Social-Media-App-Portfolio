@@ -9,7 +9,7 @@ exports[`App should match snapshot 1`] = `
         path="/"
       />
       <Route
-        element={<Feed />}
+        element={<Memo(Connect(Feed)) />}
         path="/feed"
       />
     </Routes>
