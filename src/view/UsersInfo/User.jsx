@@ -3,6 +3,9 @@ import { useParams } from 'react-router';
 
 const User = () => {
     const {id} = useParams();
+    React.useEffect(() => {
+        
+    }, [])
     return (
         <div>
             <h1>Name</h1>
