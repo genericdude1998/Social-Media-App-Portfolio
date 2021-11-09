@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { mapLoginDispatchToProps, mapLoginStateToProps } from '../mappers/mappers';
 import LoginError from './LoginError';
 import { Redirect } from '../../helpers/Redirect';
+import { setCookie } from '../../helpers/cookieHelper';
 
 const Login = ({
     username,
@@ -18,6 +19,9 @@ const Login = ({
     onChangeUsername,
     onSubmitLogin,
 }) => {
+
+    setCookie('token', token);
+    
     return (
         <div className={styles.baseLogin}>
             <LoginHeader />
