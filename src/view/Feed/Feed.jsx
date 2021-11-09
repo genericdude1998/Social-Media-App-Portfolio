@@ -14,7 +14,7 @@ const Feed = ({posts, onFetchPosts}) => {
             <ul>
                 {posts ? posts.map(post => {
                     return (<li key={post.id}>
-                        <Post name={post.name} content={post.content} date={post.date}/>
+                        <Post id={post.id}name={post.name} content={post.content} date={post.date}/>
                     </li>)
                 }): <h1>Loading</h1>}
             </ul>

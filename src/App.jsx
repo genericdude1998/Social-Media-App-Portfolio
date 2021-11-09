@@ -10,6 +10,7 @@ const App = () => {
                 <Routes>
                     <Route path='/' element={<ConnectedLogin />}/>
                     <Route path='/feed' element={<ConnectedFeed/>}/>
+                    <Route path='/userInfo/:id' element={}/>
                 </Routes>
             </BrowserRouter>
         </div>
