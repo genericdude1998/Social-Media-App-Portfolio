@@ -30,7 +30,7 @@ const devServer = (devServer) => {
         const userToken = req.cookies.token;
         console.log(`${userToken} used to access posts`);
         if(userToken && userToken === token){
-            res.json(posts);
+            res.json(posts.module);
         }
         else{
             res.send(401, 'not Authorised!')

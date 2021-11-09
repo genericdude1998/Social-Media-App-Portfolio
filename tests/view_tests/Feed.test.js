@@ -7,7 +7,7 @@ jest.spyOn(React, 'useEffect').mockImplementation(f => f());
 const mockOnFetchPosts = jest.fn();
 
 let wrapper = shallow(<ConnectedFeed.WrappedComponent
-    posts={{module: mockPosts}}
+    posts={mockPosts}
     onFetchPosts={mockOnFetchPosts}
 />);
 
@@ -20,7 +20,7 @@ describe('Feed', () => {
     });
     it('should match snapshot if list is undefined', () => {
         let wrapper = shallow(<ConnectedFeed.WrappedComponent
-            posts={{module: undefined}}
+            posts={undefined}
             onFetchPosts={mockOnFetchPosts}
         />);
         expect(wrapper).toMatchSnapshot();

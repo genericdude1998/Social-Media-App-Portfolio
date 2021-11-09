@@ -9,11 +9,10 @@ const Feed = ({posts, onFetchPosts}) => {
     React.useEffect(() => {
         onFetchPosts();
     }, []);
-    const list = posts.module;
     return (
         <div className={styles.baseFeed}>
             <ul>
-                {list ? list.map(post => {
+                {posts ? posts.map(post => {
                     return (<li key={post.id}>
                         <Post name={post.name} content={post.content} date={post.date}/>
                     </li>)
@@ -24,7 +23,7 @@ const Feed = ({posts, onFetchPosts}) => {
 }
 
 Feed.propTypes = {
-    posts: PropTypes.object,
+    posts: PropTypes.array,
     onFetchPosts: PropTypes.func,
 }
 
