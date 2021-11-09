@@ -65,3 +65,11 @@ export function doGetPostsThunk(){
 export function doGetUserRequest(){
     return {type: actionTypes.GET_USER_REQUEST}
 }
+
+export function doGetUserSuccess(user){
+    return {type: actionTypes.GET_USER_SUCCESS, user:user}
+}
+
+export function doGetUserFailure(error){
+    return {type: actionTypes.GET_USER_FAILURE, error:error}
+}

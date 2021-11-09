@@ -10,9 +10,11 @@ import {
     doGetPostsFailure,
     doGetPostsThunk,
     doGetUserRequest,
+    doGetUserSuccess,
+    doGetUserFailure,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
-import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts} from '../../mockValues';
+import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser} from '../../mockValues';
 import axios from 'axios';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
@@ -24,7 +26,7 @@ const expectedGetPostsSuccess = {type: actionTypes.GET_POSTS_SUCCESS, posts: moc
 const expectedGetPostsFailure = {type: actionTypes.GET_POSTS_FAILURE, error: mockErrorMessage};
 
 const expectedGetUserRequest = {type: actionTypes.GET_USER_REQUEST};
-const expectedGetUserSuccess = {type: actionTypes.GET_USER_SUCCESS, user: ''};
+const expectedGetUserSuccess = {type: actionTypes.GET_USER_SUCCESS, user: mockUser};
 const expectedGetUserFailure = {type: actionTypes.GET_USER_FAILURE, error: mockErrorMessage};
 
 const mockDispatch = jest.fn();
@@ -122,16 +124,16 @@ describe('doGetPostsThunk', () => {
 
 describe('doGetUserRequest', () => {
     it('should return an action with expected type', () => {
-        expect(doGetUserRequest()).toEqual(expectedGetPostsRequest);
+        expect(doGetUserRequest()).toEqual(expectedGetUserRequest);
     });
 });
 describe('doGetUserSuccess', () => {
     it('should return expected action', () => {
-        expect(doGetUserSuccess(mockPosts)).toEqual(expectedGetPostsSuccess);
+        expect(doGetUserSuccess(mockUser)).toEqual(expectedGetUserSuccess);
     });
 });
 describe('doGetUserFailure', () => {
     it('should return expected action', () => {
-        expect(doGetUserFailure(mockErrorMessage)).toEqual(expectedGetPostsFailure);
+        expect(doGetUserFailure(mockErrorMessage)).toEqual(expectedGetUserFailure);
     });
 });
