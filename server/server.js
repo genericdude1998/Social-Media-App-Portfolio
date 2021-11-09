@@ -26,8 +26,8 @@ const devServer = (devServer) => {
     });
 
     app.get('/posts', (req,res) => {
-        const userToken = req.body.token;
-    
+        const userToken = req.cookies.token;
+        console.log(userToken);
         if(userToken && userToken === token){
             res.json(posts);
         }

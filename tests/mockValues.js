@@ -1,4 +1,4 @@
-export const mockFeedInitialState = [];
+export const mockFeedInitialState = {posts: []};
 export const mockLoginReducerInitialState = {username:'', password:'', token:null, error: null};
 export const mockStoreInitialState = {login: mockLoginReducerInitialState, feed: mockFeedInitialState};
 export const mockUsername = 'username';

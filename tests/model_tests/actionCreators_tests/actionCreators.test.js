@@ -95,9 +95,7 @@ describe('doGetPostsThunk', () => {
 
         const thunk = doGetPostsThunk(mockToken);
         return thunk(mockDispatch).then(() => {
-            expect(axios.get).toHaveBeenCalledWith('/posts', {
-                token: mockToken,
-            });
+            expect(axios.get).toHaveBeenCalledWith('/posts');
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsSuccess(mockPosts))});
     });
@@ -106,9 +104,7 @@ describe('doGetPostsThunk', () => {
 
         const thunk = doGetPostsThunk(mockToken);
         return thunk(mockDispatch).then(() => {
-            expect(axios.get).toHaveBeenCalledWith('/posts', {
-                token: mockToken,
-            });
+            expect(axios.get).toHaveBeenCalledWith('/posts');
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsFailure(mockErrorMessage))});
     });

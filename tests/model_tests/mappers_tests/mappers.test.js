@@ -1,16 +1,19 @@
-import { doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
-import { mapLoginDispatchToProps, mapLoginStateToProps } from '../../../src/view/mappers/mappers';
-import {mockEvent, mockLoginReducerInitialState, mockPassword, mockStoreInitialState, mockUsername} from '../../mockValues'
+import { doGetPostsThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
+import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps } from '../../../src/view/mappers/mappers';
+import {mockEvent, mockFeedInitialState, mockLoginReducerInitialState, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
 
 jest.mock('../../../src/model/actionCreators/actionCreators');
 
 
-let mappedObject;
+let mappedLoginDispatchObject;
+let mappedFeedDispatchObject;
 
 beforeEach(() => {
-    mappedObject = mapLoginDispatchToProps(mockDispatch);
+    mappedLoginDispatchObject = mapLoginDispatchToProps(mockDispatch);
+    mappedFeedDispatchObject = mapFeedDispatchToProps(mockDispatch);
+
 })
 
 afterEach(() => {
@@ -19,29 +22,29 @@ afterEach(() => {
 
 describe('mapLoginDispatchToProps', () => {
     it('should return an object with onChangePassword and onChangeUsername handlers', () => {
-        expect(typeof(mappedObject)).toBe('object');
-        expect(typeof(mappedObject.onChangeUsername)).toBe('function');
-        expect(typeof(mappedObject.onChangePassword)).toBe('function');
-        expect(typeof(mappedObject.onSubmitLogin)).toBe('function');
+        expect(typeof(mappedLoginDispatchObject)).toBe('object');
+        expect(typeof(mappedLoginDispatchObject.onChangeUsername)).toBe('function');
+        expect(typeof(mappedLoginDispatchObject.onChangePassword)).toBe('function');
+        expect(typeof(mappedLoginDispatchObject.onSubmitLogin)).toBe('function');
 
     });
 });
 describe('onChangeUsername', () => {
     it('should call dispatch with expected params', () => {
-        mappedObject.onChangeUsername(mockEvent);
+        mappedLoginDispatchObject.onChangeUsername(mockEvent);
         expect(mockDispatch).toHaveBeenCalledWith(doSetUsername(mockEvent.target.value));
     });
 });
 describe('onChangePassword', () => {
     it('should call dispatch with expected params', () => {
-        mappedObject.onChangePassword(mockEvent);
+        mappedLoginDispatchObject.onChangePassword(mockEvent);
         expect(mockDispatch).toHaveBeenCalledWith(doSetPassword(mockEvent.target.value));
     });
 });
 
 describe('onSubmitLogin', () => {
     it('should call dispatch with expected params', () => {
-        const eventHandler = mappedObject.onSubmitLogin(mockUsername,mockPassword);
+        const eventHandler = mappedLoginDispatchObject.onSubmitLogin(mockUsername,mockPassword);
         expect(typeof(eventHandler)).toBe('function');
         eventHandler(mockEvent);
         expect(mockDispatch).toHaveBeenCalledWith(doSendUsernameAndPasswordThunk(mockUsername,mockPassword));    
@@ -49,7 +52,24 @@ describe('onSubmitLogin', () => {
 });
 
 describe('mapLoginStateToProps', () => {
-    it('should return state', () => {
+    it('should return expected state', () => {
         expect(mapLoginStateToProps(mockStoreInitialState)).toEqual(mockLoginReducerInitialState);
+    });
+});
+
+describe('mapFeedDispatchToProps', () => {
+    it('should return an object with onChangePassword and onChangeUsername handlers', () => {
+        expect(typeof(mappedFeedDispatchObject)).toBe('object');
+        expect(typeof(mappedFeedDispatchObject.onFetchPosts)).toBe('function');
+    });
+    it('should call onFetchPosts with expected params', () => {
+        mappedFeedDispatchObject.onFetchPosts(mockToken);
+        expect(mockDispatch).toHaveBeenCalledWith(doGetPostsThunk(mockToken));
+    });
+});
+
+describe('mapFeedStateToProps', () => {
+    it('should return expected state', () => {
+        expect(mapFeedStateToProps(mockStoreInitialState)).toEqual(mockFeedInitialState);
     });
 });
