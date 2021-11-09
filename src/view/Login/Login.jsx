@@ -9,7 +9,7 @@ import { mapLoginDispatchToProps, mapLoginStateToProps } from '../mappers/mapper
 import LoginError from './LoginError';
 import { Redirect } from '../../helpers/Redirect';
 
-export const Login = ({
+const Login = ({
     username,
     password,
     token,

@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Login } from '../../src/view/Login/Login';
+import ConnectedLogin from '../../src/view/Login/Login';
 import LoginForm from '../../src/view/Login/LoginForm';
 import {mockOnChangeUsername, mockOnChangePassword, mockOnSubmitLogin} from '../mockValues';
 
 let loginWrapper;
 beforeEach(() => {
     loginWrapper = shallow(
-        <Login
+        <ConnectedLogin.WrappedComponent
             username=''
             password=''
             token={null}
