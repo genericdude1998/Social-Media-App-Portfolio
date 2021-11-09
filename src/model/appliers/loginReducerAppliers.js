@@ -1,5 +1,3 @@
-
-
 export function applySetUsername(state,action){
     return {...state, username: action.username}
 }

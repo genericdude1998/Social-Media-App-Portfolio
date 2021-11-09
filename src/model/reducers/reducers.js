@@ -1,4 +1,5 @@
 import { actionTypes } from '../actionTypes/actionTypes';
+import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
 
 const loginReducerInitialState = {username: '', password:'', token: null, error:null};
@@ -14,8 +15,11 @@ export function loginReducer(state = loginReducerInitialState, action = 'default
     }
 }
 
-export function feedReducer(state = [],action) {
-    switch (action.type) {    
+export function feedReducer(state = [],action={type: 'default'}) {
+    switch (action.type) {
+    case actionTypes.GET_POSTS_REQUEST: return applyGetPostsRequest(state,action);
+    case actionTypes.GET_POSTS_SUCCESS: return applyGetPostsSuccess(state,action);
+    case actionTypes.GET_POSTS_FAILURE: return applyGetPostsFailure(state,action);    
     default: return state;
     }
 }
