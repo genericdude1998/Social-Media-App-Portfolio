@@ -52,7 +52,7 @@ export function doGetPostsFailure(error){
 export function doGetPostsThunk(){
     return function(dispatch){
         dispatch(doGetPostsRequest());
-        return axios.get('/login').then((res) => {
+        return axios.get('/posts').then((res) => {
             const posts = res.data;
             dispatch(doGetPostsSuccess(posts));
         }).catch(error => {

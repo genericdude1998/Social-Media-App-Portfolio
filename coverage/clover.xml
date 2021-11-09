@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636457197204" clover="3.2.0">
-  <project timestamp="1636457197204" name="All files">
-    <metrics statements="86" coveredstatements="82" conditionals="15" coveredconditionals="12" methods="42" coveredmethods="40" elements="143" coveredelements="134" complexity="0" loc="86" ncloc="86" packages="11" files="16" classes="16"/>
+<coverage generated="1636458000659" clover="3.2.0">
+  <project timestamp="1636458000659" name="All files">
+    <metrics statements="88" coveredstatements="87" conditionals="18" coveredconditionals="18" methods="42" coveredmethods="41" elements="148" coveredelements="146" complexity="0" loc="88" ncloc="88" packages="11" files="16" classes="16"/>
     <package name="src">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.jsx" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/App.jsx">
@@ -36,9 +36,9 @@
         <line num="32" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
-        <line num="41" count="5" type="stmt"/>
-        <line num="45" count="4" type="stmt"/>
-        <line num="49" count="4" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
+        <line num="45" count="5" type="stmt"/>
+        <line num="49" count="5" type="stmt"/>
         <line num="53" count="2" type="stmt"/>
         <line num="54" count="2" type="stmt"/>
         <line num="55" count="2" type="stmt"/>
@@ -73,9 +73,9 @@
       </file>
     </package>
     <package name="src.model.reducers">
-      <metrics statements="11" coveredstatements="8" conditionals="11" coveredconditionals="8" methods="2" coveredmethods="1"/>
+      <metrics statements="13" coveredstatements="13" conditionals="14" coveredconditionals="14" methods="2" coveredmethods="2"/>
       <file name="reducers.js" path="/home/enzo-develop/Desktop/develop/WebDev/develop/portfolio/social-media-portfolio-app/src/model/reducers/reducers.js">
-        <metrics statements="11" coveredstatements="8" conditionals="11" coveredconditionals="8" methods="2" coveredmethods="1"/>
+        <metrics statements="13" coveredstatements="13" conditionals="14" coveredconditionals="14" methods="2" coveredmethods="2"/>
         <line num="5" count="1" type="stmt"/>
         <line num="8" count="7" type="cond" truecount="6" falsecount="0"/>
         <line num="9" count="1" type="stmt"/>
@@ -84,9 +84,11 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
-        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
+        <line num="19" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.model.selectors">

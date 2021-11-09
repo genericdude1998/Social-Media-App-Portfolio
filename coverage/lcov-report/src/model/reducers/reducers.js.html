@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.72% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/11</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.72% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/11</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.72% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/11</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -79,7 +79,9 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -97,12 +99,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { actionTypes } from '../actionTypes/actionTypes';
-import { applyGetPostsRequest } from '../appliers/feedReducerAppliers';
+import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
 &nbsp;
 const loginReducerInitialState = {username: '', password:'', token: null, error:null};
@@ -118,10 +122,12 @@ export function loginReducer(state = loginReducerInitialState, action = 'default
     }
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >feedReducer(</span>state = <span class="branch-0 cbranch-no" title="branch not covered" >[],</span>action) {
-<span class="cstat-no" title="statement not covered" >    switch (action.type) {</span>
-    case actionTypes.GET_POSTS_REQUEST : <span class="cstat-no" title="statement not covered" >return applyGetPostsRequest(state,action);    </span>
-    default: <span class="cstat-no" title="statement not covered" >return state;</span>
+export function feedReducer(state = [],action={type: 'default'}) {
+    switch (action.type) {
+    case actionTypes.GET_POSTS_REQUEST: return applyGetPostsRequest(state,action);
+    case actionTypes.GET_POSTS_SUCCESS: return applyGetPostsSuccess(state,action);
+    case actionTypes.GET_POSTS_FAILURE: return applyGetPostsFailure(state,action);    
+    default: return state;
     }
 }</pre></td></tr></table></pre>
 
@@ -130,7 +136,7 @@ export function <span class="fstat-no" title="function not covered" >feedReducer
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Nov 09 2021 11:26:37 GMT+0000 (Greenwich Mean Time)
+                at Tue Nov 09 2021 11:40:00 GMT+0000 (Greenwich Mean Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
