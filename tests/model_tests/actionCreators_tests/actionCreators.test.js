@@ -93,16 +93,22 @@ describe('doGetPostsThunk', () => {
     it('should call dispatch with GET_POST_REQUEST and GET_POST_SUCCESS when succeeding', () => {
         axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
 
-        const thunk = doGetPostsThunk();
+        const thunk = doGetPostsThunk(mockToken);
         return thunk(mockDispatch).then(() => {
+            expect(axios.get).toHaveBeenCalledWith('/posts', {
+                token: mockToken,
+            });
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsSuccess(mockPosts))});
     });
     it('should call dispatch with SEND_LOGIN_REQUEST and GET_POSTS_FAILURE when failing', () => {
         axios.get.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
-        const thunk = doGetPostsThunk();
+        const thunk = doGetPostsThunk(mockToken);
         return thunk(mockDispatch).then(() => {
+            expect(axios.get).toHaveBeenCalledWith('/posts', {
+                token: mockToken,
+            });
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsFailure(mockErrorMessage))});
     });

@@ -49,10 +49,12 @@ export function doGetPostsFailure(error){
     return {type: actionTypes.GET_POSTS_FAILURE, error:error}
 }
 
-export function doGetPostsThunk(){
+export function doGetPostsThunk(token){
     return function(dispatch){
         dispatch(doGetPostsRequest());
-        return axios.get('/posts').then((res) => {
+        return axios.get('/posts', {
+            token:token,
+        }).then((res) => {
             const posts = res.data;
             dispatch(doGetPostsSuccess(posts));
         }).catch(error => {
