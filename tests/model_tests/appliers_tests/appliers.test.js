@@ -1,9 +1,13 @@
 import { applySetUsername, applySetPassword, applySendLoginRequest, applyLoginRequestSuccess, applyLoginRequestFailure } from '../../../src/model/appliers/loginReducerAppliers';
-import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure } from '../../../src/model/actionCreators/actionCreators';
-import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState} from '../../mockValues';
+import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure } from '../../../src/model/actionCreators/actionCreators';
+import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts} from '../../mockValues';
+import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../../../src/model/appliers/feedReducerAppliers';
 
 const mockLoginSuccessState = {...mockLoginReducerInitialState, token: mockToken};
 const mockLoginFailureState = {...mockLoginReducerInitialState, error: mockErrorMessage};
+
+const mockGetPostsSuccessState = {...mockFeedInitialState, posts: mockPosts};
+const mockGetPostsFailureState = {...mockFeedInitialState, error: mockErrorMessage};
 
 
 describe('applySetUsername', () => {
@@ -33,5 +37,23 @@ describe('applyLoginRequestSuccess', () => {
 describe('applyLoginRequestFailure', () => {
     it('should return expected state', () => {
         expect(applyLoginRequestFailure(mockLoginReducerInitialState, doLoginRequestFailure(mockErrorMessage))).toEqual(mockLoginFailureState);
+    });
+});
+
+describe('applyGetPostsRequest', () => {
+    it('should return state unchanged', () => {
+        expect(applyGetPostsRequest(mockFeedInitialState)).toEqual(mockFeedInitialState);
+    });
+});
+
+describe('applyGetPostsSuccess', () => {
+    it('should return expected state', () => {
+        expect(applyGetPostsSuccess(mockFeedInitialState, doGetPostsSuccess(mockPosts))).toEqual(mockGetPostsSuccessState);
+    });
+});
+
+describe('applyGetPostsFailure', () => {
+    it('should return expected state', () => {
+        expect(applyGetPostsFailure(mockFeedInitialState, doGetPostsFailure(mockErrorMessage))).toEqual(mockGetPostsFailureState);
     });
 });
