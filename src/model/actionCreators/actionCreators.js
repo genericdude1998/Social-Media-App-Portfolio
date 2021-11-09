@@ -36,3 +36,7 @@ export function doSendUsernameAndPasswordThunk(username, password, event){
         });
     }
 }
+
+export function doGetPosts() {
+    return {type: actionTypes.GET_POSTS_REQUEST}
+}
