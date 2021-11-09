@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post should match snapshot 1`] = `
+<div
+  className="basePost"
+>
+  <h2
+    className="basePostTitle"
+  >
+    mock_name
+  </h2>
+  <p
+    className="basePostContent"
+  >
+    mock_content
+  </p>
+  <p
+    className="basePostDate"
+  >
+    mock_date
+  </p>
+</div>
+`;
