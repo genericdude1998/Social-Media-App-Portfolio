@@ -1,5 +1,5 @@
-import { doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../model/actionCreators/actionCreators';
-import { loginStateSelector } from '../../model/selectors/selectors';
+import { doGetPostsThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../model/actionCreators/actionCreators';
+import { loginStateSelector, feedStateSelector } from '../../model/selectors/selectors';
 
 export function mapLoginDispatchToProps(dispatch){
     return {
@@ -10,4 +10,13 @@ export function mapLoginDispatchToProps(dispatch){
 }
 export function mapLoginStateToProps(state){
     return loginStateSelector(state);
+}
+
+export function mapFeedDispatchToProps(dispatch){
+    return {
+        onFetchPosts: (token) => dispatch(doGetPostsThunk(token)),
+    };
+}
+export function mapFeedStateToProps(state){
+    return feedStateSelector(state);
 }

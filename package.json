@@ -8,7 +8,7 @@
     "start": "webpack serve",
     "build": "webpack",
     "predeploy": "npm run build",
-    "test": "npx jest",
+    "test": "npx jest --watchAll",
     "deploy": "gh-pages -d dist",
     "lint": "eslint . && eslint --ext .jsx .",
     "format": "eslint --fix . && eslint --fix ./src/**.js && eslint --fix ./src/**.jsx"
