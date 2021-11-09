@@ -9,6 +9,7 @@ import {
     doGetPostsSuccess,
     doGetPostsFailure,
     doGetPostsThunk,
+    doGetUserRequest,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts} from '../../mockValues';
@@ -17,9 +18,14 @@ import axios from 'axios';
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
 const expectedSetUsernameAction = {type: actionTypes.SET_USERNAME, username: mockUsername};
 const expectedSetPasswordAction = {type: actionTypes.SET_PASSWORD, password: mockPassword};
+
 const expectedGetPostsRequest = {type: actionTypes.GET_POSTS_REQUEST};
 const expectedGetPostsSuccess = {type: actionTypes.GET_POSTS_SUCCESS, posts: mockPosts};
 const expectedGetPostsFailure = {type: actionTypes.GET_POSTS_FAILURE, error: mockErrorMessage};
+
+const expectedGetUserRequest = {type: actionTypes.GET_USER_REQUEST};
+const expectedGetUserSuccess = {type: actionTypes.GET_USER_SUCCESS, user: ''};
+const expectedGetUserFailure = {type: actionTypes.GET_USER_FAILURE, error: mockErrorMessage};
 
 const mockDispatch = jest.fn();
 jest.mock('axios');
@@ -111,5 +117,21 @@ describe('doGetPostsThunk', () => {
             expect(axios.get).toHaveBeenCalledWith('/posts');
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsFailure(mockErrorMessage))});
+    });
+});
+
+describe('doGetUserRequest', () => {
+    it('should return an action with expected type', () => {
+        expect(doGetUserRequest()).toEqual(expectedGetPostsRequest);
+    });
+});
+describe('doGetUserSuccess', () => {
+    it('should return expected action', () => {
+        expect(doGetUserSuccess(mockPosts)).toEqual(expectedGetPostsSuccess);
+    });
+});
+describe('doGetUserFailure', () => {
+    it('should return expected action', () => {
+        expect(doGetUserFailure(mockErrorMessage)).toEqual(expectedGetPostsFailure);
     });
 });

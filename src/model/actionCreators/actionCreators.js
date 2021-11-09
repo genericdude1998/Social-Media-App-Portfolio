@@ -61,3 +61,7 @@ export function doGetPostsThunk(){
         });
     }
 }
+
+export function doGetUserRequest(){
+    return {type: actionTypes.GET_USER_REQUEST}
+}
