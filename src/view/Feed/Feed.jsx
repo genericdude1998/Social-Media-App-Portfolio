@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapFeedDispatchToProps, mapFeedStateToProps } from '../mappers/mappers';
 import Post from './Post';
-import styles from './Feed.css'
+import styles from './Feed.css';
+import PropTypes from 'prop-types';
 
 const Feed = ({posts, onFetchPosts}) => {
     React.useEffect(() => {
@@ -20,6 +21,11 @@ const Feed = ({posts, onFetchPosts}) => {
             </ul>
         </div>
     );
+}
+
+Feed.propTypes = {
+    posts: PropTypes.object,
+    onFetchPosts: PropTypes.func,
 }
 
 const ConnectedFeed = connect(mapFeedStateToProps, mapFeedDispatchToProps)(Feed);

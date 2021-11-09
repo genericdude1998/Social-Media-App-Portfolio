@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './Post.css'
+import styles from './Post.css';
+import PropTypes from 'prop-types';
 
 const Post = ({name, content, date}) => {
     return (
@@ -9,6 +10,12 @@ const Post = ({name, content, date}) => {
             <p className={styles.basePostDate}>{date}</p>
         </div>
     );
+}
+
+Post.propTypes = {
+    name: PropTypes.string,
+    content: PropTypes.string,
+    date: PropTypes.string,
 }
 
 export default Post;
