@@ -1,10 +1,12 @@
 import React from 'react';
+import styles from './Post.css'
 
-const Post = ({name, content}) => {
+const Post = ({name, content, date}) => {
     return (
-        <div>
-            <h2>{name}</h2>
-            <p>{content}</p>
+        <div className={styles.basePost}>
+            <h2 className={styles.basePostTitle}>{name}</h2>
+            <p className={styles.basePostContent}>{content}</p>
+            <p className={styles.basePostDate}>{date}</p>
         </div>
     );
 }

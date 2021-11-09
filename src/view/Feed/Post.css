@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    padding: 0px; 
+}
+
+.basePost{
+    background-color: royalblue;
+    height: 30vh;
+    width: 100vw;
+    margin:5px
+}
+
+.basePostTitle{
+    color: indigo;
+}
+
+.basePostContent{
+    margin: 10px;
+    color: white;
+    line-height: 50px;
+}
+
+.basePostDate{
+    color:white;
+    text-align: right;
+    margin: 30px;
+}
+
