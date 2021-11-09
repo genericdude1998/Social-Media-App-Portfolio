@@ -14,7 +14,7 @@ export function mapLoginStateToProps(state){
 
 export function mapFeedDispatchToProps(dispatch){
     return {
-        onFetchPosts: (token) => dispatch(doGetPostsThunk(token)),
+        onFetchPosts: () => dispatch(doGetPostsThunk()),
     };
 }
 export function mapFeedStateToProps(state){
