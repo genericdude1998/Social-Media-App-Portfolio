@@ -1,13 +1,27 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Login } from '../../src/view/Login/Login';
+import { Provider } from 'react-redux';
+import {store} from '../../src/model/store/store';
+import ConnectedLogin from '../../src/view/Login/Login';
 import LoginForm from '../../src/view/Login/LoginForm';
 import {mockOnChangeUsername, mockOnChangePassword, mockOnSubmitLogin} from '../mockValues';
+
+
+// jest.mock('react-redux', () => {
+//     return {
+//         connect: (mapStateToProps, mapDispatchToProps) => (ReactComponent) => ({
+//             mapStateToProps,
+//             mapDispatchToProps,
+//             ReactComponent,
+//         }),
+//         Provider: ({ children }) => children,
+//     }
+// })
 
 let loginWrapper;
 beforeEach(() => {
     loginWrapper = shallow(
-        <Login
+        <ConnectedLogin.WrappedComponent
             username=''
             password=''
             token={null}
@@ -17,6 +31,8 @@ beforeEach(() => {
         />
     );
 });
+
+
 
 describe('Login', () => {
     it('should pass onChange handlers to LoginForm component', () => {
