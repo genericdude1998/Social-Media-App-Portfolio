@@ -26,6 +26,13 @@ const devServer = (devServer) => {
         }
     });
 
+    app.post('/newPost', (req,res) => {
+        const content = req.body.content;
+        const newPost = {id: posts.lenght + 1, name: 'Me', content: content, date: Date.now().toLocaleString()}
+        posts.module.push(newPost);
+        res.send(newPost);
+    })
+
     app.get('/posts', (req,res) => {
         const userToken = req.cookies.token;
         console.log(`${userToken} used to access posts`);
