@@ -1,18 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useParams } from 'react-router';
+import {mapUserDispatchToProps, mapUserStateToProps} from '../mappers/mappers';
 
-const User = () => {
+const User = ({onFetchUser, user}) => {
     const {id} = useParams();
     React.useEffect(() => {
-        
-    }, [])
+        onFetchUser(id);
+    }, []);
+    console.log(user);
     return (
         <div>
-            <h1>Name</h1>
-            <p>City</p>
-            <p>Joined</p>
+            {user ?
+                <>
+                    <h1>{user.name}</h1>
+                    <p>{user.city}</p>
+                    <p>{user.joined}</p>
+                </>
+                :
+                <h1>Loading</h1>
+            }
         </div>
     );
 }
 
-export default User;
+const ConnectedUser = connect(mapUserStateToProps, mapUserDispatchToProps)(User);
+
+export default ConnectedUser;
