@@ -9,11 +9,21 @@ exports[`App should match snapshot 1`] = `
         path="/"
       />
       <Route
-        element={<Memo(Connect(Feed)) />}
+        element={
+          <React.Fragment>
+            <NavBar />
+            <Memo(Connect(Feed)) />
+          </React.Fragment>
+        }
         path="/feed"
       />
       <Route
-        element={<Memo(Connect(User)) />}
+        element={
+          <React.Fragment>
+            <NavBar />
+            <Memo(Connect(User)) />
+          </React.Fragment>
+        }
         path="/userInfo/:id"
       />
     </Routes>

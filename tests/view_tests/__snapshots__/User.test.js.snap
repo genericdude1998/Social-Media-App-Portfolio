@@ -13,11 +13,17 @@ exports[`User should match snapshot if user is not undefined 1`] = `
   <h1>
     mock_name
   </h1>
-  <p>
+  <h3>
+    City: 
     NY
-  </p>
-  <p>
+  </h3>
+  <h3>
+    Joined: 
     mock_date
-  </p>
+  </h3>
+  <h3>
+    Description:
+  </h3>
+  <p />
 </div>
 `;
