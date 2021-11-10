@@ -12,9 +12,10 @@ import {
     doGetUserRequest,
     doGetUserSuccess,
     doGetUserFailure,
+    doGetUserThunk,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
-import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser} from '../../mockValues';
+import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId} from '../../mockValues';
 import axios from 'axios';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
@@ -135,5 +136,29 @@ describe('doGetUserSuccess', () => {
 describe('doGetUserFailure', () => {
     it('should return expected action', () => {
         expect(doGetUserFailure(mockErrorMessage)).toEqual(expectedGetUserFailure);
+    });
+});
+describe('doGetUserThunk', () => {
+    it('should return a thunk function', () => {
+        const thunk = doGetUserThunk(mockId);
+        expect(typeof(thunk)).toBe('function');
+    });
+    it('should call dispatch with GET_USER_REQUEST and GET_USER_SUCCESS when succeeding', () => {
+        axios.get.mockImplementation(() => Promise.resolve({data: mockUser}));
+
+        const thunk = doGetUserThunk(mockId);
+        return thunk(mockDispatch).then(() => {
+            expect(axios.get).toHaveBeenCalledWith(`/users/${mockId}`);
+            expect(mockDispatch).toHaveBeenCalledWith(doGetUserRequest());
+            expect(mockDispatch).toHaveBeenLastCalledWith(doGetUserSuccess(mockUser))});
+    });
+    it('should call dispatch with SEND_LOGIN_REQUEST and GET_POSTS_FAILURE when failing', () => {
+        axios.get.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
+
+        const thunk = doGetUserThunk(mockId);
+        return thunk(mockDispatch).then(() => {
+            expect(axios.get).toHaveBeenCalledWith(`/users/${mockId}`);
+            expect(mockDispatch).toHaveBeenCalledWith(doGetUserRequest());
+            expect(mockDispatch).toHaveBeenLastCalledWith(doGetUserFailure(mockErrorMessage))});
     });
 });
