@@ -1,5 +1,5 @@
-import { doGetPostsThunk, doGetUserThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../model/actionCreators/actionCreators';
-import { loginStateSelector, feedStateSelector, userInfoStateSelector } from '../../model/selectors/selectors';
+import { doGetPostsThunk, doGetUserThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../model/actionCreators/actionCreators';
+import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector } from '../../model/selectors/selectors';
 
 export function mapLoginDispatchToProps(dispatch){
     return {
@@ -28,4 +28,13 @@ export function mapUserDispatchToProps(dispatch){
 }
 export function mapUserStateToProps(state){
     return userInfoStateSelector(state);
+}
+
+export function mapNPCDispatchToProps(dispatch){
+    return {
+        onSendNewPost: (content) => () => dispatch(doSendPostThunk(content)),
+    };
+}
+export function mapNPCStateToProps(state){
+    return NPCStateSelector(state);
 }

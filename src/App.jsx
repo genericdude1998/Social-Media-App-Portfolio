@@ -4,6 +4,7 @@ import ConnectedLogin from './view/Login/Login';
 import ConnectedFeed from './view/Feed/Feed';
 import ConnectedUser from './view/UsersInfo/User';
 import NavBar from './view/Feed/NavBar';
+import ConnectedNPC from './view/Feed/NewPost/NewPostCreator';
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                             <>
                                 <NavBar/>
                                 <ConnectedFeed/>
+                                <ConnectedNPC/>
                             </>
                         }  
                     />
