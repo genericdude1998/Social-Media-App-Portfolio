@@ -1,7 +1,7 @@
-import { doGetPostsThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
-import { feedStateSelector, loginStateSelector } from '../../../src/model/selectors/selectors';
-import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps } from '../../../src/view/mappers/mappers';
-import {mockEvent, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
+import { doGetPostsThunk, doGetUserThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
+import { feedStateSelector, loginStateSelector, userInfoStateSelector } from '../../../src/model/selectors/selectors';
+import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps, mapUserStateToProps, mapUserDispatchToProps } from '../../../src/view/mappers/mappers';
+import {mockEvent, mockId, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
 
@@ -12,10 +12,12 @@ jest.mock('../../../src/model/selectors/selectors');
 
 let mappedLoginDispatchObject;
 let mappedFeedDispatchObject;
+let mappedUserDispatchObject 
 
 beforeEach(() => {
     mappedLoginDispatchObject = mapLoginDispatchToProps(mockDispatch);
     mappedFeedDispatchObject = mapFeedDispatchToProps(mockDispatch);
+    mappedUserDispatchObject = mapUserDispatchToProps(mockDispatch);
 })
 
 afterEach(() => {
@@ -75,5 +77,23 @@ describe('mapFeedStateToProps', () => {
     it('should return expected state', () => {
         mapFeedStateToProps(mockStoreInitialState);
         expect(feedStateSelector).toHaveBeenCalledWith(mockStoreInitialState);
+    });
+});
+
+describe('mapUserDispatchToProps', () => {
+    it('should return an object with onFetchUser handler', () => {
+        expect(typeof(mappedUserDispatchObject)).toBe('object');
+        expect(typeof(mappedUserDispatchObject.onFetchUser)).toBe('function');
+    });
+    it('should call onFetchUser with expected params', () => {
+        mappedUserDispatchObject.onFetchUser(mockId);
+        expect(mockDispatch).toHaveBeenCalledWith(doGetUserThunk(mockId));
+    });
+});
+
+describe('mapUserStateToProps', () => {
+    it('should return expected state', () => {
+        mapUserStateToProps(mockStoreInitialState);
+        expect(userInfoStateSelector).toHaveBeenCalledWith(mockStoreInitialState);
     });
 });

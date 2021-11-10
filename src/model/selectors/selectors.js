@@ -4,3 +4,6 @@ export function loginStateSelector(state) {
 export function feedStateSelector(state) {
     return state.feed;
 }
+export function userInfoStateSelector(state) {
+    return state.userInfo;
+}
