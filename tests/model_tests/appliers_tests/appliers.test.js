@@ -1,13 +1,17 @@
 import { applySetUsername, applySetPassword, applySendLoginRequest, applyLoginRequestSuccess, applyLoginRequestFailure } from '../../../src/model/appliers/loginReducerAppliers';
-import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure } from '../../../src/model/actionCreators/actionCreators';
-import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts} from '../../mockValues';
+import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure } from '../../../src/model/actionCreators/actionCreators';
+import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser} from '../../mockValues';
 import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../../../src/model/appliers/userInfoReducerAppliers';
 
 const mockLoginSuccessState = {...mockLoginReducerInitialState, token: mockToken};
 const mockLoginFailureState = {...mockLoginReducerInitialState, error: mockErrorMessage};
 
 const mockGetPostsSuccessState = {...mockFeedInitialState, posts: mockPosts};
 const mockGetPostsFailureState = {...mockFeedInitialState, error: mockErrorMessage};
+
+const mockGetUserSuccessState = {...mockUserInfoInitialState, user: mockUser};
+const mockGetUserFailureState = {...mockUserInfoInitialState, error: mockErrorMessage};
 
 
 describe('applySetUsername', () => {
@@ -55,5 +59,23 @@ describe('applyGetPostsSuccess', () => {
 describe('applyGetPostsFailure', () => {
     it('should return expected state', () => {
         expect(applyGetPostsFailure(mockFeedInitialState, doGetPostsFailure(mockErrorMessage))).toEqual(mockGetPostsFailureState);
+    });
+});
+
+describe('applyGetUserRequest', () => {
+    it('should return state unchanged', () => {
+        expect(applyGetUserRequest(mockUserInfoInitialState)).toEqual(mockUserInfoInitialState);
+    });
+});
+
+describe('applyGetUserSuccess', () => {
+    it('should return expected state', () => {
+        expect(applyGetUserSuccess(mockUserInfoInitialState, doGetUserSuccess(mockUser))).toEqual(mockGetUserSuccessState);
+    });
+});
+
+describe('applyGetUserFailure', () => {
+    it('should return expected state', () => {
+        expect(applyGetUserFailure(mockUserInfoInitialState, doGetUserFailure(mockErrorMessage))).toEqual(mockGetUserFailureState);
     });
 });

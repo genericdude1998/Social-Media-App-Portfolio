@@ -1,10 +1,11 @@
-export function applyUserRequest(state){
+export function applyGetUserRequest(state){
     return state;
 }
 
-export function applyUserRequestSuccess(state,action){
-    return {...state, token: action.token}
+export function applyGetUserSuccess(state,action){
+    return {...state, user: action.user};
 }
 
-export function applyUserRequestFailure(state,action){
-    return {...state, error: action.error}
+export function applyGetUserFailure(state,action){
+    return {...state, error: action.error};
+}

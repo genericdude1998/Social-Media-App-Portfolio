@@ -78,3 +78,24 @@ describe('feedReducer', () => {
         expect(feedReducer(mockFeedInitialState, defaultAction)).toBe(mockFeedInitialState);
     });
 });
+
+describe('userInfoReducer', () => {
+    it('should have expected initialState and default action', () => {
+        expect(feedReducer(undefined,undefined)).toEqual(mockFeedInitialState);
+    });
+    it('should call applyGetPostsRequest with expected params when given GET_POSTS_REQUEST action', () => {
+        feedReducer(mockFeedInitialState, getPostsRequestAction);
+        expect(applyGetPostsRequest).toHaveBeenCalledWith(mockFeedInitialState, getPostsRequestAction);
+    });
+    it('should call applyGetPostsSuccess with expected params when given GET_POSTS_SUCCESS action', () => {
+        feedReducer(mockFeedInitialState, getPostsSuccessAction);
+        expect(applyGetPostsSuccess).toHaveBeenCalledWith(mockFeedInitialState, getPostsSuccessAction);
+    });
+    it('should call applyGetPostsFailure with expected params when given GET_POSTS_FAILURE action', () => {
+        feedReducer(mockFeedInitialState, getPostsFailureAction);
+        expect(applyGetPostsFailure).toHaveBeenCalledWith(mockFeedInitialState, getPostsFailureAction);
+    });
+    it('should return initial state when default case', () => {
+        expect(feedReducer(mockFeedInitialState, defaultAction)).toBe(mockFeedInitialState);
+    });
+});
