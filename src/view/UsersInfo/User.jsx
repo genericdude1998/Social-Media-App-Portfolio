@@ -7,7 +7,7 @@ const User = ({onFetchUser, user}) => {
     const {id} = useParams();
     React.useEffect(() => {
         onFetchUser(id);
-    }, []);
+    }, [id]);
     return (
         <div>
             {user ?

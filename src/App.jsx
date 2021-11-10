@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Routes, Outlet } from 'react-router-dom';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import ConnectedLogin from './view/Login/Login';
 import ConnectedFeed from './view/Feed/Feed';
 import ConnectedUser from './view/UsersInfo/User';
