@@ -13,8 +13,10 @@ const User = ({onFetchUser, user}) => {
             {user ?
                 <>
                     <h1>{user.name}</h1>
-                    <p>{user.city}</p>
-                    <p>{user.joined}</p>
+                    <h3>City: {user.city}</h3>
+                    <h3>Joined: {user.joined}</h3>
+                    <h3>Description:</h3>
+                    <p>{user.desc}</p>
                 </>
                 :
                 <h1>Loading</h1>
