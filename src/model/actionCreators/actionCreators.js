@@ -61,3 +61,28 @@ export function doGetPostsThunk(){
         });
     }
 }
+
+export function doGetUserRequest(){
+    return {type: actionTypes.GET_USER_REQUEST}
+}
+
+export function doGetUserSuccess(user){
+    return {type: actionTypes.GET_USER_SUCCESS, user:user}
+}
+
+export function doGetUserFailure(error){
+    return {type: actionTypes.GET_USER_FAILURE, error:error}
+}
+
+export function doGetUserThunk(id){
+    return function(dispatch){
+        dispatch(doGetUserRequest());
+        return axios.get(`/users/${id}`).then((res) => {
+            const user = res.data;
+            dispatch(doGetUserSuccess(user));
+        }).catch(error => {
+            const errorMessage = error.response.data;
+            dispatch(doGetUserFailure(errorMessage));
+        });
+    }
+}

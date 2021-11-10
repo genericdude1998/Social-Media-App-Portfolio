@@ -1,3 +1,4 @@
+export const mockUserInfoInitialState = {}
 export const mockFeedInitialState = {posts: []};
 export const mockLoginReducerInitialState = {username:'', password:'', token:null, error: null};
 export const mockStoreInitialState = {login: mockLoginReducerInitialState, feed: mockFeedInitialState};
@@ -17,9 +18,15 @@ export const mockName = 'mock_name';
 export const mockContent = 'mock_content';
 export const mockDate = 'mock_date';
 export const mockId = 0;
+export const mockCity = 'NY'
+export const mockUser =  {id:mockId, name: mockName, joined: mockDate, city: mockCity}
 
 export const mockPosts = [
     {id:'1' , name:mockName, content: mockContent, date:mockDate},
     {id:'2' , name:mockName, content: mockContent, date:mockDate},
     {id:'3' , name:mockName, content: mockContent, date:mockDate},
+];
+
+export const mockUsers = [
+    mockUser,
 ];

@@ -7,14 +7,19 @@ import {
     doGetPostsRequest, 
     doGetPostsSuccess,
     doGetPostsFailure,
+    doGetUserRequest,
+    doGetUserSuccess,
+    doGetUserFailure,
 } from '../../../src/model/actionCreators/actionCreators';
-import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage, mockFeedInitialState, mockPosts } from '../../mockValues';
-import { feedReducer, loginReducer } from '../../../src/model/reducers/reducers';
+import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser } from '../../mockValues';
+import { feedReducer, loginReducer, userInfoReducer } from '../../../src/model/reducers/reducers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../../../src/model/appliers/loginReducerAppliers';
 import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyGetUserRequest, applyGetUserSuccess, applyGetUserFailure } from '../../../src/model/appliers/userInfoReducerAppliers';
 
 jest.mock('../../../src/model/appliers/loginReducerAppliers');
 jest.mock('../../../src/model/appliers/feedReducerAppliers');
+jest.mock('../../../src/model/appliers/userInfoReducerAppliers');
 
 
 const setUsernameAction = doSetUsername(mockUsername);
@@ -26,6 +31,10 @@ const loginRequestFailureAction = doLoginRequestFailure(mockErrorMessage);
 const getPostsRequestAction = doGetPostsRequest();
 const getPostsSuccessAction = doGetPostsSuccess(mockPosts);
 const getPostsFailureAction = doGetPostsFailure(mockErrorMessage);
+
+const getUserRequestAction = doGetUserRequest();
+const getUserSuccessAction = doGetUserSuccess(mockUser);
+const getUserFailureAction = doGetUserFailure(mockErrorMessage);
 
 const defaultAction = {type: 'default'}
 
@@ -76,5 +85,26 @@ describe('feedReducer', () => {
     });
     it('should return initial state when default case', () => {
         expect(feedReducer(mockFeedInitialState, defaultAction)).toBe(mockFeedInitialState);
+    });
+});
+
+describe('userInfoReducer', () => {
+    it('should have expected initialState and default action', () => {
+        expect(userInfoReducer(undefined,undefined)).toEqual(mockUserInfoInitialState);
+    });
+    it('should call applyGetUserRequest with expected params when given GET_USER_REQUEST action', () => {
+        userInfoReducer(mockUserInfoInitialState, getUserRequestAction);
+        expect(applyGetUserRequest).toHaveBeenCalledWith(mockUserInfoInitialState, getUserRequestAction);
+    });
+    it('should call applyGetUserSuccess with expected params when given GET_USER_SUCCESS action', () => {
+        userInfoReducer(mockUserInfoInitialState, getUserSuccessAction);
+        expect(applyGetUserSuccess).toHaveBeenCalledWith(mockUserInfoInitialState, getUserSuccessAction);
+    });
+    it('should call applyGetUserFailure with expected params when given GET_USER_FAILURE action', () => {
+        userInfoReducer(mockUserInfoInitialState, getUserFailureAction);
+        expect(applyGetUserFailure).toHaveBeenCalledWith(mockUserInfoInitialState, getUserFailureAction);
+    });
+    it('should return initial state when default case', () => {
+        expect(userInfoReducer(mockUserInfoInitialState, defaultAction)).toBe(mockUserInfoInitialState);
     });
 });
