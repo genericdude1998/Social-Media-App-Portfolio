@@ -5,6 +5,7 @@ exports[`Post should match snapshot 1`] = `
   className="basePost"
 >
   <UserLink
+    className="basePostLink"
     name="mock_name"
   />
   <p

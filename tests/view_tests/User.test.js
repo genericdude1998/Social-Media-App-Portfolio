@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import ConnectedUser from '../../src/view/UsersInfo/User';
 import {mockId, mockUser} from '../mockValues';
 
-jest.spyOn(React, 'useEffect').mockImplementation(f => f());
+jest.spyOn(React, 'useEffect').mockImplementation((effect) => effect());
 jest.mock('react-router-dom', () => {
     const originalModule = jest.requireActual('react-router-dom');
     return {

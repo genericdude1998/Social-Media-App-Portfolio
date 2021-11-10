@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`User should match snapshot if list is undefined 1`] = `
-<div>
+<div
+  className="baseUser"
+>
   <h1>
     Loading
   </h1>
@@ -9,21 +11,27 @@ exports[`User should match snapshot if list is undefined 1`] = `
 `;
 
 exports[`User should match snapshot if user is not undefined 1`] = `
-<div>
-  <h1>
-    mock_name
-  </h1>
-  <h3>
-    City: 
-    NY
-  </h3>
-  <h3>
-    Joined: 
-    mock_date
-  </h3>
-  <h3>
-    Description:
-  </h3>
-  <p />
+<div
+  className="baseUser"
+>
+  <div
+    className="baseUserContent"
+  >
+    <h1>
+      mock_name
+    </h1>
+    <h3>
+      City: 
+      NY
+    </h3>
+    <h3>
+      Joined: 
+      mock_date
+    </h3>
+    <h3>
+      Description:
+    </h3>
+    <p />
+  </div>
 </div>
 `;
