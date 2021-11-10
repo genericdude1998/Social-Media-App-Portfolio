@@ -6,7 +6,7 @@ import UserLink from './UserLink';
 const Post = ({id, name, content, date}) => {
     return (
         <div className={styles.basePost}>
-            <UserLink id={id} name={name}/>
+            <UserLink id={id} name={name} className={styles.basePostLink}/>
             <p className={styles.basePostContent}>{content}</p>
             <p className={styles.basePostDate}>{date}</p>
         </div>
