@@ -86,3 +86,31 @@ export function doGetUserThunk(id){
         });
     }
 }
+
+export function doSendPostRequest(){
+    return {type: actionTypes.SEND_POST_REQUEST}
+}
+
+export function doSendPostSuccess(){
+    return {type: actionTypes.SEND_POST_SUCCESS}
+}
+
+export function doSendPostFailure(error){
+    return {type: actionTypes.SEND_POST_FAILURE, error:error}
+}
+
+export function doSendPostThunk(content){
+    return function(dispatch){
+        dispatch(doSendPostRequest());
+        return axios.post('/newPost',{
+            content:content,
+        }).then((res) => {
+            const newPost = res.data;
+            console.log(newPost); // debug only!!!
+            dispatch(doGetPostsThunk()); //refresh the posts list from the server
+        }).catch(error => {
+            const errorMessage = error.response.data;
+            dispatch(doSendPostFailure(errorMessage));
+        });
+    }
+}
