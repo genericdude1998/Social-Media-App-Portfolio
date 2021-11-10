@@ -105,8 +105,6 @@ export function doSendPostThunk(content){
         return axios.post('/newPost',{
             content:content,
         }).then((res) => {
-            const newPost = res.data;
-            console.log(newPost); // debug only!!!
             dispatch(doGetPostsThunk()); //refresh the posts list from the server???
         }).catch(error => {
             const errorMessage = error.response.data;

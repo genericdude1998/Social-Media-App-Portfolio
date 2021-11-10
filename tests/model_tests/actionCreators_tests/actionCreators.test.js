@@ -114,7 +114,7 @@ describe('doGetPostsThunk', () => {
     it('should call dispatch with GET_POST_REQUEST and GET_POST_SUCCESS when succeeding', () => {
         axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
 
-        const thunk = doGetPostsThunk(mockToken);
+        const thunk = doGetPostsThunk();
         return thunk(mockDispatch).then(() => {
             expect(axios.get).toHaveBeenCalledWith('/posts');
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
@@ -123,7 +123,7 @@ describe('doGetPostsThunk', () => {
     it('should call dispatch with SEND_LOGIN_REQUEST and GET_POSTS_FAILURE when failing', () => {
         axios.get.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
-        const thunk = doGetPostsThunk(mockToken);
+        const thunk = doGetPostsThunk();
         return thunk(mockDispatch).then(() => {
             expect(axios.get).toHaveBeenCalledWith('/posts');
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
@@ -193,23 +193,26 @@ describe('doSendPostThunk', () => {
     });
     it('should call dispatch with GET_USER_REQUEST and doGetPostsThunk() when succeeding', () => {
         axios.post.mockImplementation(() => Promise.resolve({data: mockPost}));
-        
+        axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
+
         const thunk = doSendPostThunk(mockContent);
         return thunk(mockDispatch).then(() => {
             expect(axios.post).toHaveBeenCalledWith('/newPost',{
                 content: mockContent,
             });
             expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());
-            expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsThunk());
+            expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsThunk()); // how to test this???
         });
     });
-    // it('should call dispatch with SEND_LOGIN_REQUEST and GET_POSTS_FAILURE when failing', () => {
-    //     axios.get.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
+    it('should call dispatch with SEND_POST_REQUEST and SEND_POSTS_FAILURE when failing', () => {
+        axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
-    //     const thunk = doGetUserThunk(mockId);
-    //     return thunk(mockDispatch).then(() => {
-    //         expect(axios.get).toHaveBeenCalledWith(`/users/${mockId}`);
-    //         expect(mockDispatch).toHaveBeenCalledWith(doGetUserRequest());
-    //         expect(mockDispatch).toHaveBeenLastCalledWith(doGetUserFailure(mockErrorMessage))});
-    // });
+        const thunk = doSendPostThunk(mockContent);
+        return thunk(mockDispatch).then(() => {
+            expect(axios.post).toHaveBeenCalledWith('/newPost',{
+                content: mockContent,
+            });
+            expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());
+            expect(mockDispatch).toHaveBeenLastCalledWith(doSendPostFailure(mockErrorMessage))});
+    });
 });
