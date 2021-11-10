@@ -107,7 +107,7 @@ export function doSendPostThunk(content){
         }).then((res) => {
             const newPost = res.data;
             console.log(newPost); // debug only!!!
-            dispatch(doGetPostsThunk()); //refresh the posts list from the server
+            dispatch(doGetPostsThunk()); //refresh the posts list from the server???
         }).catch(error => {
             const errorMessage = error.response.data;
             dispatch(doSendPostFailure(errorMessage));

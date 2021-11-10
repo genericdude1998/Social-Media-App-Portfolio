@@ -1,5 +1,5 @@
 import { actionTypes } from '../actionTypes/actionTypes';
-import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../appliers/feedReducerAppliers';
+import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applySendPostFailure } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
 
@@ -24,7 +24,8 @@ export function feedReducer(state = feedReducerInitialState,action={type: 'defau
     switch (action.type) {
     case actionTypes.GET_POSTS_REQUEST: return applyGetPostsRequest(state,action);
     case actionTypes.GET_POSTS_SUCCESS: return applyGetPostsSuccess(state,action);
-    case actionTypes.GET_POSTS_FAILURE: return applyGetPostsFailure(state,action);    
+    case actionTypes.GET_POSTS_FAILURE: return applyGetPostsFailure(state,action);  
+    case actionTypes.SEND_POST_FAILURE: return applySendPostFailure(state,action);  
     default: return state;
     }
 }
