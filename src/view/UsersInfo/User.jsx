@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import {mapUserDispatchToProps, mapUserStateToProps} from '../mappers/mappers';
 
 const User = ({onFetchUser, user}) => {
@@ -8,7 +8,6 @@ const User = ({onFetchUser, user}) => {
     React.useEffect(() => {
         onFetchUser(id);
     }, []);
-    console.log(user);
     return (
         <div>
             {user ?
