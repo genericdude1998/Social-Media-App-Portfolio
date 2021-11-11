@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import UserLink from './UserLink';
 import styles from './NavBar.css';
 import { ThemeContext } from '../ThemeProvider';
+import withTheme from '../theme/withTheme';
 
 const NavBar = () => {
     const {theme, onToggleTheme} = useContext(ThemeContext)

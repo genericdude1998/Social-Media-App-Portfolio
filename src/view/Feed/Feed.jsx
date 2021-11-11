@@ -30,6 +30,5 @@ Feed.propTypes = {
 
 
 const ConnectedFeed = connect(mapFeedStateToProps, mapFeedDispatchToProps)(Feed);
-const ConnectedFeedWithTheme = withTheme(ConnectedFeed);
 
-export default ConnectedFeedWithTheme;
+export default withTheme(ConnectedFeed);

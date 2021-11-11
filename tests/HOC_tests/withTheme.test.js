@@ -1,7 +1,7 @@
-import { shallow } from "enzyme";
-import withTheme from "../../src/view/theme/withTheme";
+import { shallow } from 'enzyme';
+import withTheme from '../../src/view/theme/withTheme';
 import React from 'react';
-import { ThemeContext } from "../../src/view/ThemeProvider";
+import { ThemeContext } from '../../src/view/ThemeProvider';
 
 let wrapper;
 

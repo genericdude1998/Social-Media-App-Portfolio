@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {mapUserDispatchToProps, mapUserStateToProps} from '../mappers/mappers';
+import withTheme from '../theme/withTheme';
 import styles from './User.css';
 
 const User = ({onFetchUser, user}) => {
@@ -28,4 +29,4 @@ const User = ({onFetchUser, user}) => {
 
 const ConnectedUser = connect(mapUserStateToProps, mapUserDispatchToProps)(User);
 
-export default ConnectedUser;
+export default withTheme(ConnectedUser);

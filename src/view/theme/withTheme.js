@@ -2,9 +2,9 @@ import React from 'react';
 import { ThemeContext } from '../ThemeProvider';
 
 const withTheme = (WrappedComponent) => {
-    return function WithThemeHOC(){
+    return function WithThemeHOC(props){
         const {theme} = React.useContext(ThemeContext);
-        return <WrappedComponent theme = {theme}></WrappedComponent>
+        return <WrappedComponent theme = {theme} {...props}></WrappedComponent>
     }
 }
 
