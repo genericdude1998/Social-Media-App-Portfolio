@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refreshPosts } from '../../helpers/feedHelpers';
 import { actionTypes } from '../actionTypes/actionTypes';
 
 export function doSetUsername(username){
@@ -105,7 +106,7 @@ export function doSendPostThunk(content){
         return axios.post('/newPost',{
             content:content,
         }).then((res) => {
-            dispatch(doGetPostsThunk()); //refresh the posts list from the server???
+            refreshPosts(dispatch, doGetPostsThunk);
         }).catch(error => {
             const errorMessage = error.response.data;
             dispatch(doSendPostFailure(errorMessage));

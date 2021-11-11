@@ -31,3 +31,5 @@ export const mockPosts = [
 export const mockUsers = [
     mockUser,
 ];
+
+export const mockDispatch = jest.fn();

@@ -21,6 +21,7 @@ import {
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent} from '../../mockValues';
 import axios from 'axios';
+import { refreshPosts } from '../../../src/helpers/feedHelpers';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
 const expectedSetUsernameAction = {type: actionTypes.SET_USERNAME, username: mockUsername};
@@ -39,7 +40,9 @@ const expectedSendPostSuccess = {type: actionTypes.SEND_POST_SUCCESS};
 const expectedSendPostFailure = {type: actionTypes.SEND_POST_FAILURE, error: mockErrorMessage};
 
 const mockDispatch = jest.fn();
+
 jest.mock('axios');
+jest.mock('../../../src/helpers/feedHelpers');
 
 afterEach(() => {
     jest.clearAllMocks();
@@ -191,7 +194,7 @@ describe('doSendPostThunk', () => {
         const thunk = doSendPostThunk(mockContent);
         expect(typeof(thunk)).toBe('function');
     });
-    it('should call dispatch with GET_USER_REQUEST and doGetPostsThunk() when succeeding', () => {
+    it('should call dispatch with SEND_POST_REQUEST and doGetPostsThunk() when succeeding', () => {
         axios.post.mockImplementation(() => Promise.resolve({data: mockPost}));
         axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
 
@@ -201,7 +204,8 @@ describe('doSendPostThunk', () => {
                 content: mockContent,
             });
             expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());
-            expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsThunk()); // how to test this???
+            expect(refreshPosts).toHaveBeenCalledWith(mockDispatch, doGetPostsThunk);
+            
         });
     });
     it('should call dispatch with SEND_POST_REQUEST and SEND_POSTS_FAILURE when failing', () => {
