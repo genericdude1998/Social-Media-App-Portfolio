@@ -8,7 +8,9 @@ const NavBar = () => {
         <div className={styles.baseNavBar}>
             <div className={styles.baseNavBarContent}>
                 <Link to='/feed' className={styles.baseNavBarLink}>Feed</Link>
+                <Link to='/createPost' className={styles.baseNavBarLink}>Create New Post</Link>
                 <UserLink id={1} name={'Me'} className={styles.baseNavBarLink}></UserLink>
+
             </div>
         </div>
     );
