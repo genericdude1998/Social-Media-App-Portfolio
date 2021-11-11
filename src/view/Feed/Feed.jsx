@@ -4,8 +4,9 @@ import { mapFeedDispatchToProps, mapFeedStateToProps } from '../mappers/mappers'
 import Post from './Post';
 import styles from './Feed.css';
 import PropTypes from 'prop-types';
+import withTheme from '../theme/withTheme';
 
-const Feed = ({posts, onFetchPosts}) => {
+const Feed = ({posts, onFetchPosts, theme}) => {
     React.useEffect(() => {
         onFetchPosts();
     }, []);
@@ -27,6 +28,8 @@ Feed.propTypes = {
     onFetchPosts: PropTypes.func,
 }
 
-const ConnectedFeed = connect(mapFeedStateToProps, mapFeedDispatchToProps)(Feed);
 
-export default ConnectedFeed;
+const ConnectedFeed = connect(mapFeedStateToProps, mapFeedDispatchToProps)(Feed);
+const ConnectedFeedWithTheme = withTheme(ConnectedFeed);
+
+export default ConnectedFeedWithTheme;
