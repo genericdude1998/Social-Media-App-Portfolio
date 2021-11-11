@@ -2,7 +2,6 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { refreshPosts } from '../../src/helpers/feedHelpers';
 import { Redirect } from '../../src/helpers/Redirect';
-import { doGetPostsThunk } from '../../src/model/actionCreators/actionCreators';
 import { mockPath, mockToken, mockDispatch } from '../mockValues';
 
 const mockDoGetPostsThunk = jest.fn();
