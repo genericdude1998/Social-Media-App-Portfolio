@@ -33,7 +33,7 @@ export function mapUserStateToProps(state){
 export function mapNPCDispatchToProps(dispatch){
     return {
         onSetPostContent: (e) => dispatch(doSetPostContent(e.target.value)),
-        onSendNewPost: (content) => (event) => dispatch(doSendPostThunk(content, event)),
+        onSendNewPost: (content, navigate) => (event) => dispatch(doSendPostThunk(content, event, navigate)),
     };
 }
 export function mapNPCStateToProps(state){
