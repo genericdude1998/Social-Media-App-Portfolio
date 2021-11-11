@@ -9,7 +9,3 @@ export function applyGetPostsSuccess(state,action){
 export function applyGetPostsFailure(state,action){
     return {...state, error: action.error}
 }
-
-export function applySendPostFailure(state,action){
-    return {...state, newPostError: action.error}
-}

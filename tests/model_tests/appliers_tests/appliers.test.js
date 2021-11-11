@@ -1,8 +1,9 @@
 import { applySetUsername, applySetPassword, applySendLoginRequest, applyLoginRequestSuccess, applyLoginRequestFailure } from '../../../src/model/appliers/loginReducerAppliers';
 import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure, doSendPostFailure } from '../../../src/model/actionCreators/actionCreators';
 import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser} from '../../mockValues';
-import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applySendPostFailure } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../../../src/model/appliers/userInfoReducerAppliers';
+import { applySendPostFailure } from '../../../src/model/appliers/newPostReducerAppliers';
 
 const mockLoginSuccessState = {...mockLoginReducerInitialState, token: mockToken};
 const mockLoginFailureState = {...mockLoginReducerInitialState, error: mockErrorMessage};
