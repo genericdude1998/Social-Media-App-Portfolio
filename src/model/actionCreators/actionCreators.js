@@ -88,6 +88,10 @@ export function doGetUserThunk(id){
     }
 }
 
+export function doSetPostContent(content){
+    return {type: actionTypes.SET_POST_CONTENT, content:content}
+}
+
 export function doSendPostRequest(){
     return {type: actionTypes.SEND_POST_REQUEST}
 }

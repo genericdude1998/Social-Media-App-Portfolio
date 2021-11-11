@@ -5,7 +5,7 @@ import { mapNPCDispatchToProps, mapNPCStateToProps } from '../../mappers/mappers
 const NewPostCreator = ({onSendNewPost, newPostError}) => {
     return (
         <div>
-            <button onClick={onSendNewPost('Hello content')}>Create Post</button>
+            <button onClick={onSendNewPost()}>Create Post</button>
         </div>
     );
 }

@@ -1,11 +1,13 @@
 import { actionTypes } from '../actionTypes/actionTypes';
 import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applySendPostFailure } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
+import { applySetPostContent } from '../appliers/newPostReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
 
 const loginReducerInitialState = {username: '', password:'', token: null, error:null};
 const feedReducerInitialState = {posts: []};
 const userInfoReducerInitialState = {};
+const sendPostInitialState = {newPostError: null, content: null}
 
 
 
@@ -35,6 +37,13 @@ export function userInfoReducer(state = userInfoReducerInitialState,action = {ty
     case actionTypes.GET_USER_REQUEST: return applyGetUserRequest(state,action);
     case actionTypes.GET_USER_SUCCESS: return applyGetUserSuccess(state,action);
     case actionTypes.GET_USER_FAILURE: return applyGetUserFailure(state,action);    
+    default: return state;
+    }
+}
+
+export function sendPostReducer(state = sendPostInitialState ,action = {type:'default'}){
+    switch (action.type) {
+    case actionTypes.SET_POST_CONTENT: return applySetPostContent(state,action);
     default: return state;
     }
 }
