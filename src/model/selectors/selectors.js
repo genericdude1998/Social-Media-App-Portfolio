@@ -8,5 +8,5 @@ export function userInfoStateSelector(state) {
     return state.userInfo;
 }
 export function NPCStateSelector(state) {
-    return {newPostError: state.feed.newPostError};
+    return state.npc;
 }

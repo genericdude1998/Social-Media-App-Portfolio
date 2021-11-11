@@ -1,9 +1,9 @@
 import { actionTypes } from '../actionTypes/actionTypes';
 import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
-import { applySetPostContent } from '../appliers/newPostReducerAppliers';
+import { applySetPostContent } from '../appliers/NPCReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
-import { applySendPostFailure } from '../appliers/newPostReducerAppliers';
+import { applySendPostFailure } from '../appliers/NPCReducerAppliers';
 
 const loginReducerInitialState = {username: '', password:'', token: null, error:null};
 const feedReducerInitialState = {posts: []};
@@ -41,7 +41,7 @@ export function userInfoReducer(state = userInfoReducerInitialState,action = {ty
     }
 }
 
-export function sendPostReducer(state = sendPostInitialState ,action = {type:'default'}){
+export function NPCReducer(state = sendPostInitialState,action = {type:'default'}){
     switch (action.type) {
     case actionTypes.SET_POST_CONTENT: return applySetPostContent(state,action);
     case actionTypes.SEND_POST_FAILURE: return applySendPostFailure(state,action);
