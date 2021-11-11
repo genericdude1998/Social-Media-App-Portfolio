@@ -4,11 +4,14 @@ import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginReque
 import { applySetPostContent } from '../appliers/NPCReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
 import { applySendPostFailure } from '../appliers/NPCReducerAppliers';
+import { applyToggleTheme } from '../appliers/toggleThemeReducerAppliers';
 
 const loginReducerInitialState = {username: '', password:'', token: null, error:null};
 const feedReducerInitialState = {posts: []};
 const userInfoReducerInitialState = {};
 const sendPostInitialState = {newPostError: null, content: null}
+const toggleThemeInitialState = {theme: 'light'}
+
 
 
 
@@ -48,3 +51,11 @@ export function NPCReducer(state = sendPostInitialState,action = {type:'default'
     default: return state;
     }
 }
+
+export function toggleThemeReducer(state = toggleThemeInitialState,action = {type:'default'}){
+    switch (action.type) {
+    case actionTypes.TOGGLE_THEME: return applyToggleTheme(state,action);
+    default: return state;
+    }
+}
+

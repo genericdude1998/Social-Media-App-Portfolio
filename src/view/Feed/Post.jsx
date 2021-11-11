@@ -2,8 +2,9 @@ import React from 'react';
 import styles from './Post.css';
 import PropTypes from 'prop-types';
 import UserLink from './UserLink';
+import withTheme from '../theme/withTheme';
 
-const Post = ({id, name, content, date}) => {
+const Post = ({id, name, content, date, theme}) => {
     return (
         <div className={styles.basePost}>
             <UserLink id={id} name={name} className={styles.basePostLink}/>
@@ -19,4 +20,4 @@ Post.propTypes = {
     date: PropTypes.string,
 }
 
-export default Post;
+export default withTheme(Post);

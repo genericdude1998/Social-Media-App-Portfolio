@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { mapNPCDispatchToProps, mapNPCStateToProps } from '../../mappers/mappers';
 import {useNavigate} from 'react-router-dom';
 import styles from './NPC.css'
+import withTheme from '../../theme/withTheme';
 
 const NewPostCreator = ({onSendNewPost, onSetPostContent, newPostError, content}) => {
     const navigate = useNavigate();
@@ -19,4 +20,4 @@ const NewPostCreator = ({onSendNewPost, onSetPostContent, newPostError, content}
 
 const ConnectedNPC = connect(mapNPCStateToProps, mapNPCDispatchToProps)(NewPostCreator);
 
-export default ConnectedNPC;
+export default withTheme(ConnectedNPC);

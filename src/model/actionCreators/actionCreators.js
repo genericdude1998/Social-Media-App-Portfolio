@@ -119,3 +119,7 @@ export function doSendPostThunk(content,event, navigate){
         });
     }
 }
+
+export function doToggleTheme(){
+    return{ type: actionTypes.TOGGLE_THEME};
+}
