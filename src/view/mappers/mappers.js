@@ -1,5 +1,5 @@
-import { doGetPostsThunk, doGetUserThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetPostContent, doSetUsername } from '../../model/actionCreators/actionCreators';
-import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector } from '../../model/selectors/selectors';
+import { doGetPostsThunk, doGetUserThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../model/actionCreators/actionCreators';
+import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector, themeStateSelector } from '../../model/selectors/selectors';
 
 export function mapLoginDispatchToProps(dispatch){
     return {
@@ -38,4 +38,13 @@ export function mapNPCDispatchToProps(dispatch){
 }
 export function mapNPCStateToProps(state){
     return NPCStateSelector(state);
+}
+
+export function mapThemeDispatchToProps(dispatch){
+    return {
+        onToggleTheme: () => dispatch(doToggleTheme()),
+    };
+}
+export function mapThemeStateToProps(state){
+    return themeStateSelector(state);
 }

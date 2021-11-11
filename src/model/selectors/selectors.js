@@ -10,3 +10,6 @@ export function userInfoStateSelector(state) {
 export function NPCStateSelector(state) {
     return state.npc;
 }
+export function themeStateSelector(state) {
+    return state.theme;
+}

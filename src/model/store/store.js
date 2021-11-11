@@ -3,10 +3,17 @@ import { createStore } from 'redux';
 import { combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { feedReducer, loginReducer, userInfoReducer, NPCReducer } from '../reducers/reducers';
+import { feedReducer, loginReducer, userInfoReducer, NPCReducer, toggleThemeReducer } from '../reducers/reducers';
 
 const middleWare = applyMiddleware(logger, thunk);
 
-const rootReducer = combineReducers({login: loginReducer,feed: feedReducer, userInfo: userInfoReducer, npc: NPCReducer});
+const rootReducer = combineReducers(
+    {
+        login: loginReducer,
+        feed: feedReducer,
+        userInfo: userInfoReducer,
+        npc: NPCReducer,
+        theme: toggleThemeReducer,
+    });
 
 export const store = createStore(rootReducer, middleWare);
