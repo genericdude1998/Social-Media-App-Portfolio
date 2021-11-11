@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+.baseNPC{
+    background-color: royalblue;
+    height: 50vh;
+    margin-top: 5px;
+}
+
+.baseNPCForm{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.baseNPCLabel{
+    color: darkblue;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.baseNPCInput{
+    height: 10vh;
+    width: 50vw;
+    margin-top: 10px;
+}
+
+.baseNPCButton{
+    border: 0px;
+    border-radius: 1px;
+    margin-top: 20px;
+    width: 20%;
+}

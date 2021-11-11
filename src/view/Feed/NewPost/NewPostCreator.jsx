@@ -2,17 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapNPCDispatchToProps, mapNPCStateToProps } from '../../mappers/mappers';
 import {useNavigate} from 'react-router-dom';
+import styles from './NPC.css'
 
 const NewPostCreator = ({onSendNewPost, onSetPostContent, newPostError, content}) => {
     const navigate = useNavigate();
     return (
-        <div>
-            <form onSubmit={onSendNewPost(content, navigate)}>
-                <label>Content:</label>
-                <br />
-                <input type="text" onChange={onSetPostContent}/>
-                <br />
-                <button type={'submit'}>Create Post!</button>
+        <div className={styles.baseNPC}>
+            <form onSubmit={onSendNewPost(content, navigate)} className={styles.baseNPCForm}>
+                <label className={styles.baseNPCLabel}>Content:</label>
+                <input type="text" onChange={onSetPostContent} className={styles.baseNPCInput}/>
+                <button type={'submit'} className={styles.baseNPCButton}>Create Post!</button>
             </form>
         </div>
     );
