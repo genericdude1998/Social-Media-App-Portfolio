@@ -27,6 +27,12 @@ const App = () => {
                                 <ConnectedUser/>
                             </>
                         }/>
+                    <Route path='/createPost' element={
+                        <>
+                            <NavBar/>
+                            <ConnectedNPC/>
+                        </>
+                    }/>
                 </Routes>
             </BrowserRouter>
         </div>

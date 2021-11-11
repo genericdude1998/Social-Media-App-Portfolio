@@ -2,10 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapNPCDispatchToProps, mapNPCStateToProps } from '../../mappers/mappers';
 
-const NewPostCreator = ({onSendNewPost, newPostError}) => {
+const NewPostCreator = ({onSendNewPost, newPostError, content}) => {
     return (
         <div>
-            <button onClick={onSendNewPost()}>Create Post</button>
+            <form onSubmit={onSendNewPost(content)}>
+                <label>Content:</label>
+                <br />
+                <input type="text"/>
+                <br />
+                <button type={'submit'}>Create Post!</button>
+            </form>
         </div>
     );
 }
