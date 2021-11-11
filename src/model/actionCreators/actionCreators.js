@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refreshPosts } from '../../helpers/feedHelpers';
 import { actionTypes } from '../actionTypes/actionTypes';
 
 export function doSetUsername(username){
@@ -83,6 +84,38 @@ export function doGetUserThunk(id){
         }).catch(error => {
             const errorMessage = error.response.data;
             dispatch(doGetUserFailure(errorMessage));
+        });
+    }
+}
+
+export function doSetPostContent(content){
+    return {type: actionTypes.SET_POST_CONTENT, content:content}
+}
+
+export function doSendPostRequest(){
+    return {type: actionTypes.SEND_POST_REQUEST}
+}
+
+export function doSendPostSuccess(){
+    return {type: actionTypes.SEND_POST_SUCCESS}
+}
+
+export function doSendPostFailure(error){
+    return {type: actionTypes.SEND_POST_FAILURE, error:error}
+}
+
+export function doSendPostThunk(content,event, navigate){
+    event.preventDefault();
+    return function(dispatch){
+        dispatch(doSendPostRequest());
+        return axios.post('/newPost',{
+            content:content,
+        }).then((res) => {
+            //refreshPosts(dispatch, doGetPostsThunk);
+            navigate('/feed');
+        }).catch(error => {
+            const errorMessage = error.response.data;
+            dispatch(doSendPostFailure(errorMessage));
         });
     }
 }

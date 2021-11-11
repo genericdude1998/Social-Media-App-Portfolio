@@ -10,16 +10,20 @@ import {
     doGetUserRequest,
     doGetUserSuccess,
     doGetUserFailure,
+    doSendPostFailure,
+    doSetPostContent,
 } from '../../../src/model/actionCreators/actionCreators';
-import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser } from '../../mockValues';
-import { feedReducer, loginReducer, userInfoReducer } from '../../../src/model/reducers/reducers';
+import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNPCInitialState, mockContent } from '../../mockValues';
+import { feedReducer, loginReducer, NPCReducer, userInfoReducer } from '../../../src/model/reducers/reducers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../../../src/model/appliers/loginReducerAppliers';
 import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserRequest, applyGetUserSuccess, applyGetUserFailure } from '../../../src/model/appliers/userInfoReducerAppliers';
+import { applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
 
 jest.mock('../../../src/model/appliers/loginReducerAppliers');
 jest.mock('../../../src/model/appliers/feedReducerAppliers');
 jest.mock('../../../src/model/appliers/userInfoReducerAppliers');
+jest.mock('../../../src/model/appliers/NPCReducerAppliers');
 
 
 const setUsernameAction = doSetUsername(mockUsername);
@@ -35,6 +39,9 @@ const getPostsFailureAction = doGetPostsFailure(mockErrorMessage);
 const getUserRequestAction = doGetUserRequest();
 const getUserSuccessAction = doGetUserSuccess(mockUser);
 const getUserFailureAction = doGetUserFailure(mockErrorMessage);
+
+const setPostContentAction = doSetPostContent(mockContent);
+const sendPostFailureAction = doSendPostFailure(mockErrorMessage);
 
 const defaultAction = {type: 'default'}
 
@@ -106,5 +113,22 @@ describe('userInfoReducer', () => {
     });
     it('should return initial state when default case', () => {
         expect(userInfoReducer(mockUserInfoInitialState, defaultAction)).toBe(mockUserInfoInitialState);
+    });
+});
+
+describe('sendPostReducer', () => {
+    it('should have expected initialState and default action', () => {
+        expect(NPCReducer(undefined,undefined)).toEqual(mockNPCInitialState);
+    });
+    it('should call applySetPostContent with expected params when given SET_POST_CONTENT action', () => {
+        NPCReducer(mockNPCInitialState, setPostContentAction);
+        expect(applySetPostContent).toHaveBeenCalledWith(mockNPCInitialState, setPostContentAction);
+    });
+    it('should call applySendPostFailure with expected params when given SEND_POST_FAILURE action', () => {
+        NPCReducer(mockNPCInitialState, sendPostFailureAction);
+        expect(applySendPostFailure).toHaveBeenCalledWith(mockNPCInitialState, sendPostFailureAction);
+    });
+    it('should return initial state when default case', () => {
+        expect(NPCReducer(mockNPCInitialState, defaultAction)).toBe(mockNPCInitialState);
     });
 });

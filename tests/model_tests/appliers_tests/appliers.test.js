@@ -1,8 +1,9 @@
 import { applySetUsername, applySetPassword, applySendLoginRequest, applyLoginRequestSuccess, applyLoginRequestFailure } from '../../../src/model/appliers/loginReducerAppliers';
-import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure } from '../../../src/model/actionCreators/actionCreators';
-import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser} from '../../mockValues';
+import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure, doSendPostFailure, doSetPostContent } from '../../../src/model/actionCreators/actionCreators';
+import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNewPostInitialState, mockContent} from '../../mockValues';
 import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../../../src/model/appliers/userInfoReducerAppliers';
+import { applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
 
 const mockLoginSuccessState = {...mockLoginReducerInitialState, token: mockToken};
 const mockLoginFailureState = {...mockLoginReducerInitialState, error: mockErrorMessage};
@@ -12,6 +13,9 @@ const mockGetPostsFailureState = {...mockFeedInitialState, error: mockErrorMessa
 
 const mockGetUserSuccessState = {...mockUserInfoInitialState, user: mockUser};
 const mockGetUserFailureState = {...mockUserInfoInitialState, error: mockErrorMessage};
+
+const mockSetPostContentState = {...mockNewPostInitialState, content: mockContent}
+const mockSendPostsFailureState = {...mockNewPostInitialState, newPostError: mockErrorMessage};
 
 
 describe('applySetUsername', () => {
@@ -77,5 +81,17 @@ describe('applyGetUserSuccess', () => {
 describe('applyGetUserFailure', () => {
     it('should return expected state', () => {
         expect(applyGetUserFailure(mockUserInfoInitialState, doGetUserFailure(mockErrorMessage))).toEqual(mockGetUserFailureState);
+    });
+});
+
+describe('applySetPostContent', () => {
+    it('should return expected state', () => {
+        expect(applySetPostContent(mockNewPostInitialState, doSetPostContent(mockContent))).toEqual(mockSetPostContentState);
+    });
+});
+
+describe('applySendPostFailure', () => {
+    it('should return expected state', () => {
+        expect(applySendPostFailure(mockNewPostInitialState, doSendPostFailure(mockErrorMessage))).toEqual(mockSendPostsFailureState);
     });
 });

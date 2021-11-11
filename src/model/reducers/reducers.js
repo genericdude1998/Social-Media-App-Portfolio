@@ -1,11 +1,14 @@
 import { actionTypes } from '../actionTypes/actionTypes';
 import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
+import { applySetPostContent } from '../appliers/NPCReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
+import { applySendPostFailure } from '../appliers/NPCReducerAppliers';
 
 const loginReducerInitialState = {username: '', password:'', token: null, error:null};
 const feedReducerInitialState = {posts: []};
 const userInfoReducerInitialState = {};
+const sendPostInitialState = {newPostError: null, content: null}
 
 
 
@@ -34,6 +37,14 @@ export function userInfoReducer(state = userInfoReducerInitialState,action = {ty
     case actionTypes.GET_USER_REQUEST: return applyGetUserRequest(state,action);
     case actionTypes.GET_USER_SUCCESS: return applyGetUserSuccess(state,action);
     case actionTypes.GET_USER_FAILURE: return applyGetUserFailure(state,action);    
+    default: return state;
+    }
+}
+
+export function NPCReducer(state = sendPostInitialState,action = {type:'default'}){
+    switch (action.type) {
+    case actionTypes.SET_POST_CONTENT: return applySetPostContent(state,action);
+    case actionTypes.SEND_POST_FAILURE: return applySendPostFailure(state,action);
     default: return state;
     }
 }

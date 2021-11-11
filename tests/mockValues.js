@@ -1,7 +1,8 @@
 export const mockUserInfoInitialState = {}
 export const mockFeedInitialState = {posts: []};
+export const mockNPCInitialState = {newPostError:null, content: null};
 export const mockLoginReducerInitialState = {username:'', password:'', token:null, error: null};
-export const mockStoreInitialState = {login: mockLoginReducerInitialState, feed: mockFeedInitialState, userInfo: {}};
+export const mockStoreInitialState = {login: mockLoginReducerInitialState, feed: mockFeedInitialState, userInfo: {}, npc: mockNPCInitialState};
 export const mockUsername = 'username';
 export const mockPassword = 'password';
 export const correctUsername = 'Adam';
@@ -18,8 +19,9 @@ export const mockName = 'mock_name';
 export const mockContent = 'mock_content';
 export const mockDate = 'mock_date';
 export const mockId = 0;
-export const mockCity = 'NY'
-export const mockUser =  {id:mockId, name: mockName, joined: mockDate, city: mockCity}
+export const mockCity = 'NY';
+export const mockUser =  {id:mockId, name: mockName, joined: mockDate, city: mockCity};
+export const mockPost =  {id:mockId, name: mockName, content: mockContent, date:mockDate};
 
 export const mockPosts = [
     {id:'1' , name:mockName, content: mockContent, date:mockDate},
@@ -30,3 +32,5 @@ export const mockPosts = [
 export const mockUsers = [
     mockUser,
 ];
+
+export const mockDispatch = jest.fn();
