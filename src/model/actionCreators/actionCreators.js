@@ -104,7 +104,8 @@ export function doSendPostFailure(error){
     return {type: actionTypes.SEND_POST_FAILURE, error:error}
 }
 
-export function doSendPostThunk(content){
+export function doSendPostThunk(content,event){
+    event.preventDefault();
     return function(dispatch){
         dispatch(doSendPostRequest());
         return axios.post('/newPost',{
