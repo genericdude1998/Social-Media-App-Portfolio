@@ -28,7 +28,7 @@ const devServer = (devServer) => {
 
     app.post('/newPost', (req,res) => {
         const content = req.body.content;
-        const newPost = {id: posts.lenght + 1, name: 'Me', content: content, date: Date.now().toLocaleString()}
+        const newPost = {id: posts.lenght + 1, name: 'Me', content: content, date: new Date().toLocaleString()}
         posts.module.push(newPost);
         res.send(newPost);
     })
