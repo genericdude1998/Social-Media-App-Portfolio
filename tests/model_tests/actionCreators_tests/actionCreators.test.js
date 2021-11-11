@@ -191,14 +191,14 @@ describe('doSendPostFailure', () => {
 
 describe('doSendPostThunk', () => {
     it('should return a thunk function', () => {
-        const thunk = doSendPostThunk(mockContent);
+        const thunk = doSendPostThunk(mockContent, mockEvent);
         expect(typeof(thunk)).toBe('function');
     });
     it('should call dispatch with SEND_POST_REQUEST and doGetPostsThunk() when succeeding', () => {
         axios.post.mockImplementation(() => Promise.resolve({data: mockPost}));
         axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
 
-        const thunk = doSendPostThunk(mockContent);
+        const thunk = doSendPostThunk(mockContent, mockEvent);
         return thunk(mockDispatch).then(() => {
             expect(axios.post).toHaveBeenCalledWith('/newPost',{
                 content: mockContent,
@@ -211,7 +211,7 @@ describe('doSendPostThunk', () => {
     it('should call dispatch with SEND_POST_REQUEST and SEND_POSTS_FAILURE when failing', () => {
         axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
-        const thunk = doSendPostThunk(mockContent);
+        const thunk = doSendPostThunk(mockContent, mockEvent);
         return thunk(mockDispatch).then(() => {
             expect(axios.post).toHaveBeenCalledWith('/newPost',{
                 content: mockContent,

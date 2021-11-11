@@ -26,6 +26,15 @@ exports[`App should match snapshot 1`] = `
         }
         path="/userInfo/:id"
       />
+      <Route
+        element={
+          <React.Fragment>
+            <NavBar />
+            <Memo(Connect(NewPostCreator)) />
+          </React.Fragment>
+        }
+        path="/createPost"
+      />
     </Routes>
   </BrowserRouter>
 </div>

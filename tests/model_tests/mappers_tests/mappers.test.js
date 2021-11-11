@@ -1,4 +1,4 @@
-import { doGetPostsThunk, doGetUserThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
+import { doGetPostsThunk, doGetUserThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetPostContent, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
 import { feedStateSelector, loginStateSelector, NPCStateSelector, userInfoStateSelector } from '../../../src/model/selectors/selectors';
 import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps, mapUserStateToProps, mapUserDispatchToProps, mapNPCDispatchToProps, mapNPCStateToProps } from '../../../src/view/mappers/mappers';
 import {mockContent, mockEvent, mockId, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
@@ -101,14 +101,20 @@ describe('mapUserStateToProps', () => {
 });
 
 describe('mapNPCdispatchToProps', () => {
-    it('should return an object with onSendNewPost handler', () => {
+    it('should return an object with onSendNewPost and onSetPostContent handler', () => {
         expect(typeof(mappedNPCDispatchObject)).toBe('object');
         expect(typeof(mappedNPCDispatchObject.onSendNewPost)).toBe('function');
+        expect(typeof(mappedNPCDispatchObject.onSetPostContent)).toBe('function');
+
     });
     it('should call onSendNewPost with expected params', () => {
         const handler = mappedNPCDispatchObject.onSendNewPost(mockContent);
         handler();
         expect(mockDispatch).toHaveBeenCalledWith(doSendPostThunk(mockContent));
+    });
+    it('should call onSetPostContent with expected params', () => {
+        mappedNPCDispatchObject.onSetPostContent(mockEvent);
+        expect(mockDispatch).toHaveBeenCalledWith(doSetPostContent(mockEvent.target.value));
     });
 });
 
