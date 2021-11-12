@@ -204,9 +204,7 @@ describe('doSendPostThunk', () => {
             expect(axios.post).toHaveBeenCalledWith('/newPost',{
                 content: mockContent,
             });
-            expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());
-            //expect(refreshPosts).toHaveBeenCalledWith(mockDispatch, doGetPostsThunk); not needed
-            
+            expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());    
         });
     });
     it('should call dispatch with SEND_POST_REQUEST and SEND_POSTS_FAILURE when failing', () => {

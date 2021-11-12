@@ -111,7 +111,6 @@ export function doSendPostThunk(content,event, navigate){
         return axios.post('/newPost',{
             content:content,
         }).then((res) => {
-            //refreshPosts(dispatch, doGetPostsThunk);
             navigate('/feed');
         }).catch(error => {
             const errorMessage = error.response.data;
