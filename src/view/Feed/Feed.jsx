@@ -6,7 +6,7 @@ import styles from './Feed.css';
 import PropTypes from 'prop-types';
 import withTheme from '../theme/withTheme';
 
-const Feed = ({posts, onFetchPosts, theme}) => {
+export const Feed = ({posts, onFetchPosts, theme}) => {
     React.useEffect(() => {
         onFetchPosts();
     }, []);

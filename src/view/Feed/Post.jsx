@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import UserLink from './UserLink';
 import withTheme from '../theme/withTheme';
 
-const Post = ({id, name, content, date, theme}) => {
+export const Post = ({id, name, content, date, theme}) => {
     return (
         <div className={styles.basePost}>
             <UserLink id={id} name={name} className={styles.basePostLink}/>

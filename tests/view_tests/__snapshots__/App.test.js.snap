@@ -2,40 +2,42 @@
 
 exports[`App should match snapshot 1`] = `
 <div>
-  <BrowserRouter>
-    <Routes>
-      <Route
-        element={<Memo(Connect(Login)) />}
-        path="/"
-      />
-      <Route
-        element={
-          <React.Fragment>
-            <NavBar />
-            <Memo(Connect(Feed)) />
-          </React.Fragment>
-        }
-        path="/feed"
-      />
-      <Route
-        element={
-          <React.Fragment>
-            <NavBar />
-            <Memo(Connect(User)) />
-          </React.Fragment>
-        }
-        path="/userInfo/:id"
-      />
-      <Route
-        element={
-          <React.Fragment>
-            <NavBar />
-            <Memo(Connect(NewPostCreator)) />
-          </React.Fragment>
-        }
-        path="/createPost"
-      />
-    </Routes>
-  </BrowserRouter>
+  <Connect(ThemeProvider)>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          element={<Memo(Connect(Login)) />}
+          path="/"
+        />
+        <Route
+          element={
+            <React.Fragment>
+              <NavBar />
+              <WithThemeHOC />
+            </React.Fragment>
+          }
+          path="/feed"
+        />
+        <Route
+          element={
+            <React.Fragment>
+              <NavBar />
+              <WithThemeHOC />
+            </React.Fragment>
+          }
+          path="/userInfo/:id"
+        />
+        <Route
+          element={
+            <React.Fragment>
+              <NavBar />
+              <WithThemeHOC />
+            </React.Fragment>
+          }
+          path="/createPost"
+        />
+      </Routes>
+    </BrowserRouter>
+  </Connect(ThemeProvider)>
 </div>
 `;

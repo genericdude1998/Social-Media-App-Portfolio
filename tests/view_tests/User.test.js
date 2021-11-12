@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme';
-import ConnectedUser from '../../src/view/UsersInfo/User';
+import {User} from '../../src/view/UsersInfo/User';
 import {mockId, mockUser} from '../mockValues';
 
 jest.spyOn(React, 'useEffect').mockImplementation((effect) => effect());
@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => {
 
 const mockOnFetchUser = jest.fn();
 
-let wrapper = shallow(<ConnectedUser.WrappedComponent
+let wrapper = shallow(<User
     user={mockUser}
     onFetchUser={mockOnFetchUser}
 />);
@@ -28,7 +28,7 @@ describe('User', () => {
         expect(wrapper).toMatchSnapshot();
     });
     it('should match snapshot if list is undefined', () => {
-        let wrapper = shallow(<ConnectedUser.WrappedComponent
+        let wrapper = shallow(<User
             user={undefined}
             onFetchUser={mockOnFetchUser}
         />);

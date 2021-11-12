@@ -1,15 +1,25 @@
 import React from 'react'
 import { shallow } from 'enzyme';
-import ConnectedFeed from '../../src/view/Feed/Feed';
 import {mockPosts} from '../mockValues';
+import {Feed} from '../../src/view/Feed/Feed';
 
 jest.spyOn(React, 'useEffect').mockImplementation(f => f());
+jest.mock('../../src/view/theme/withTheme', () => {
+    const originalModule = jest.requireActual('../../src/view/theme/withTheme');
+    return {
+        __esModule: true,
+        ...originalModule,
+        default: jest.fn((WrappedComponent) => WrappedComponent),
+    };
+});
 const mockOnFetchPosts = jest.fn();
 
-let wrapper = shallow(<ConnectedFeed.WrappedComponent
-    posts={mockPosts}
-    onFetchPosts={mockOnFetchPosts}
-/>);
+let wrapper = shallow(
+    <Feed
+        posts = {mockPosts}
+        onFetchPosts = {mockOnFetchPosts}
+        theme = {'mock_theme'}
+    />);
 
 describe('Feed', () => {
     it('should call OnFetchPosts with expected params', () => {
@@ -19,9 +29,10 @@ describe('Feed', () => {
         expect(wrapper).toMatchSnapshot();
     });
     it('should match snapshot if list is undefined', () => {
-        let wrapper = shallow(<ConnectedFeed.WrappedComponent
+        let wrapper = shallow(<Feed
             posts={undefined}
             onFetchPosts={mockOnFetchPosts}
+            theme={'mock_theme'}
         />);
         expect(wrapper).toMatchSnapshot();
     });

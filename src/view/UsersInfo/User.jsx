@@ -5,7 +5,7 @@ import {mapUserDispatchToProps, mapUserStateToProps} from '../mappers/mappers';
 import withTheme from '../theme/withTheme';
 import styles from './User.css';
 
-const User = ({onFetchUser, user}) => {
+export const User = ({onFetchUser, user}) => {
     const {id} = useParams();
     React.useEffect(() => {
         onFetchUser(id);

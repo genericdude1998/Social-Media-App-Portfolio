@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ThemeContext } from '../ThemeProvider';
 
 const withTheme = (WrappedComponent) => {
