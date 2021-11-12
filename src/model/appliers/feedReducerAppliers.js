@@ -22,6 +22,10 @@ export function applyCloseComments(state,action){
     return {...state, posts: newPosts}
 }
 
+export function applySetComment(state,action){
+    return {...state, content: action.content}
+}
+
 export function applySendCommentFailure(state,action){
     return {...state, newCommentError: action.error}
 }

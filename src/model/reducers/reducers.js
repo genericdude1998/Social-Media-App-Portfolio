@@ -1,5 +1,5 @@
 import { actionTypes } from '../actionTypes/actionTypes';
-import { applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure } from '../appliers/feedReducerAppliers';
+import { applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
 import { applySetPostContent } from '../appliers/NPCReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
@@ -10,6 +10,7 @@ const loginReducerInitialState = {username: '', password:'', token: null, error:
 const feedReducerInitialState = {posts: []};
 const userInfoReducerInitialState = {};
 const sendPostInitialState = {newPostError: null, content: null}
+const sendCommentInitialState = {newCommentError: null, content: null}
 const toggleThemeInitialState = {theme: 'light'}
 
 
@@ -33,7 +34,6 @@ export function feedReducer(state = feedReducerInitialState,action={type: 'defau
     case actionTypes.GET_POSTS_FAILURE: return applyGetPostsFailure(state,action);
     case actionTypes.OPEN_COMMENTS: return applyOpenComments(state,action);    
     case actionTypes.CLOSE_COMMENTS: return applyCloseComments(state,action); 
-    case actionTypes.SEND_COMMENT_FAILURE: return applySendCommentFailure(state,action);      
     default: return state;
     }
 }
@@ -51,6 +51,14 @@ export function NPCReducer(state = sendPostInitialState,action = {type:'default'
     switch (action.type) {
     case actionTypes.SET_POST_CONTENT: return applySetPostContent(state,action);
     case actionTypes.SEND_POST_FAILURE: return applySendPostFailure(state,action);
+    default: return state;
+    }
+}
+
+export function NCCReducer(state = sendCommentInitialState,action = {type:'default'}){
+    switch (action.type) {
+    case actionTypes.SET_COMMENT_CONTENT: return applySetComment(state,action);
+    case actionTypes.SEND_COMMENT_FAILURE: return applySendCommentFailure(state,action);
     default: return state;
     }
 }

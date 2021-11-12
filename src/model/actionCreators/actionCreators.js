@@ -140,6 +140,9 @@ export function doSendCommentFailure(error){
     return {type: actionTypes.SEND_COMMENT_FAILURE, newCommentError:error}
 }
 
+export function doSetCommentContent(content){
+    return {type: actionTypes.SET_COMMENT_CONTENT, content:content}
+}
 export function doSendCommentThunk(content, event, navigate){
     event.preventDefault();
     return function(dispatch){
