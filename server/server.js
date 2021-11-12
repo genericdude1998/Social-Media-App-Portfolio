@@ -3,7 +3,6 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const posts = require('./posts.js');
 const users = require('./users');
-const commentsByPost = require('./comments.js');
 
 var token;
 
@@ -52,19 +51,7 @@ const devServer = (devServer) => {
         console.log(`${userToken} used to access users`);
         if(userToken && userToken === token){
             res.json(users.module[userId]);
-        }
-        else{
-            res.send(401, 'not Authorised!')
-        }
-    })
-
-    app.get('/comments/:postId', (req,res) => {
-        const userToken = req.cookies.token;
-        const postId = req.params.postId;
-
-        console.log(`${userToken} used to access posts`);
-        if(userToken && userToken === token){
-            res.json(commentsByPost.filter(comment => comment.postId == postId));
+            res.send();
         }
         else{
             res.send(401, 'not Authorised!')
