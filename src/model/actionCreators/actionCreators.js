@@ -131,3 +131,26 @@ export function doOpenComments(postId){
 export function doCloseComments(postId){
     return {type: actionTypes.CLOSE_COMMENTS, postId:postId};
 }
+
+export function doSendCommentRequest(){
+    return {type: actionTypes.SEND_COMMENT_REQUEST}
+}
+
+export function doSendCommentFailure(error){
+    return {type: actionTypes.SEND_COMMENT_FAILURE, newCommentError:error}
+}
+
+export function doSendCommentThunk(content, event, navigate){
+    event.preventDefault();
+    return function(dispatch){
+        dispatch(doSendPostRequest());
+        return axios.post('/newComment',{
+            content:content,
+        }).then((res) => {
+            navigate('/feed');
+        }).catch(error => {
+            const errorMessage = error.response.data;
+            dispatch(doSendCommentFailure(errorMessage));
+        });
+    }
+}

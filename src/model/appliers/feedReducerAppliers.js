@@ -21,3 +21,7 @@ export function applyCloseComments(state,action){
     newPosts[action.postId] = {...newPosts[action.postId], openComments:false}
     return {...state, posts: newPosts}
 }
+
+export function applySendCommentFailure(state,action){
+    return {...state, newCommentError: action.error}
+}
