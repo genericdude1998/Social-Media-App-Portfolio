@@ -6,10 +6,10 @@ import withTheme from '../theme/withTheme';
 
 export const Post = ({id, name, content, date, theme}) => {
     return (
-        <div className={styles.basePost}>
-            <UserLink id={id} name={name} className={styles.basePostLink}/>
-            <p className={styles.basePostContent}>{content}</p>
-            <p className={styles.basePostDate}>{date}</p>
+        <div className={`${styles.basePost} ${theme === 'dark' ? styles.dark : null}`}>
+            <UserLink id={id} name={name} className={`${styles.basePostLink} ${theme === 'dark' ? styles.dark : null}`}/>
+            <p className={`${styles.basePostContent} ${theme === 'dark' ? styles.dark : null}`}>{content}</p>
+            <p className={`${styles.basePostDate} ${theme === 'dark' ? styles.dark : null}`}>{date}</p>
         </div>
     );
 }

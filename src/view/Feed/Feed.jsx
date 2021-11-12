@@ -11,7 +11,7 @@ export const Feed = ({posts, onFetchPosts, theme}) => {
         onFetchPosts();
     }, []);
     return (
-        <div className={styles.baseFeed}>
+        <div className={`${styles.baseFeed} ${theme === 'dark' ? styles.dark : null}`}>
             <ul>
                 {posts ? posts.map(post => {
                     return (<li key={post.id}>

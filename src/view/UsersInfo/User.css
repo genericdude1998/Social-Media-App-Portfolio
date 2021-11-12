@@ -18,3 +18,8 @@
     justify-content: space-around;
     text-align: center;
 }
+
+.dark{
+    background-color: black;
+    color: white;
+}

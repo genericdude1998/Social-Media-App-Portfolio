@@ -11,3 +11,8 @@
     align-items: flex-start;
 }
 
+.dark{
+    background-color: black;
+    color: white;
+}
+

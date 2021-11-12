@@ -8,11 +8,11 @@ import withTheme from '../theme/withTheme';
 const NavBar = () => {
     const {theme, onToggleTheme} = useContext(ThemeContext)
     return (
-        <div className={styles.baseNavBar}>
-            <div className={styles.baseNavBarContent}>
-                <Link to='/feed' className={styles.baseNavBarLink}>Feed</Link>
-                <Link to='/createPost' className={styles.baseNavBarLink}>Create New Post</Link>
-                <UserLink id={1} name={'Me'} className={styles.baseNavBarLink}></UserLink>
+        <div className={`${styles.baseNavBar} ${theme === 'dark' ? styles.dark : null}`}>
+            <div className={`${styles.baseNavBarContent} ${theme === 'dark' ? styles.dark : null}`}>
+                <Link to='/feed' className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}>Feed</Link>
+                <Link to='/createPost' className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}>Create New Post</Link>
+                <UserLink id={1} name={'Me'} className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}></UserLink>
                 <button onClick={onToggleTheme}>Toggle Dark/Light Theme</button>
             </div>
         </div>

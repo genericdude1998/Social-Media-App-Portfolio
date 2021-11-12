@@ -31,7 +31,7 @@
 }
 
 .dark{
-    background-color: var(--darkBackground);
-    color: var(--darkTextColor);
+    background-color: black;
+    color: white;
 }
 

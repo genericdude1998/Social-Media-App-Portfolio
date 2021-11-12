@@ -5,7 +5,7 @@ import {mapUserDispatchToProps, mapUserStateToProps} from '../mappers/mappers';
 import withTheme from '../theme/withTheme';
 import styles from './User.css';
 
-export const User = ({onFetchUser, user}) => {
+export const User = ({onFetchUser, user, theme}) => {
     const {id} = useParams();
     React.useEffect(() => {
         onFetchUser(id);
@@ -13,7 +13,7 @@ export const User = ({onFetchUser, user}) => {
     return (
         <div className={styles.baseUser}>
             {user ? 
-                <div className={styles.baseUserContent}>
+                <div className={`${styles.baseUserContent} ${theme === 'dark' ? styles.dark : null}`}>
                     <h1>{user.name}</h1>
                     <h3>City: {user.city}</h3>
                     <h3>Joined: {user.joined}</h3>
