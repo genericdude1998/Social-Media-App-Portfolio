@@ -1,5 +1,5 @@
-import { doCloseComments, doGetPostsThunk, doGetUserThunk, doOpenComments, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../model/actionCreators/actionCreators';
-import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector, themeStateSelector } from '../../model/selectors/selectors';
+import { doCloseComments, doGetPostsThunk, doGetUserThunk, doOpenComments, doSendCommentThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetCommentContent, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../model/actionCreators/actionCreators';
+import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector, themeStateSelector, NCCStateSelector } from '../../model/selectors/selectors';
 
 export function mapLoginDispatchToProps(dispatch){
     return {
@@ -54,4 +54,14 @@ export function mapCommentsDispatchToProps(dispatch){
         onOpenComments: (postId) => dispatch(doOpenComments(postId)),
         onCloseComments: (postId) => dispatch(doCloseComments(postId)),
     };
+}
+
+export function mapNCCDispatchToProps(dispatch){
+    return {
+        onSetCommentContent: (e) => dispatch(doSetCommentContent(e.target.value)),
+        onSendNewComment: (content, navigate, postId) => (event) => dispatch(doSendCommentThunk(content, event, navigate, postId)),
+    };
+}
+export function mapNCCStateToProps(state){
+    return NCCStateSelector(state);
 }

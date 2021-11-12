@@ -143,12 +143,13 @@ export function doSendCommentFailure(error){
 export function doSetCommentContent(content){
     return {type: actionTypes.SET_COMMENT_CONTENT, content:content}
 }
-export function doSendCommentThunk(content, event, navigate){
+export function doSendCommentThunk(content, event, navigate, postId){
     event.preventDefault();
     return function(dispatch){
-        dispatch(doSendPostRequest());
+        dispatch(doSendCommentRequest());
         return axios.post('/newComment',{
             content:content,
+            postId: postId
         }).then((res) => {
             navigate('/feed');
         }).catch(error => {
