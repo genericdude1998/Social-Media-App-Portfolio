@@ -15,7 +15,7 @@ export const Feed = ({posts, onFetchPosts, theme}) => {
             <ul>
                 {posts ? posts.map(post => {
                     return (<li key={post.id}>
-                        <Post id={post.id}name={post.name} content={post.content} date={post.date}/>
+                        <Post id={post.id}name={post.name} content={post.content} date={post.date} comments={post.comments}/>
                     </li>)
                 }): <h1>Loading</h1>}
             </ul>
