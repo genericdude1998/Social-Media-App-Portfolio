@@ -33,6 +33,14 @@ const devServer = (devServer) => {
         res.send(newPost);
     })
 
+    app.post('/newComment', (req,res) => {
+        const content = req.body.content;
+        const postId = req.body.postId;
+        const newComment = {name: 'Me', content: content, date: new Date().toLocaleString()}
+        posts.module[postId].comments.push(newComment);
+        res.send(`Created a new comment on post ${postId}`);
+    })
+
     app.get('/posts', (req,res) => {
         const userToken = req.cookies.token;
         console.log(`${userToken} used to access posts`);
