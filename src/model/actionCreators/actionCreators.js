@@ -156,7 +156,7 @@ export function doSendCommentThunk(content, event, navigate, postId){
             postId: postId,
         }).then((res) => {
             dispatch(doClearCommentContent());
-            navigate('/feed');
+            navigate(0);
         }).catch(error => {
             const errorMessage = error.response.data;
             dispatch(doSendCommentFailure(errorMessage));
