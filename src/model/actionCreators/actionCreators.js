@@ -143,14 +143,19 @@ export function doSendCommentFailure(error){
 export function doSetCommentContent(content){
     return {type: actionTypes.SET_COMMENT_CONTENT, content:content}
 }
+
+export function doClearCommentContent(){
+    return {type: actionTypes.CLEAR_COMMENT_CONTENT}
+}
 export function doSendCommentThunk(content, event, navigate, postId){
     event.preventDefault();
     return function(dispatch){
         dispatch(doSendCommentRequest());
         return axios.post('/newComment',{
             content:content,
-            postId: postId
+            postId: postId,
         }).then((res) => {
+            dispatch(doClearCommentContent());
             navigate('/feed');
         }).catch(error => {
             const errorMessage = error.response.data;

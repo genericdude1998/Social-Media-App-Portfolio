@@ -1,5 +1,5 @@
 import { actionTypes } from '../actionTypes/actionTypes';
-import { applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../appliers/feedReducerAppliers';
+import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
 import { applySetPostContent } from '../appliers/NPCReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
@@ -59,6 +59,7 @@ export function NCCReducer(state = sendCommentInitialState,action = {type:'defau
     switch (action.type) {
     case actionTypes.SET_COMMENT_CONTENT: return applySetComment(state,action);
     case actionTypes.SEND_COMMENT_FAILURE: return applySendCommentFailure(state,action);
+    case actionTypes.CLEAR_COMMENT_CONTENT: return applyClearComment(state,action);
     default: return state;
     }
 }

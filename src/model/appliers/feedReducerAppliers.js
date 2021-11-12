@@ -29,3 +29,7 @@ export function applySetComment(state,action){
 export function applySendCommentFailure(state,action){
     return {...state, newCommentError: action.error}
 }
+
+export function applyClearComment(state,action){
+    return{...state, content: ''}
+}
