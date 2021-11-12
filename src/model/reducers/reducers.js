@@ -30,7 +30,9 @@ export function feedReducer(state = feedReducerInitialState,action={type: 'defau
     switch (action.type) {
     case actionTypes.GET_POSTS_REQUEST: return applyGetPostsRequest(state,action);
     case actionTypes.GET_POSTS_SUCCESS: return applyGetPostsSuccess(state,action);
-    case actionTypes.GET_POSTS_FAILURE: return applyGetPostsFailure(state,action);    
+    case actionTypes.GET_POSTS_FAILURE: return applyGetPostsFailure(state,action);
+    case actionTypes.OPEN_COMMENTS: return applyOpenComments(state,action);    
+    case actionTypes.CLOSE_COMMENTS: return applyCloseComments(state,action);       
     default: return state;
     }
 }
@@ -39,9 +41,7 @@ export function userInfoReducer(state = userInfoReducerInitialState,action = {ty
     switch (action.type) {
     case actionTypes.GET_USER_REQUEST: return applyGetUserRequest(state,action);
     case actionTypes.GET_USER_SUCCESS: return applyGetUserSuccess(state,action);
-    case actionTypes.GET_USER_FAILURE: return applyGetUserFailure(state,action);
-    case actionTypes.OPEN_COMMENTS: return applyOpenComments(state,action);    
-    case actionTypes.CLOSE_COMMENTS: return applyCloseComments(state,action);    
+    case actionTypes.GET_USER_FAILURE: return applyGetUserFailure(state,action); 
     default: return state;
     }
 }

@@ -1,4 +1,4 @@
-import { doGetPostsThunk, doGetUserThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../model/actionCreators/actionCreators';
+import { doCloseComments, doGetPostsThunk, doGetUserThunk, doOpenComments, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../model/actionCreators/actionCreators';
 import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector, themeStateSelector } from '../../model/selectors/selectors';
 
 export function mapLoginDispatchToProps(dispatch){
@@ -47,4 +47,11 @@ export function mapThemeDispatchToProps(dispatch){
 }
 export function mapThemeStateToProps(state){
     return themeStateSelector(state);
+}
+
+export function mapCommentsDispatchToProps(dispatch){
+    return {
+        onOpenComments: (postId) => dispatch(doOpenComments(postId)),
+        onCloseComments: (postId) => dispatch(doCloseComments(postId)),
+    };
 }

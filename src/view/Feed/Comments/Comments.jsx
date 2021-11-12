@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { mapCommentsDispatchToProps } from '../../mappers/mappers';
 
 const Comments = ({comments, postId}) => {
     return (
