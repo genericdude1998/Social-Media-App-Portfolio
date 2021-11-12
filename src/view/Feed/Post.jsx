@@ -3,10 +3,9 @@ import styles from './Post.css';
 import PropTypes from 'prop-types';
 import UserLink from './UserLink';
 import withTheme from '../theme/withTheme';
-import Comments from './Comments/Comments';
 import { connect } from 'react-redux';
 import { mapCommentsDispatchToProps } from '../mappers/mappers';
-import ToggleComments from './Comments/ToggleComments';
+import CommentSection from './Comments/CommentSection';
 
 export const Post = ({id, name, content, date, theme, comments, openComments, onCloseComments, onOpenComments}) => {
     return (
@@ -16,16 +15,14 @@ export const Post = ({id, name, content, date, theme, comments, openComments, on
                 <p className={`${styles.basePostContent} ${theme === 'dark' ? styles.dark : null}`}>{content}</p>
                 <p className={`${styles.basePostDate} ${theme === 'dark' ? styles.dark : null}`}>{date}</p>
             </div>
-            {comments.length !== 0 ?
-                <ToggleComments comments={comments} postId={id} openComments={openComments} onOpenComments={onOpenComments} onCloseComments={onCloseComments}/>
-                :
-                null
-            }
-            {openComments ? 
-                <Comments postId = {id} comments={comments}></Comments>
-                :
-                null
-            }
+            
+            <CommentSection 
+                comments={comments} 
+                postId={id} 
+                openComments={openComments} 
+                onOpenComments={onOpenComments}
+                onCloseComments={onCloseComments} 
+            />
         </>
     );
 }
