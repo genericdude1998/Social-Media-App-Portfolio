@@ -123,3 +123,11 @@ export function doSendPostThunk(content,event, navigate){
 export function doToggleTheme(){
     return{ type: actionTypes.TOGGLE_THEME};
 }
+
+export function doOpenComments(postId){
+    return {type: actionTypes.OPEN_COMMENTS, postId:postId};
+}
+
+export function doCloseComments(postId){
+    return {type: actionTypes.CLOSE_COMMENTS, postId:postId};
+}

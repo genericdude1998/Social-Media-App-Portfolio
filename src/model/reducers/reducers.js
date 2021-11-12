@@ -1,5 +1,5 @@
 import { actionTypes } from '../actionTypes/actionTypes';
-import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../appliers/feedReducerAppliers';
+import { applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
 import { applySetPostContent } from '../appliers/NPCReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
@@ -39,7 +39,9 @@ export function userInfoReducer(state = userInfoReducerInitialState,action = {ty
     switch (action.type) {
     case actionTypes.GET_USER_REQUEST: return applyGetUserRequest(state,action);
     case actionTypes.GET_USER_SUCCESS: return applyGetUserSuccess(state,action);
-    case actionTypes.GET_USER_FAILURE: return applyGetUserFailure(state,action);    
+    case actionTypes.GET_USER_FAILURE: return applyGetUserFailure(state,action);
+    case actionTypes.OPEN_COMMENTS: return applyOpenComments(state,action);    
+    case actionTypes.CLOSE_COMMENTS: return applyCloseComments(state,action);    
     default: return state;
     }
 }

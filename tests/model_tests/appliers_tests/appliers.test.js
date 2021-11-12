@@ -1,9 +1,10 @@
 import { applySetUsername, applySetPassword, applySendLoginRequest, applyLoginRequestSuccess, applyLoginRequestFailure } from '../../../src/model/appliers/loginReducerAppliers';
-import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure, doSendPostFailure, doSetPostContent } from '../../../src/model/actionCreators/actionCreators';
+import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure, doSendPostFailure, doSetPostContent, doOpenComments } from '../../../src/model/actionCreators/actionCreators';
 import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNewPostInitialState, mockContent} from '../../mockValues';
-import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../../../src/model/appliers/userInfoReducerAppliers';
 import { applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
+import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 
 const mockLoginSuccessState = {...mockLoginReducerInitialState, token: mockToken};
 const mockLoginFailureState = {...mockLoginReducerInitialState, error: mockErrorMessage};
@@ -93,5 +94,21 @@ describe('applySetPostContent', () => {
 describe('applySendPostFailure', () => {
     it('should return expected state', () => {
         expect(applySendPostFailure(mockNewPostInitialState, doSendPostFailure(mockErrorMessage))).toEqual(mockSendPostsFailureState);
+    });
+});
+describe('applyOpenComments', () => {
+    const mockPostsState = {posts: [{id:0, name:''}, {id:1, name:''}]};
+    const mockOpenCommentsAction = {type: actionTypes.OPEN_COMMENTS, postId:0}
+    const expectedResult = {posts: [{id:0, name:'', openComments: true}, {id:1, name:''}]}
+    it('should return as expected', () => {
+        expect(applyOpenComments(mockPostsState, mockOpenCommentsAction)).toEqual(expectedResult);
+    });
+});
+describe('applyCloeComments', () => {
+    const mockPostsState = {posts: [{id:0, name:''}, {id:1, name:''}]};
+    const mockOpenCommentsAction = {type: actionTypes.OPEN_COMMENTS, postId:0}
+    const expectedResult = {posts: [{id:0, name:'', openComments: false}, {id:1, name:''}]}
+    it('should return as expected', () => {
+        expect(applyCloseComments(mockPostsState, mockOpenCommentsAction)).toEqual(expectedResult);
     });
 });
