@@ -1,7 +1,7 @@
-import { doGetPostsThunk, doGetUserThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetPassword, doSetPostContent, doSetUsername } from '../../../src/model/actionCreators/actionCreators';
-import { feedStateSelector, loginStateSelector, NPCStateSelector, userInfoStateSelector } from '../../../src/model/selectors/selectors';
-import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps, mapUserStateToProps, mapUserDispatchToProps, mapNPCDispatchToProps, mapNPCStateToProps } from '../../../src/view/mappers/mappers';
-import {mockContent, mockEvent, mockId, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
+import { doGetPostsThunk, doGetUserThunk, doOpenComments, doSendCommentThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetCommentContent, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../../src/model/actionCreators/actionCreators';
+import { feedStateSelector, loginStateSelector, NCCStateSelector, NPCStateSelector, themeStateSelector, userInfoStateSelector } from '../../../src/model/selectors/selectors';
+import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps, mapUserStateToProps, mapUserDispatchToProps, mapNPCDispatchToProps, mapNPCStateToProps, mapThemeDispatchToProps, mapThemeStateToProps, mapCommentsDispatchToProps, mapNCCDispatchToProps, mapNCCStateToProps } from '../../../src/view/mappers/mappers';
+import {mockContent, mockEvent, mockId, mockNavigate, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
 
@@ -13,13 +13,20 @@ jest.mock('../../../src/model/selectors/selectors');
 let mappedLoginDispatchObject;
 let mappedFeedDispatchObject;
 let mappedUserDispatchObject;
-let mappedNPCDispatchObject; 
+let mappedNPCDispatchObject;
+let mappedThemeDispatchObject;
+let mappedCommentsDispatchObject;
+let mappedNCCDispatchObject;
+
 
 beforeEach(() => {
     mappedLoginDispatchObject = mapLoginDispatchToProps(mockDispatch);
     mappedFeedDispatchObject = mapFeedDispatchToProps(mockDispatch);
     mappedUserDispatchObject = mapUserDispatchToProps(mockDispatch);
-    mappedNPCDispatchObject = mapNPCDispatchToProps(mockDispatch)
+    mappedNPCDispatchObject = mapNPCDispatchToProps(mockDispatch);
+    mappedThemeDispatchObject = mapThemeDispatchToProps(mockDispatch);
+    mappedCommentsDispatchObject = mapCommentsDispatchToProps(mockDispatch);
+    mappedNCCDispatchObject = mapNCCDispatchToProps(mockDispatch);
 })
 
 afterEach(() => {
@@ -122,5 +129,68 @@ describe('mapNPCStateToProps', () => {
     it('should return expected state', () => {
         mapNPCStateToProps(mockStoreInitialState);
         expect(NPCStateSelector).toHaveBeenCalledWith(mockStoreInitialState);
+    });
+});
+
+describe('mapThemeDispatchToProps', () => {
+    it('should return an object with onToggleTheme handler', () => {
+        expect(typeof(mappedThemeDispatchObject)).toBe('object');
+        expect(typeof(mappedThemeDispatchObject.onToggleTheme)).toBe('function');
+    });
+    it('should call onToggleTheme with expected params', () => {
+        const handler = mappedThemeDispatchObject.onToggleTheme;
+        handler();
+        expect(mockDispatch).toHaveBeenCalledWith(doToggleTheme());
+    });
+});
+
+describe('mapThemeStateToProps', () => {
+    it('should return expected state', () => {
+        mapThemeStateToProps(mockStoreInitialState);
+        expect(themeStateSelector).toHaveBeenCalledWith(mockStoreInitialState);
+    });
+});
+
+describe('mapCommentsDispatchToProps', () => {
+    it('should return an object with onSendNewPost and onSetPostContent handler', () => {
+        expect(typeof(mappedCommentsDispatchObject)).toBe('object');
+        expect(typeof(mappedCommentsDispatchObject.onOpenComments)).toBe('function');
+        expect(typeof(mappedCommentsDispatchObject.onCloseComments)).toBe('function');
+
+    });
+    it('should call onCloseComments with expected params', () => {
+        const handler = mappedCommentsDispatchObject.onCloseComments;
+        handler(mockId);
+        expect(mockDispatch).toHaveBeenCalledWith(doOpenComments(mockId));
+    });
+    it('should call onOpen with expected params', () => {
+        const handler = mappedCommentsDispatchObject.onOpenComments;
+        handler(mockId);
+        expect(mockDispatch).toHaveBeenCalledWith(doOpenComments(mockId));
+    });
+});
+
+describe('mapNCCDispatchToProps', () => {
+    it('should return an object with onSendNewPost and onSetPostContent handler', () => {
+        expect(typeof(mappedNCCDispatchObject)).toBe('object');
+        expect(typeof(mappedNCCDispatchObject.onSetCommentContent)).toBe('function');
+        expect(typeof(mappedNCCDispatchObject.onSendNewComment)).toBe('function');
+
+    });
+    it('should call onSetCommentContent with expected params', () => {
+        const handler = mappedNCCDispatchObject.onSetCommentContent;
+        handler(mockEvent);
+        expect(mockDispatch).toHaveBeenCalledWith(doSetCommentContent(mockEvent.target.value));
+    });
+    it('should call onSendNewComment with expected params', () => {
+        const handler = mappedNCCDispatchObject.onSendNewComment;
+        handler(mockContent, mockNavigate, mockId)(mockEvent);
+        expect(mockDispatch).toHaveBeenCalledWith(doSendCommentThunk(mockContent,mockEvent, mockNavigate, mockId));
+    });
+});
+describe('mapNCCStateToProps', () => {
+    it('should return expected state', () => {
+        mapNCCStateToProps(mockStoreInitialState);
+        expect(NCCStateSelector).toHaveBeenCalledWith(mockStoreInitialState);
     });
 });

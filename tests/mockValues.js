@@ -31,6 +31,7 @@ export const mockId = 0;
 export const mockCity = 'NY';
 export const mockUser =  {id:mockId, name: mockName, joined: mockDate, city: mockCity};
 export const mockPost =  {id:mockId, name: mockName, content: mockContent, date:mockDate};
+export const mockNavigate =jest.fn();
 
 export const mockPosts = [
     {id:'1' , name:mockName, content: mockContent, date:mockDate},
