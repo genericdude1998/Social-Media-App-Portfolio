@@ -12,18 +12,27 @@ import {
     doGetUserFailure,
     doSendPostFailure,
     doSetPostContent,
+    doOpenComments,
+    doCloseComments,
+    doSetCommentContent,
+    doSendCommentFailure,
+    doClearCommentContent,
+    doToggleTheme,
 } from '../../../src/model/actionCreators/actionCreators';
-import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNPCInitialState, mockContent } from '../../mockValues';
-import { feedReducer, loginReducer, NPCReducer, userInfoReducer } from '../../../src/model/reducers/reducers';
+import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNPCInitialState, mockContent, mockId, mockStoreInitialState, mockNCCInitialState, mockThemeInitialState } from '../../mockValues';
+import { feedReducer, loginReducer, NCCReducer, NPCReducer, toggleThemeReducer, userInfoReducer } from '../../../src/model/reducers/reducers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../../../src/model/appliers/loginReducerAppliers';
-import { applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserRequest, applyGetUserSuccess, applyGetUserFailure } from '../../../src/model/appliers/userInfoReducerAppliers';
 import { applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
+import { applyToggleTheme } from '../../../src/model/appliers/toggleThemeReducerAppliers';
 
 jest.mock('../../../src/model/appliers/loginReducerAppliers');
 jest.mock('../../../src/model/appliers/feedReducerAppliers');
 jest.mock('../../../src/model/appliers/userInfoReducerAppliers');
 jest.mock('../../../src/model/appliers/NPCReducerAppliers');
+jest.mock('../../../src/model/appliers/toggleThemeReducerAppliers');
+
 
 
 const setUsernameAction = doSetUsername(mockUsername);
@@ -42,6 +51,10 @@ const getUserFailureAction = doGetUserFailure(mockErrorMessage);
 
 const setPostContentAction = doSetPostContent(mockContent);
 const sendPostFailureAction = doSendPostFailure(mockErrorMessage);
+
+const openCommentsAction = doOpenComments(mockId);
+const closeCommentsAction = doCloseComments(mockId);
+
 
 const defaultAction = {type: 'default'}
 
@@ -90,6 +103,14 @@ describe('feedReducer', () => {
         feedReducer(mockFeedInitialState, getPostsFailureAction);
         expect(applyGetPostsFailure).toHaveBeenCalledWith(mockFeedInitialState, getPostsFailureAction);
     });
+    it('should call applyOpenComments with expected params when given OPEN_COMMENTS action', () => {
+        feedReducer(mockFeedInitialState, openCommentsAction);
+        expect(applyOpenComments).toHaveBeenCalledWith(mockFeedInitialState, openCommentsAction);
+    });
+    it('should call applyCloseComments with expected params when given CLOSE_COMMENTS action', () => {
+        feedReducer(mockFeedInitialState, closeCommentsAction);
+        expect(applyCloseComments).toHaveBeenCalledWith(mockFeedInitialState, closeCommentsAction);
+    });
     it('should return initial state when default case', () => {
         expect(feedReducer(mockFeedInitialState, defaultAction)).toBe(mockFeedInitialState);
     });
@@ -130,5 +151,39 @@ describe('sendPostReducer', () => {
     });
     it('should return initial state when default case', () => {
         expect(NPCReducer(mockNPCInitialState, defaultAction)).toBe(mockNPCInitialState);
+    });
+});
+
+describe('NCCReducer', () => {
+    it('should have expected initialState and default action', () => {
+        expect(NCCReducer(undefined,undefined)).toEqual(mockNCCInitialState);
+    });
+    it('should applySetComment when given SET_COMMENT_CONTENT action', () => {
+        NCCReducer(mockNCCInitialState, doSetCommentContent())
+        expect(applySetComment).toHaveBeenCalledWith(mockNCCInitialState, doSetCommentContent())
+    });
+    it('should applySetCommentFailure when given SEnd_COMMENT_FAILURE action', () => {
+        NCCReducer(mockNCCInitialState, doSendCommentFailure(mockErrorMessage))
+        expect(applySendCommentFailure).toHaveBeenCalledWith(mockNCCInitialState, doSendCommentFailure(mockErrorMessage))
+    });
+    it('should applyClearCommentContent when given CLEAR_COMMENT_CONTENT action', () => {
+        NCCReducer(mockNCCInitialState, doClearCommentContent())
+        expect(applyClearComment).toHaveBeenCalledWith(mockNCCInitialState, doClearCommentContent())
+    });
+    it('should return initial state when default case', () => {
+        expect(NCCReducer(mockNCCInitialState, defaultAction)).toBe(mockNCCInitialState);
+    });
+});
+
+describe('toggleThemeReducer', () => {
+    it('should have expected initialState and default action', () => {
+        expect(toggleThemeReducer(undefined,undefined)).toEqual(mockThemeInitialState);
+    });
+    it('should applyToggleTheme when given TOGGLE_THEME action', () => {
+        toggleThemeReducer(mockThemeInitialState, doToggleTheme());
+        expect(applyToggleTheme).toHaveBeenCalledWith(mockThemeInitialState, doToggleTheme());
+    });
+    it('should return initial state when default case', () => {
+        expect(toggleThemeReducer(mockThemeInitialState, defaultAction)).toBe(mockThemeInitialState);
     });
 });
