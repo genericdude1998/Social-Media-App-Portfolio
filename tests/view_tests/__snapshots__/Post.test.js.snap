@@ -20,3 +20,51 @@ exports[`Post should match snapshot 1`] = `
   </p>
 </div>
 `;
+
+exports[`Post should match snapshot when dark 1`] = `
+<Fragment>
+  <div
+    className="basePost dark"
+  >
+    <UserLink
+      className="basePostLink dark"
+      name="mock_name"
+    />
+    <p
+      className="basePostContent dark"
+    >
+      mock_content
+    </p>
+    <p
+      className="basePostDate dark"
+    >
+      mock_date
+    </p>
+  </div>
+  <WithThemeHOC />
+</Fragment>
+`;
+
+exports[`Post should match snapshot when light 1`] = `
+<Fragment>
+  <div
+    className="basePost null"
+  >
+    <UserLink
+      className="basePostLink null"
+      name="mock_name"
+    />
+    <p
+      className="basePostContent null"
+    >
+      mock_content
+    </p>
+    <p
+      className="basePostDate null"
+    >
+      mock_date
+    </p>
+  </div>
+  <WithThemeHOC />
+</Fragment>
+`;

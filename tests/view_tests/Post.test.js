@@ -14,7 +14,18 @@ let wrapper = shallow(
 );
 
 describe('Post', () => {
-    it('should match snapshot', () => {
+    it('should match snapshot when light', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
+    it('should match snapshot when dark', () => {
+        let wrapper = shallow(
+            <Post
+                name={mockName}
+                content={mockContent}
+                date={mockDate}
+                theme={'dark'}
+            />
+        );
         expect(wrapper).toMatchSnapshot();
     });
 });
