@@ -4,7 +4,14 @@ export const mockNPCInitialState = {newPostError:null, content: null};
 export const mockNCCInitialState = {newCommentError: null, content: null};
 export const mockThemeInitialState = {theme: 'light'};
 export const mockLoginReducerInitialState = {username:'', password:'', token:null, error: null};
-export const mockStoreInitialState = {login: mockLoginReducerInitialState, feed: mockFeedInitialState, userInfo: {}, npc: mockNPCInitialState};
+export const mockStoreInitialState = {
+    login: mockLoginReducerInitialState, 
+    feed: mockFeedInitialState, 
+    userInfo: {}, 
+    npc: mockNPCInitialState, 
+    ncc: mockNCCInitialState,
+    theme: mockThemeInitialState,
+};
 export const mockUsername = 'username';
 export const mockPassword = 'password';
 export const correctUsername = 'Adam';
