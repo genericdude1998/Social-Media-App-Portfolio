@@ -6,9 +6,9 @@ const Comments = ({comments, postId}) => {
     return (
         <div>
             <ul>
-                {comments.map(comment => {
+                {comments.map((comment, index) => {
                     return(
-                        <li key={postId}>
+                        <li key={postId + index}>
                             <h5>
                                 {comment.name}
                             </h5>
