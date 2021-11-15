@@ -1,7 +1,7 @@
 import { applySetUsername, applySetPassword, applySendLoginRequest, applyLoginRequestSuccess, applyLoginRequestFailure } from '../../../src/model/appliers/loginReducerAppliers';
-import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure, doSendPostFailure, doSetPostContent, doOpenComments } from '../../../src/model/actionCreators/actionCreators';
+import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure, doSendPostFailure, doSetPostContent, doOpenComments, doSetCommentContent, doSendCommentFailure, doClearCommentContent } from '../../../src/model/actionCreators/actionCreators';
 import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNewPostInitialState, mockContent} from '../../mockValues';
-import { applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../../../src/model/appliers/userInfoReducerAppliers';
 import { applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
@@ -18,6 +18,14 @@ const mockGetUserFailureState = {...mockUserInfoInitialState, error: mockErrorMe
 
 const mockSetPostContentState = {...mockNewPostInitialState, content: mockContent}
 const mockSendPostsFailureState = {...mockNewPostInitialState, newPostError: mockErrorMessage};
+
+const mockInitialNewCommentState = {newCommentError: null, content: null}
+const mockSetCommentContentState = {...mockInitialNewCommentState, content: mockContent}
+const mockSendNewCommentFailureState = {...mockInitialNewCommentState, newCommentError: mockErrorMessage}
+const mockSendNewCommentClearedState = {...mockInitialNewCommentState, content: ''}
+
+
+
 
 const lightState = {theme: 'light'};
 const darkState = {theme: 'dark'};
@@ -123,5 +131,23 @@ describe('applyToggleTheme', () => {
     });
     it('should toggle state from dark to light', () => {
         expect(applyToggleTheme(darkState)).toEqual(lightState); 
+    });
+});
+
+describe('applySetComment', () => {
+    it('should return expected state', () => {
+        expect(applySetComment(mockInitialNewCommentState, doSetCommentContent(mockContent))).toEqual(mockSetCommentContentState);
+    });
+});
+
+describe('applySendCommentFailure', () => {
+    it('should return expected state', () => {
+        expect(applySendCommentFailure(mockInitialNewCommentState, doSendCommentFailure(mockErrorMessage))).toEqual(mockSendNewCommentFailureState);
+    });
+});
+
+describe('applyClearComment', () => {
+    it('should return expected state', () => {
+        expect(applyClearComment(mockInitialNewCommentState, doClearCommentContent())).toEqual(mockSendNewCommentClearedState);
     });
 });

@@ -137,7 +137,7 @@ export function doSendCommentRequest(){
 }
 
 export function doSendCommentFailure(error){
-    return {type: actionTypes.SEND_COMMENT_FAILURE, newCommentError:error}
+    return {type: actionTypes.SEND_COMMENT_FAILURE, error:error}
 }
 
 export function doSetCommentContent(content){
