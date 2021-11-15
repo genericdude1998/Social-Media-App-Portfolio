@@ -2,6 +2,7 @@ export const mockUserInfoInitialState = {}
 export const mockFeedInitialState = {posts: []};
 export const mockNPCInitialState = {newPostError:null, content: null};
 export const mockNCCInitialState = {newCommentError: null, content: null};
+export const mockTheme = 'mock_theme'
 export const mockThemeInitialState = {theme: 'light'};
 export const mockLoginReducerInitialState = {username:'', password:'', token:null, error: null};
 export const mockStoreInitialState = {
