@@ -1,21 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { mapCommentsDispatchToProps } from '../../mappers/mappers';
+import styles from './Comments.css';
+import withTheme from '../../theme/withTheme';
 
-const Comments = ({comments, postId}) => {
+const Comments = ({comments, postId, theme}) => {
     return (
         <div>
-            <ul>
+            <ul className={`${styles.baseCommentsList} ${theme === 'dark' ? styles.dark : null}`}>
                 {comments.map((comment, index) => {
                     return(
-                        <li key={postId + index}>
-                            <h5>
+                        <li className={`${styles.baseComment} ${theme === 'dark' ? styles.dark : null}`} key={postId + index}>
+                            <h5 className={`${styles.baseName} ${theme === 'dark' ? styles.dark : null}`}>
                                 {comment.name}
                             </h5>
-                            <p>
+                            <p className={`${theme === 'dark' ? styles.dark : null}`}>
                                 {comment.content}
                             </p>
-                            <p>
+                            <p className={`${styles.baseDate} ${theme === 'dark' ? styles.dark : null}`}>
                                 {comment.date}
                             </p>
                         </li>
@@ -26,4 +28,4 @@ const Comments = ({comments, postId}) => {
     );
 }
 
-export default Comments;
+export default withTheme(Comments);

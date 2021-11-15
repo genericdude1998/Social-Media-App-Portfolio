@@ -2,11 +2,12 @@ import React from 'react';
 import ToggleComments from './ToggleComments';
 import Comments from './Comments';
 import ConnectedNCC from './NewCommentCreator';
-import { useNavigate } from 'react-router';
+import styles from './CommentsSection.css'
+import withTheme from '../../theme/withTheme';
 
-const CommentSection = ({comments, postId, openComments, onOpenComments, onCloseComments}) => {
+const CommentSection = ({comments, postId, openComments, onOpenComments, onCloseComments, theme}) => {
     return (
-        <div>
+        <div className = {`${styles.baseCommentsSection} ${theme === 'dark' ? styles.dark : null}`}>
             <ConnectedNCC postId={postId}/>
             {comments.length !== 0 ?
                 <ToggleComments comments={comments} postId={postId} openComments={openComments} onOpenComments={onOpenComments} onCloseComments={onCloseComments}/>
@@ -22,4 +23,4 @@ const CommentSection = ({comments, postId, openComments, onOpenComments, onClose
     );
 }
 
-export default CommentSection;
+export default withTheme(CommentSection);

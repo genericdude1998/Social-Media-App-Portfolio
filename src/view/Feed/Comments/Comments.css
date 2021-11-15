@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+.baseCommentsList{
+    list-style: none;
+}
+
+.baseComment{
+    background-color: gainsboro;
+    margin-left: 10px;
+    max-width: 100vh;
+    word-wrap:break-word;
+}
+
+.baseName{
+    color: royalblue;
+    margin-right: 5px;
+}
+
+.baseDate{
+   text-align: right;
+   margin-right: 20px;
+}
+
+.dark{
+    background-color: darkred;
+    color: white;
+}
