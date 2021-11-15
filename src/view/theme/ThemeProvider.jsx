@@ -4,13 +4,13 @@ import { mapThemeDispatchToProps, mapThemeStateToProps } from '../mappers/mapper
 
 export const ThemeContext = createContext();
 
-const ThemeProvider = ({theme, onToggleTheme, children}) => {
-    return (
+const ThemeProvider = ({
+    theme, onToggleTheme, children}) => 
+    (
         <ThemeContext.Provider value={{onToggleTheme, theme}}>
             {children}
         </ThemeContext.Provider>
     );
-}
 
 const ConnectedThemeProvider = connect(mapThemeStateToProps,mapThemeDispatchToProps)(ThemeProvider);
 

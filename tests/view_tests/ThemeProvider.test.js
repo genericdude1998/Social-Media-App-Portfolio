@@ -1,6 +1,6 @@
 import React, { Children } from 'react';
 import { shallow } from 'enzyme';
-import ConnectedThemeProvider, { ThemeProvider } from '../../src/view/theme/ThemeProvider';
+import ConnectedThemeProvider from '../../src/view/theme/ThemeProvider';
 import { mockTheme } from '../mockValues';
 
 let wrapper;
