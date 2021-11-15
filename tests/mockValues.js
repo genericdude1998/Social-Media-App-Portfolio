@@ -39,6 +39,11 @@ export const mockPosts = [
     {id:'2' , name:mockName, content: mockContent, date:mockDate},
     {id:'3' , name:mockName, content: mockContent, date:mockDate},
 ];
+export const mockComments = [
+    {id:'1' , name:mockName, content: mockContent, date:mockDate},
+    {id:'2' , name:mockName, content: mockContent, date:mockDate},
+    {id:'3' , name:mockName, content: mockContent, date:mockDate},
+];
 
 export const mockUsers = [
     mockUser,
