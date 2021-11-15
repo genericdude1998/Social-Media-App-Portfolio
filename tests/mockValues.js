@@ -11,7 +11,7 @@ export const mockToken = 'mock_token';
 export const mockOnChangePassword = jest.fn(); 
 export const mockOnChangeUsername = jest.fn(); 
 export const mockOnSubmitLogin = jest.fn();
-export const mockEvent = {target:{value:'mock_value'}, preventDefault: () => {}};
+export const mockEvent = {target:{value:'mock_value'}, preventDefault: jest.fn()};
 export const mockErrorMessage = 'Mock Error Message!';
 export const mockError = {errorMessage: mockErrorMessage};
 export const mockPath = '/';

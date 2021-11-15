@@ -5,6 +5,7 @@ import { applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGe
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../../../src/model/appliers/userInfoReducerAppliers';
 import { applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
+import { applyToggleTheme } from '../../../src/model/appliers/toggleThemeReducerAppliers';
 
 const mockLoginSuccessState = {...mockLoginReducerInitialState, token: mockToken};
 const mockLoginFailureState = {...mockLoginReducerInitialState, error: mockErrorMessage};
@@ -17,6 +18,10 @@ const mockGetUserFailureState = {...mockUserInfoInitialState, error: mockErrorMe
 
 const mockSetPostContentState = {...mockNewPostInitialState, content: mockContent}
 const mockSendPostsFailureState = {...mockNewPostInitialState, newPostError: mockErrorMessage};
+
+const lightState = {theme: 'light'};
+const darkState = {theme: 'dark'};
+
 
 
 describe('applySetUsername', () => {
@@ -104,11 +109,19 @@ describe('applyOpenComments', () => {
         expect(applyOpenComments(mockPostsState, mockOpenCommentsAction)).toEqual(expectedResult);
     });
 });
-describe('applyCloeComments', () => {
+describe('applyCloseComments', () => {
     const mockPostsState = {posts: [{id:0, name:''}, {id:1, name:''}]};
     const mockOpenCommentsAction = {type: actionTypes.OPEN_COMMENTS, postId:0}
     const expectedResult = {posts: [{id:0, name:'', openComments: false}, {id:1, name:''}]}
     it('should return as expected', () => {
         expect(applyCloseComments(mockPostsState, mockOpenCommentsAction)).toEqual(expectedResult);
+    });
+});
+describe('applyToggleTheme', () => {
+    it('should toggle state from light to dark', () => {
+        expect(applyToggleTheme(lightState)).toEqual(darkState); 
+    });
+    it('should toggle state from dark to light', () => {
+        expect(applyToggleTheme(darkState)).toEqual(lightState); 
     });
 });

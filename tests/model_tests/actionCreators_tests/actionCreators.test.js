@@ -17,6 +17,14 @@ import {
     doSendPostSuccess,
     doSendPostFailure,
     doSendPostThunk,
+    doToggleTheme,
+    doOpenComments,
+    doCloseComments,
+    doSendCommentRequest,
+    doSendCommentFailure,
+    doSetCommentContent,
+    doClearCommentContent,
+    doSendCommentThunk,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent} from '../../mockValues';
@@ -219,5 +227,91 @@ describe('doSendPostThunk', () => {
             });
             expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doSendPostFailure(mockErrorMessage))});
+    });
+});
+
+describe('doToggleTheme', () => {
+    it('should return expected action', () => {
+        const expectedAction = { type: actionTypes.TOGGLE_THEME};
+        expect(doToggleTheme()).toEqual(expectedAction);
+    });
+});
+
+describe('doOpenComments', () => {
+    it('should return expected action', () => {
+        const expectedAction = {type: actionTypes.OPEN_COMMENTS, postId:mockId};
+        expect(doOpenComments(mockId)).toEqual(expectedAction);
+    });
+});
+
+describe('doCloseComments', () => {
+    it('should return expected action', () => {
+        const expectedAction = {type: actionTypes.CLOSE_COMMENTS, postId:mockId};
+        expect(doCloseComments(mockId)).toEqual(expectedAction);
+    });
+});
+
+describe('doSendCommentRequest', () => {
+    it('should return expected action', () => {
+        const expectedAction = {type: actionTypes.SEND_COMMENT_REQUEST};
+        expect(doSendCommentRequest()).toEqual(expectedAction);
+    });
+});
+
+describe('doSendCommentFailure', () => {
+    it('should return expected action', () => {
+        const expectedAction = {type: actionTypes.SEND_COMMENT_FAILURE, newCommentError:mockErrorMessage}
+        expect(doSendCommentFailure(mockErrorMessage)).toEqual(expectedAction);
+    });
+});
+
+describe('doSetCommentContent', () => {
+    it('should return expected action', () => {
+        const expectedAction = {type: actionTypes.SET_COMMENT_CONTENT, content:mockContent}
+        expect(doSetCommentContent(mockContent)).toEqual(expectedAction);
+    });
+});
+
+describe('doClearCommentContent', () => {
+    it('should return expected action', () => {
+        const expectedAction = {type: actionTypes.CLEAR_COMMENT_CONTENT}
+        expect(doClearCommentContent()).toEqual(expectedAction);
+    });
+});
+
+describe('doSendCommentThunk', () => {
+    it('should return a thunk function', () => {
+        const thunk = doSendCommentThunk(mockContent, mockEvent, mockNavigate, mockId);
+        expect(typeof(thunk)).toBe('function');
+    });
+    it('should call event.preventDefault', () => {
+        doSendCommentThunk(mockContent, mockEvent, mockNavigate, mockId);
+        expect(mockEvent.preventDefault).toHaveBeenCalled();
+    });
+    it('should call dispatch with SEND_COMMENT_REQUEST and doClearComment and navigate(0) when succeeding', () => {
+        axios.post.mockImplementation(() => Promise.resolve({data: {mockContent, mockId}}));
+
+        const thunk = doSendCommentThunk(mockContent, mockEvent, mockNavigate, mockId);
+        return thunk(mockDispatch).then(() => {
+            expect(mockDispatch).toHaveBeenCalledWith(doSendCommentRequest());
+            expect(axios.post).toHaveBeenCalledWith('/newComment',{
+                content: mockContent,
+                postId: mockId,
+            });
+            expect(mockDispatch).toHaveBeenCalledWith(doClearCommentContent())
+            expect(mockNavigate).toHaveBeenCalledWith(0);
+        });
+    });
+    it('should call dispatch with SEND_POST_REQUEST and SEND_POSTS_FAILURE when failing', () => {
+        axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
+
+        const thunk = doSendCommentThunk(mockContent, mockEvent, mockNavigate, mockId);
+        return thunk(mockDispatch).then(() => {
+            expect(mockDispatch).toHaveBeenCalledWith(doSendCommentRequest());
+            expect(axios.post).toHaveBeenCalledWith('/newComment',{
+                content: mockContent,
+                postId: mockId,
+            });
+            expect(mockDispatch).toHaveBeenLastCalledWith(doSendCommentFailure(mockErrorMessage))});
     });
 });

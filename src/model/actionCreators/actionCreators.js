@@ -154,7 +154,7 @@ export function doSendCommentThunk(content, event, navigate, postId){
         return axios.post('/newComment',{
             content:content,
             postId: postId,
-        }).then((res) => {
+        }).then(() => {
             dispatch(doClearCommentContent());
             navigate(0);
         }).catch(error => {

@@ -30,6 +30,6 @@ export function applySendCommentFailure(state,action){
     return {...state, newCommentError: action.error}
 }
 
-export function applyClearComment(state,action){
+export function applyClearComment(state){
     return{...state, content: ''}
 }
