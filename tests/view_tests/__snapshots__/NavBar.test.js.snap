@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should match Snapshot when theme is dark 1`] = `
+<div
+  className="baseNavBar dark"
+>
+  <div
+    className="baseNavBarContent dark"
+  >
+    <Link
+      className="baseNavBarLink dark"
+      to="/feed"
+    >
+      Feed
+    </Link>
+    <Link
+      className="baseNavBarLink dark"
+      to="/createPost"
+    >
+      Create New Post
+    </Link>
+    <UserLink
+      className="baseNavBarLink dark"
+      id={1}
+      name="Me"
+    />
+    <button
+      onClick={[MockFunction]}
+    >
+      Toggle Dark/Light Theme
+    </button>
+  </div>
+</div>
+`;
+
+exports[`NavBar should match Snapshot when theme is light 1`] = `
+<div
+  className="baseNavBar null"
+>
+  <div
+    className="baseNavBarContent null"
+  >
+    <Link
+      className="baseNavBarLink null"
+      to="/feed"
+    >
+      Feed
+    </Link>
+    <Link
+      className="baseNavBarLink null"
+      to="/createPost"
+    >
+      Create New Post
+    </Link>
+    <UserLink
+      className="baseNavBarLink null"
+      id={1}
+      name="Me"
+    />
+    <button
+      onClick={[MockFunction]}
+    >
+      Toggle Dark/Light Theme
+    </button>
+  </div>
+</div>
+`;

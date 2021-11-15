@@ -36,4 +36,22 @@ describe('Feed', () => {
         />);
         expect(wrapper).toMatchSnapshot();
     });
+    it('should match snapshot if theme is light', () => {
+        let wrapper = shallow(
+            <Feed
+                posts = {mockPosts}
+                onFetchPosts = {mockOnFetchPosts}
+                theme = {'light'}
+            />);
+        expect(wrapper).toMatchSnapshot();
+    });
+    it('should match snapshot if theme is dark', () => {
+        let wrapper = shallow(
+            <Feed
+                posts = {mockPosts}
+                onFetchPosts = {mockOnFetchPosts}
+                theme = {'dark'}
+            />);
+        expect(wrapper).toMatchSnapshot();
+    });
 });

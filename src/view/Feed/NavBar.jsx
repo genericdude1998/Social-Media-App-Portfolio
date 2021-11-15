@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import UserLink from './UserLink';
 import styles from './NavBar.css';
 import { ThemeContext } from '../ThemeProvider';
-import withTheme from '../theme/withTheme';
 
 const NavBar = () => {
-    const {theme, onToggleTheme} = useContext(ThemeContext)
+    const {theme, onToggleTheme} = React.useContext(ThemeContext)
     return (
         <div className={`${styles.baseNavBar} ${theme === 'dark' ? styles.dark : null}`}>
             <div className={`${styles.baseNavBarContent} ${theme === 'dark' ? styles.dark : null}`}>

@@ -50,3 +50,81 @@ exports[`Feed should match snapshot if list is undefined 1`] = `
   </ul>
 </div>
 `;
+
+exports[`Feed should match snapshot if theme is dark 1`] = `
+<div
+  className="baseFeed dark"
+>
+  <ul>
+    <li
+      key="1"
+    >
+      <Connect(Post)
+        content="mock_content"
+        date="mock_date"
+        id="1"
+        name="mock_name"
+      />
+    </li>
+    <li
+      key="2"
+    >
+      <Connect(Post)
+        content="mock_content"
+        date="mock_date"
+        id="2"
+        name="mock_name"
+      />
+    </li>
+    <li
+      key="3"
+    >
+      <Connect(Post)
+        content="mock_content"
+        date="mock_date"
+        id="3"
+        name="mock_name"
+      />
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Feed should match snapshot if theme is light 1`] = `
+<div
+  className="baseFeed null"
+>
+  <ul>
+    <li
+      key="1"
+    >
+      <Connect(Post)
+        content="mock_content"
+        date="mock_date"
+        id="1"
+        name="mock_name"
+      />
+    </li>
+    <li
+      key="2"
+    >
+      <Connect(Post)
+        content="mock_content"
+        date="mock_date"
+        id="2"
+        name="mock_name"
+      />
+    </li>
+    <li
+      key="3"
+    >
+      <Connect(Post)
+        content="mock_content"
+        date="mock_date"
+        id="3"
+        name="mock_name"
+      />
+    </li>
+  </ul>
+</div>
+`;
