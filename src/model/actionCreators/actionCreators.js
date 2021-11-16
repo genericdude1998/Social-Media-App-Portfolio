@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { refreshPosts } from '../../helpers/feedHelpers';
 import { actionTypes } from '../actionTypes/actionTypes';
 
 export function doSetUsername(username){
@@ -110,7 +109,7 @@ export function doSendPostThunk(content,event, navigate){
         dispatch(doSendPostRequest());
         return axios.post('/newPost',{
             content:content,
-        }).then((res) => {
+        }).then(() => {
             //refreshPosts(dispatch, doGetPostsThunk);
             navigate('/feed');
         }).catch(error => {

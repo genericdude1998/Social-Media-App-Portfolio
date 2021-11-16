@@ -1,6 +1,6 @@
-import React from "react";
-import { shallow } from "enzyme";
-import NewCommentCreator from "../../src/view/Feed/Comments/NewCommentCreator";
+import React from 'react';
+import { shallow } from 'enzyme';
+import NewCommentCreator from '../../src/view/Feed/Comments/NewCommentCreator';
 import {mockContent, mockId} from '../mockValues';
 
 jest.mock('react-router', () => {
@@ -8,11 +8,11 @@ jest.mock('react-router', () => {
   
     //Mock the default export and named export 'foo'
     return {
-      __esModule: true,
-      ...originalModule,
-      useNavigate: () => jest.fn(),
+        __esModule: true,
+        ...originalModule,
+        useNavigate: () => jest.fn(),
     };
-  });
+});
 
 let wrapper = shallow(
     <NewCommentCreator.WrappedComponent.WrappedComponent 

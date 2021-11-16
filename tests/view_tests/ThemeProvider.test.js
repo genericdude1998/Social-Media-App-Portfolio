@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { shallow } from 'enzyme';
 import ConnectedThemeProvider from '../../src/view/theme/ThemeProvider';
 import { mockTheme } from '../mockValues';

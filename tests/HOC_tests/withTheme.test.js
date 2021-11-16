@@ -10,7 +10,7 @@ beforeEach(() => {
     wrapper = shallow(<HOCComponent />);
 })
 
-const MockWrappedComponent = ({theme}) => {return null};
+const MockWrappedComponent = () => {return null};
 
 jest.spyOn(React, 'useContext').mockImplementation(() => {return {theme:'mock_theme'}});
 

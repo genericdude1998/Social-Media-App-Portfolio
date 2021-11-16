@@ -1,11 +1,11 @@
-import React from "react";
-import { shallow } from "enzyme";
-import ConnectedCommentSection from "../../src/view/Feed/Comments/CommentSection";
+import React from 'react';
+import { shallow } from 'enzyme';
+import ConnectedCommentSection from '../../src/view/Feed/Comments/CommentSection';
 import {mockComments, mockId } from '../mockValues'
 
 let wrapper;
 
-jest.spyOn(React, 'useContext').mockImplementation((context) => {return{
+jest.spyOn(React, 'useContext').mockImplementation(() => {return{
     theme: 'light',
 }})
 

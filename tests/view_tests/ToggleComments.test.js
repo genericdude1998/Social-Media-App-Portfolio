@@ -1,7 +1,7 @@
-import React from "react";
-import { shallow } from "enzyme";
-import ToggleComments from "../../src/view/Feed/Comments/ToggleComments";
-import {mockContent, mockId} from '../mockValues';
+import React from 'react';
+import { shallow } from 'enzyme';
+import ToggleComments from '../../src/view/Feed/Comments/ToggleComments';
+import { mockId } from '../mockValues';
 
 const mockOnCloseComments = jest.fn();
 const mockOnOpenComments = jest.fn();

@@ -1,4 +1,4 @@
-export function applyGetPostsRequest(state,action){
+export function applyGetPostsRequest(state){
     return state;
 }
 

@@ -1,6 +1,6 @@
-import React from "react";
-import { shallow } from "enzyme";
-import Comments from "../../src/view/Feed/Comments/Comments";
+import React from 'react';
+import { shallow } from 'enzyme';
+import Comments from '../../src/view/Feed/Comments/Comments';
 import {mockComments, mockId} from '../mockValues';
 
 let wrapper;

@@ -10,8 +10,8 @@
     "predeploy": "npm run build",
     "test": "npx jest --watchAll",
     "deploy": "gh-pages -d dist",
-    "lint": "eslint . && eslint --ext .jsx .",
-    "format": "eslint --fix . && eslint --fix ./src/**.js && eslint --fix ./src/**.jsx"
+    "lint": "eslint . --ext .js --ext .jsx",
+    "format": "eslint --fix . --ext .js && eslint --fix --ext .jsx"
   },
   "author": "genericdude1998",
   "license": "ISC",
