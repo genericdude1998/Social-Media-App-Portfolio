@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import {mapUserDispatchToProps, mapUserStateToProps} from '../mappers/mappers';
 import withTheme from '../theme/withTheme';
 import styles from './User.css';
+import PropTypes from 'prop-types';
+
 
 export const User = ({onFetchUser, user, theme}) => {
     const {id} = useParams();
@@ -25,6 +27,19 @@ export const User = ({onFetchUser, user, theme}) => {
             }
         </div>
     );
+}
+
+User.propTypes = {
+    onFetchUser:PropTypes.func,
+    user:PropTypes.shape({
+        id:PropTypes.number,
+        name:PropTypes.string,
+        city:PropTypes.string,
+        joined:PropTypes.string,
+        desc:PropTypes.string,
+
+    }),
+    theme:PropTypes.string,
 }
 
 const ConnectedUser = connect(mapUserStateToProps, mapUserDispatchToProps)(User);

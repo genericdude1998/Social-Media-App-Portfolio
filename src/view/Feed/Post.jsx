@@ -28,9 +28,15 @@ export const Post = ({id, name, content, date, theme, comments, openComments, on
 }
 
 Post.propTypes = {
+    id:PropTypes.number,
     name: PropTypes.string,
     content: PropTypes.string,
     date: PropTypes.string,
+    theme:PropTypes.string,
+    comments:PropTypes.array,
+    openComments:PropTypes.bool,
+    onCloseComments:PropTypes.func,
+    onOpenComments:PropTypes.func, 
 }
 
 const ConnectedPost = connect(undefined, mapCommentsDispatchToProps)(Post)

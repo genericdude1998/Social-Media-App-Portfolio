@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Comments.css';
 import withTheme from '../../theme/withTheme';
+import PropTypes from 'prop-types';
 
 const Comments = ({comments, postId, theme}) => {
     return (
@@ -24,6 +25,12 @@ const Comments = ({comments, postId, theme}) => {
             </ul>
         </div>
     );
+}
+
+Comments.propTypes={
+    comments: PropTypes.array,
+    postId:PropTypes.number,
+    theme: PropTypes.string,
 }
 
 export default withTheme(Comments);

@@ -4,8 +4,9 @@ import { mapNPCDispatchToProps, mapNPCStateToProps } from '../../mappers/mappers
 import {useNavigate} from 'react-router-dom';
 import styles from './NPC.css'
 import withTheme from '../../theme/withTheme';
+import PropTypes from 'prop-types';
 
-const NewPostCreator = ({onSendNewPost, onSetPostContent, newPostError, content, theme}) => {
+const NewPostCreator = ({onSendNewPost, onSetPostContent, content, theme}) => {
     const navigate = useNavigate();
     return (
         <div className={`${styles.baseNPC} ${theme === 'dark' ? styles.dark : null}`}>
@@ -17,6 +18,15 @@ const NewPostCreator = ({onSendNewPost, onSetPostContent, newPostError, content,
         </div>
     );
 }
+
+NewPostCreator.propTypes = {
+    onSendNewPost:PropTypes.func,
+    onSetPostContent:PropTypes.func,
+    newPostError:PropTypes.string,
+    content:PropTypes.string,
+    theme:PropTypes.string,
+}
+
 
 const ConnectedNPC = connect(mapNPCStateToProps, mapNPCDispatchToProps)(NewPostCreator);
 

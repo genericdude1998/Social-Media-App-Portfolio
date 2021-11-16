@@ -13,8 +13,6 @@ wrapper = shallow(
     />
 );
 
-console.log(wrapper.debug());
-
 describe('ThemeProvider', () => {
     it('should pass down theme variable to ThemeContextProvider and onToggleTheme', () => {
         expect(wrapper.prop('value').theme).toBe(mockTheme);

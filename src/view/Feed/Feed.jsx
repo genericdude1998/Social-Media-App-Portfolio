@@ -32,6 +32,7 @@ export const Feed = ({posts, onFetchPosts, theme}) => {
 Feed.propTypes = {
     posts: PropTypes.array,
     onFetchPosts: PropTypes.func,
+    theme: PropTypes.string,
 }
 
 

@@ -4,6 +4,7 @@ import Comments from './Comments';
 import ConnectedNCC from './NewCommentCreator';
 import styles from './CommentsSection.css'
 import withTheme from '../../theme/withTheme';
+import PropTypes from 'prop-types';
 
 const CommentSection = ({comments, postId, openComments, onOpenComments, onCloseComments, theme}) => {
     return (
@@ -21,6 +22,15 @@ const CommentSection = ({comments, postId, openComments, onOpenComments, onClose
             }
         </div>
     );
+}
+
+CommentSection.propTypes = {
+    comments: PropTypes.array,
+    postId:PropTypes.number,
+    openComments:PropTypes.bool,
+    onOpenComments:PropTypes.func,
+    onCloseComments:PropTypes.func,
+    theme:PropTypes.string,
 }
 
 export default withTheme(CommentSection);
