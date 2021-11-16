@@ -10,7 +10,7 @@ const NewCommentCreator = ({onSendNewComment, onSetCommentContent, content, post
     const navigate = useNavigate();
     return (
         <div className = {`${styles.baseNCC} ${theme === 'dark' ? styles.dark : null}`}>
-            <form className = {styles.baseNCCForm}onSubmit={onSendNewComment(content,navigate, postId)}>
+            <form className = {styles.baseNCCForm}onSubmit={onSendNewComment(content,navigate,postId)}>
                 <label className={`${styles.baseNCCLabel} ${theme === 'dark' ? styles.dark : null}`}>Comment</label>
                 <input className={styles.baseNCCInput}type="text" onChange={onSetCommentContent}/>
                 <button className={styles.baseNCCButton} type={'submit'}>Send Comment</button>

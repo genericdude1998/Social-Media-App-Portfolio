@@ -147,6 +147,7 @@ export function doClearCommentContent(){
     return {type: actionTypes.CLEAR_COMMENT_CONTENT}
 }
 export function doSendCommentThunk(content, event, navigate, postId){
+    console.log(event);
     event.preventDefault();
     return function(dispatch){
         dispatch(doSendCommentRequest());
@@ -156,6 +157,7 @@ export function doSendCommentThunk(content, event, navigate, postId){
         }).then(() => {
             dispatch(doClearCommentContent());
             dispatch(doGetPostsThunk());
+            event.target[0].value = '';
         }).catch(error => {
             const errorMessage = error.response.data;
             dispatch(doSendCommentFailure(errorMessage));
