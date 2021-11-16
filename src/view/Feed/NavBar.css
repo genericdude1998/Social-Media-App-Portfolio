@@ -1,12 +1,14 @@
 *{
     box-sizing: border-box;
-    padding: 0px; 
+    padding: 0px;
 }
 
 .baseNavBar{
     background-color: darkblue;
-    height: 5vh;
+    height: 10vh;
     width: 100vw;
+    min-width: 470px;
+    line-height: 30px;
 }
 
 .baseNavBarContent{

@@ -9,6 +9,7 @@
     background-color: royalblue;
     height: 30vh;
     width: 100vw;
+    min-width: 470px; 
 }
 
 .basePostContent{
