@@ -18,6 +18,7 @@ const mockOnFetchUser = jest.fn();
 let wrapper = shallow(<User
     user={mockUser}
     onFetchUser={mockOnFetchUser}
+    theme={'light'}
 />);
 
 describe('User', () => {
@@ -32,6 +33,10 @@ describe('User', () => {
             user={undefined}
             onFetchUser={mockOnFetchUser}
         />);
+        expect(wrapper).toMatchSnapshot();
+    });
+    it('should match snapshot if theme dark', () => {
+        wrapper.setProps({theme: 'dark'});
         expect(wrapper).toMatchSnapshot();
     });
 });
