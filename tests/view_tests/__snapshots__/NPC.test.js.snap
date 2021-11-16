@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NCC should matchSnapshot when dark theme 1`] = `
+<div
+  className="baseNPC dark"
+>
+  <form
+    className="baseNPCForm dark"
+  >
+    <label
+      className="baseNPCLabel dark"
+    >
+      Content:
+    </label>
+    <input
+      className="baseNPCInput dark"
+      onChange={[MockFunction]}
+      type="text"
+    />
+    <button
+      className="baseNPCButton dark"
+      type="submit"
+    >
+      Create Post!
+    </button>
+  </form>
+</div>
+`;
+
+exports[`NCC should matchSnapshot when light theme 1`] = `
+<div
+  className="baseNPC null"
+>
+  <form
+    className="baseNPCForm null"
+  >
+    <label
+      className="baseNPCLabel null"
+    >
+      Content:
+    </label>
+    <input
+      className="baseNPCInput null"
+      onChange={[MockFunction]}
+      type="text"
+    />
+    <button
+      className="baseNPCButton null"
+      type="submit"
+    >
+      Create Post!
+    </button>
+  </form>
+</div>
+`;

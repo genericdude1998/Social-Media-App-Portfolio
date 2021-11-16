@@ -260,7 +260,7 @@ describe('doSendCommentRequest', () => {
 
 describe('doSendCommentFailure', () => {
     it('should return expected action', () => {
-        const expectedAction = {type: actionTypes.SEND_COMMENT_FAILURE, newCommentError:mockErrorMessage}
+        const expectedAction = {type: actionTypes.SEND_COMMENT_FAILURE, error:mockErrorMessage}
         expect(doSendCommentFailure(mockErrorMessage)).toEqual(expectedAction);
     });
 });

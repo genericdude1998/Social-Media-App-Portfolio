@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ThemeContext } from '../../src/view/ThemeProvider';
+import { ThemeContext } from '../../src/view/theme/ThemeProvider';
 import NavBar from '../../src/view/Feed/NavBar';
 import { mockTheme } from '../mockValues';
 

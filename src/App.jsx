@@ -5,7 +5,7 @@ import ConnectedFeedWithTheme from './view/Feed/Feed';
 import ConnectedUser from './view/UsersInfo/User';
 import NavBar from './view/Feed/NavBar';
 import ConnectedNPC from './view/Feed/NewPost/NewPostCreator';
-import ConnectedThemeProvider from './view/ThemeProvider';
+import ConnectedThemeProvider from './view/theme/ThemeProvider';
 
 const App = () => {
     return (
