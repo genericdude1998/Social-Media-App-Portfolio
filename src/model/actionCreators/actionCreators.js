@@ -50,7 +50,7 @@ export function doGetPostsFailure(error){
 }
 
 export function doGetPostsThunk(){
-    return function(dispatch){
+    return function GetPostsThunk(dispatch){
         dispatch(doGetPostsRequest());
         return axios.get('/posts').then((res) => {
             const posts = res.data;
@@ -146,8 +146,7 @@ export function doSetCommentContent(content){
 export function doClearCommentContent(){
     return {type: actionTypes.CLEAR_COMMENT_CONTENT}
 }
-export function doSendCommentThunk(content, event, navigate, postId){
-    console.log(event);
+export function doSendCommentThunk(content, event, postId){
     event.preventDefault();
     return function(dispatch){
         dispatch(doSendCommentRequest());

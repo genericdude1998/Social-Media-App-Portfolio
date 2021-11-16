@@ -27,7 +27,7 @@ import {
     doSendCommentThunk,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
-import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent} from '../../mockValues';
+import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
 import axios from 'axios';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
@@ -290,21 +290,23 @@ describe('doSendCommentThunk', () => {
     it('should call dispatch with SEND_COMMENT_REQUEST and doClearComment and navigate(0) when succeeding', () => {
         axios.post.mockImplementation(() => Promise.resolve({data: {mockContent, mockId}}));
 
-        const thunk = doSendCommentThunk(mockContent, mockEvent, mockNavigate, mockId);
+        const thunk = doSendCommentThunk(mockContent, mockEventOnSubmitNewComment, mockId);
         return thunk(mockDispatch).then(() => {
             expect(mockDispatch).toHaveBeenCalledWith(doSendCommentRequest());
             expect(axios.post).toHaveBeenCalledWith('/newComment',{
                 content: mockContent,
                 postId: mockId,
             });
-            expect(mockDispatch).toHaveBeenCalledWith(doClearCommentContent())
-            expect(mockNavigate).toHaveBeenCalledWith(0);
+            expect(mockDispatch).toHaveBeenNthCalledWith(2, doClearCommentContent());
+            expect(mockDispatch).toHaveBeenLastCalledWith(expect.any(Function)); // you can solve this in another way as well
+            expect(mockEventOnSubmitNewComment.preventDefault).toHaveBeenCalled();
+            expect(mockEventOnSubmitNewComment.target[0].value).toBe('');
         });
     });
     it('should call dispatch with SEND_POST_REQUEST and SEND_POSTS_FAILURE when failing', () => {
         axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
-        const thunk = doSendCommentThunk(mockContent, mockEvent, mockNavigate, mockId);
+        const thunk = doSendCommentThunk(mockContent, mockEventOnSubmitNewComment, mockId);
         return thunk(mockDispatch).then(() => {
             expect(mockDispatch).toHaveBeenCalledWith(doSendCommentRequest());
             expect(axios.post).toHaveBeenCalledWith('/newComment',{
