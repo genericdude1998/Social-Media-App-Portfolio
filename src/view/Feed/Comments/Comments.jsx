@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { mapCommentsDispatchToProps } from '../../mappers/mappers';
 import styles from './Comments.css';
 import withTheme from '../../theme/withTheme';
 
