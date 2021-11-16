@@ -59,7 +59,7 @@ export function mapCommentsDispatchToProps(dispatch){
 export function mapNCCDispatchToProps(dispatch){
     return {
         onSetCommentContent: (e) => dispatch(doSetCommentContent(e.target.value)),
-        onSendNewComment: (content, navigate, postId) => (event) => dispatch(doSendCommentThunk(content, event, navigate, postId)),
+        onSendNewComment: (content, postId) => (event) => dispatch(doSendCommentThunk(content, event, postId)),
     };
 }
 export function mapNCCStateToProps(state){
