@@ -12,7 +12,7 @@ const NavBar = () => {
                 <Link to='/feed' className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}>Feed</Link>
                 <Link to='/createPost' className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}>Create New Post</Link>
                 <UserLink id={1} name={'Me'} className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}></UserLink>
-                <button onClick={onToggleTheme}>Toggle Dark/Light Theme</button>
+                <button className={styles.baseToggleThemeButton} onClick={onToggleTheme}>Toggle Dark/Light Theme</button>
             </div>
         </div>
     );

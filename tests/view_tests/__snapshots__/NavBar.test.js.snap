@@ -25,6 +25,7 @@ exports[`NavBar should match Snapshot when theme is dark 1`] = `
       name="Me"
     />
     <button
+      className="baseToggleThemeButton"
       onClick={[MockFunction]}
     >
       Toggle Dark/Light Theme
@@ -58,6 +59,7 @@ exports[`NavBar should match Snapshot when theme is light 1`] = `
       name="Me"
     />
     <button
+      className="baseToggleThemeButton"
       onClick={[MockFunction]}
     >
       Toggle Dark/Light Theme
