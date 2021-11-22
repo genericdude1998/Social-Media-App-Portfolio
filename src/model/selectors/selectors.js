@@ -17,3 +17,7 @@ export function NCCStateSelector(state) {
 export function themeStateSelector(state) {
     return state.theme;
 }
+
+export function TokenStateSelector(state){
+    return {token: state.login.token};
+}

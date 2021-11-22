@@ -1,5 +1,5 @@
 import { doCloseComments, doGetPostsThunk, doGetUserThunk, doOpenComments, doSendCommentThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetCommentContent, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../model/actionCreators/actionCreators';
-import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector, themeStateSelector, NCCStateSelector } from '../../model/selectors/selectors';
+import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector, themeStateSelector, NCCStateSelector, TokenStateSelector } from '../../model/selectors/selectors';
 
 export function mapLoginDispatchToProps(dispatch){
     return {
@@ -64,4 +64,8 @@ export function mapNCCDispatchToProps(dispatch){
 }
 export function mapNCCStateToProps(state){
     return NCCStateSelector(state);
+}
+
+export function mapTokenStateToProps(state){
+    return TokenStateSelector(state); 
 }
