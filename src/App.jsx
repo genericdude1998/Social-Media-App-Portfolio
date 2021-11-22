@@ -8,6 +8,7 @@ import ConnectedNPC from './view/Feed/NewPost/NewPostCreator';
 import ConnectedThemeProvider from './view/theme/ThemeProvider';
 import AuthRoute from './helpers/AuthRoute';
 import ConnectedTokenProvider from './helpers/TokenContextProvider';
+import NotAuthorised from './view/NotAuthorised';
 
 const App = () => {
     return (
@@ -47,7 +48,7 @@ const App = () => {
                                     }
                                 />
                             }/>
-                            <Route  path='/notAuthorised' element={<h1> Not Authorised!!! </h1>}/>
+                            <Route  path='/notAuthorised' element={<NotAuthorised/>}/>
                         </Routes>
                     </BrowserRouter>
                 </ConnectedThemeProvider>
