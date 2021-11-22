@@ -48,7 +48,7 @@ const devServer = (devServer) => {
             res.json(posts.module);
         }
         else{
-            res.send(401, 'not Authorised!')
+            res.status(401, 'not Authorised!')
         }
     })
 

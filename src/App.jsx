@@ -6,6 +6,7 @@ import ConnectedUser from './view/UsersInfo/User';
 import NavBar from './view/Feed/NavBar';
 import ConnectedNPC from './view/Feed/NewPost/NewPostCreator';
 import ConnectedThemeProvider from './view/theme/ThemeProvider';
+import AuthRoute from './helpers/AuthRoute';
 
 const App = () => {
     return (
@@ -14,13 +15,14 @@ const App = () => {
                 <BrowserRouter>
                     <Routes>
                         <Route path='/' element={<ConnectedLogin />}/>
-                        <Route path='/feed' element=
-                            {
+                        <Route path='/feed' element={
+                            <AuthRoute  token={'hello'} element={
                                 <>
                                     <NavBar/>
                                     <ConnectedFeedWithTheme/>
-                                </>
-                            }  
+                                </> }
+                            />
+                        }
                         />
                         <Route path='/userInfo/:id' element=
                             {
@@ -35,6 +37,7 @@ const App = () => {
                                 <ConnectedNPC/>
                             </>
                         }/>
+                        <Route  path='/notAuthorised' element={<h1> Not Authorised!!! </h1>}/>
                     </Routes>
                 </BrowserRouter>
             </ConnectedThemeProvider>
