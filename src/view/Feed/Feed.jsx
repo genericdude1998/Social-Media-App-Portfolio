@@ -13,7 +13,7 @@ export const Feed = ({posts, onFetchPosts, theme}) => {
     return (
         <div className={`${styles.baseFeed} ${theme === 'dark' ? styles.dark : null}`}>
             <ul>
-                {posts ? posts.map(post => {
+                {posts ? posts.reverse().map(post => {
                     return (<li key={post.id}>
                         <Post 
                             id={post.id}
