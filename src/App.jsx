@@ -18,7 +18,7 @@ const App = () => {
                         <Routes>
                             <Route path='/' element={<ConnectedLogin />}/>
                             <Route path='/feed' element={
-                                <AuthRoute  token={'hello'} element={
+                                <AuthRoute element={
                                     <>
                                         <NavBar/>
                                         <ConnectedFeedWithTheme/>
@@ -28,16 +28,24 @@ const App = () => {
                             />
                             <Route path='/userInfo/:id' element=
                                 {
-                                    <>
-                                        <NavBar/>
-                                        <ConnectedUser/>
-                                    </>
+                                    <AuthRoute
+                                        element={
+                                            <>
+                                                <NavBar/>
+                                                <ConnectedUser/>
+                                            </>
+                                        }
+                                    />
                                 }/>
                             <Route path='/createPost' element={
-                                <>
-                                    <NavBar/>
-                                    <ConnectedNPC/>
-                                </>
+                                <AuthRoute
+                                    element={
+                                        <>
+                                            <NavBar/>
+                                            <ConnectedNPC/>
+                                        </>
+                                    }
+                                />
                             }/>
                             <Route  path='/notAuthorised' element={<h1> Not Authorised!!! </h1>}/>
                         </Routes>
