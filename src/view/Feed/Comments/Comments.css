@@ -9,7 +9,7 @@
 
 .baseComment{
     background-color: gainsboro;
-    margin-left: 10px;
+    margin: 10px;
     max-width: 100vh;
     word-wrap:break-word;
 }
