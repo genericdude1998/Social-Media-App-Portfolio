@@ -8,10 +8,11 @@
 }
 
 .baseComment{
-    background-color: gainsboro;
-    margin: 10px;
+    color: white;
+    background-color: darkblue;
     max-width: 100vh;
     word-wrap:break-word;
+    border: 5px white solid
 }
 
 .baseName{
@@ -25,6 +26,6 @@
 }
 
 .dark{
-    background-color: darkred;
+    background-color: maroon;
     color: white;
 }

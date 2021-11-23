@@ -6,11 +6,11 @@
 }
 
 .basePost{
+    margin-top: 30px;
     background-color: royalblue;
     width: 500px;
     min-width: 500px;
-    border-radius: 1%;
-    border: 2px skyblue solid;
+    border-radius: 0px 20px 0px 0px;
 }
 
 .basePostContent{
@@ -23,7 +23,6 @@
 .basePostDate{
     color:white;
     text-align: right;
-    margin: 30px;
 }
 
 .basePostLink{
@@ -33,7 +32,8 @@
 }
 
 .dark{
-    background-color: black;
+    background-color: brown;
     color: white;
 }
+
 

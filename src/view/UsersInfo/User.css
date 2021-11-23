@@ -17,11 +17,10 @@
 }
 
 .baseUserContent > h1{
-    margin-top: 10px;
     text-align: center;
 }
 .baseUserContent > *{
-    margin-top: 10px;
+    padding-top: 50px;
 }
 
 .dark{
