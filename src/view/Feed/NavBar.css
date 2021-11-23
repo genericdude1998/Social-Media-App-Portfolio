@@ -30,8 +30,9 @@
 }
 
 .baseToggleThemeButton{
+    height: 30%;
     color: white;
-    background-color: gray;
+    background-color: darkred;
     border: 2px solid black;
 }
 
@@ -45,5 +46,9 @@
 .dark{
     background-color: darkred;
     color: white;
+}
+
+.dark .baseToggleThemeButton{
+    background-color: darkblue;
 }
 

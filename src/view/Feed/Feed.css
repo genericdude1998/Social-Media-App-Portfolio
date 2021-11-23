@@ -4,6 +4,7 @@
 }
 
 .baseFeed{
+    padding-top: 30px;
     background-color: #0077b6;
     display: flex;
     width: 100%;
@@ -17,7 +18,7 @@ ul{
 }
 
 .dark{
-    background-color: black;
+    background-color: #ee3e38;
     margin-top: 0px;
     padding: 30px;
     color: white;
