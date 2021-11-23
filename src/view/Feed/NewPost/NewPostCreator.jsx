@@ -10,9 +10,10 @@ const NewPostCreator = ({onSendNewPost, onSetPostContent, content, theme}) => {
     const navigate = useNavigate();
     return (
         <div className={`${styles.baseNPC} ${theme === 'dark' ? styles.dark : null}`}>
+            <h1 className={styles.baseNPCHeader}>Type the content of your comment</h1>
             <form onSubmit={onSendNewPost(content, navigate)} className={`${styles.baseNPCForm} ${theme === 'dark' ? styles.dark : null}`}>
                 <label className={`${styles.baseNPCLabel} ${theme === 'dark' ? styles.dark : null}`}>Content:</label>
-                <input type="text" onChange={onSetPostContent} className={`${styles.baseNPCInput} ${theme === 'dark' ? styles.dark : null}`}/>
+                <textarea onChange={onSetPostContent} className={`${styles.baseNPCInput} ${theme === 'dark' ? styles.dark : null}`}/>
                 <button type={'submit'} className={`${styles.baseNPCButton} ${theme === 'dark' ? styles.dark : null}`}>Create Post!</button>
             </form>
         </div>

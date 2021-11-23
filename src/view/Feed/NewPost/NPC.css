@@ -5,28 +5,39 @@
 
 .baseNPC{
     background-color: royalblue;
-    height: 50vh;
-    margin-top: 5px;
+    height: 100vh;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
 }
 
 .baseNPCForm{
-    display: flex;
     height: 100%;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
+    min-width: 500px;
 
+}
+.baseNPCHeader{
+    color: darkmagenta;
+    margin-bottom: 100px;
+}
 .baseNPCLabel{
     color: darkblue;
     font-weight: bold;
     margin-top: 10px;
+    display: block;
 }
 
 .baseNPCInput{
-    height: 10vh;
-    width: 50vw;
+    height: 200px;
     margin-top: 10px;
+    display: block;
+    min-width: 500px;
+
 }
 
 .baseNPCButton{
@@ -34,6 +45,7 @@
     border-radius: 1px;
     margin-top: 20px;
     width: 20%;
+    display: block;
 }
 
 .dark{
