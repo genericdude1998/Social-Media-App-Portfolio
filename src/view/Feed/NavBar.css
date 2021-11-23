@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: darkblue;
-    height: 60px;
+    height: 100px;
     width: 100vw;
     min-width: 500px;
     line-height: 30px;
@@ -16,11 +16,12 @@
 
 .baseNavBarContent{
     font-size: 15px;
-    height: 50%;
+    height: 100px;
     width: 50%;
     min-width: 450px;
     display: inline-flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .baseNavBarLink{
@@ -35,10 +36,10 @@
 }
 
 .logo{
-    min-height: 60px;
-    min-width: 80px;
-    max-width: 80px;
-    max-height: 60px;
+    min-height: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 100px;
 }
 
 .dark{
