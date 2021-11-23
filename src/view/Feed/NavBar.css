@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+.active{
+    border-bottom: 3px red solid;
+}
+
 .baseNavBar{
     display: flex;
     align-items: center;
@@ -33,7 +37,7 @@
     height: 30%;
     color: white;
     background-color: darkred;
-    border: 2px solid black;
+    border: 2px solid black
 }
 
 .logo{

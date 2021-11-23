@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import styles from './NavBar.css';
 
 
 const UserLink = ({id, name, className}) => {
     return (
-        <Link to={`/userInfo/${id}`} className={className}>{name}</Link>
+        <NavLink to={`/userInfo/${id}`} className={(navData) => `${className} ${navData.isActive ? styles.active : null}`}>{name}</NavLink>
     );
 }
 
