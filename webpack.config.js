@@ -9,8 +9,8 @@ module.exports = {
     entry: path.resolve(__dirname, 'src', 'index.js'),
     devtool:'source-map',
     output: {
- 
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
         // the filename of the JS bundle will be bundle.js
         filename: 'bundle.js',
     },
@@ -49,8 +49,6 @@ module.exports = {
         port: 3000,
         onBeforeSetupMiddleware: server,
         historyApiFallback: true,
-        contentBase: './',
-        hot: true,
     },
     // add a custom index.html as the template
     plugins: [new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') })],
