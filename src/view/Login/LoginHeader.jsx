@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './LoginHeader.css'
+import logo from '../../../assets/Logo.png'
 
 const LoginHeader = () => {
     return (
         <div className={styles.baseLoginHeader}>
-            Welcome to my Social Media App portfolio:
+            <img src={logo} alt="" />
         </div>
     );
 }
