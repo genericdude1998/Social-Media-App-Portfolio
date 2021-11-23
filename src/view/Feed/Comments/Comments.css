@@ -29,3 +29,7 @@
     background-color: maroon;
     color: white;
 }
+
+.dark .baseComment{
+    border: 0px 
+}
