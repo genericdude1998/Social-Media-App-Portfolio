@@ -7,7 +7,7 @@ export const TokenContext = createContext();
 
 const TokenProvider = ({token, children}) => 
     (
-        <TokenContext.Provider value={token}>
+        <TokenContext.Provider value={'Sample Token'}>
             {children}
         </TokenContext.Provider>
     );
