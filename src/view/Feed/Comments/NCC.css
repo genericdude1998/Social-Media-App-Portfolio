@@ -29,8 +29,8 @@
 
 .baseNCCButton{
     border: 1px solid gray;
-    padding: 2px;
-    border-radius: 1px;
+    padding: 5px;
+    border-radius: 10px;
     margin-right: 5px;
 }
 
