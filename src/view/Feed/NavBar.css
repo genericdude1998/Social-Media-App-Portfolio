@@ -43,6 +43,15 @@
     max-height: 100px;
 }
 
+.logout{
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+}
+
 .dark{
     background-color: darkred;
     color: white;
@@ -50,5 +59,10 @@
 
 .dark .baseToggleThemeButton{
     background-color: darkblue;
+}
+
+.dark .logout{
+    background-color: white;
+    color: black;
 }
 

@@ -14,6 +14,7 @@ const NavBar = () => {
                 <Link to='/feed' className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}>Feed</Link>
                 <Link to='/createPost' className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}>Create New Post</Link>
                 <UserLink id={1} name={'Me'} className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`}></UserLink>
+                <Link to='/' className={`${styles.logout} ${theme === 'dark' ? styles.dark : null}`}>Log Out</Link>
                 <button className={styles.baseToggleThemeButton} onClick={onToggleTheme}>Toggle Theme</button>
             </div>
         </div>
