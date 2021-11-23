@@ -7,9 +7,10 @@
 
 .basePost{
     background-color: royalblue;
-    height: 30vh;
-    width: 100vw;
-    min-width: 500px; 
+    width: 500px;
+    min-width: 500px;
+    border-radius: 1%;
+    border: 2px skyblue solid;
 }
 
 .basePostContent{
@@ -25,7 +26,7 @@
 }
 
 .basePostLink{
-    color: darkblue;
+    color: darkmagenta;
     font-weight: bold;
     text-decoration: none;
 }
