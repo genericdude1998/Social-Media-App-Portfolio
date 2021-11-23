@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import UserLink from './UserLink';
 import styles from './NavBar.css';
 import { ThemeContext } from '../theme/ThemeProvider';
