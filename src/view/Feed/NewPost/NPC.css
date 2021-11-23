@@ -37,15 +37,17 @@
     margin-top: 10px;
     display: block;
     min-width: 500px;
-
+    border-radius: 0 20px 0 0;
+    padding: 10px;
 }
 
 .baseNPCButton{
     border: 2px solid white;
-    border-radius: 1px;
+    border-radius: 10px;
     margin-top: 20px;
     width: 20%;
     display: block;
+    border: 1.5px black solid;
 }
 
 .dark{
@@ -59,4 +61,8 @@
 .dark .baseNPCInput{
     background-color: white;
     color: black;
+}
+.dark .baseNPCButton{
+    color: black;
+    background-color: white;
 }
