@@ -8,7 +8,7 @@ export const TokenContext = createContext();
 const TokenProvider = ({token, children}) =>{
 
     if(token === null){
-        token = localStorage.token;
+        token = localStorage.persist.root.login.token;
     }
     
     return (
