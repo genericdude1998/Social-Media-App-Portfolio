@@ -5,12 +5,18 @@ import { mapTokenStateToProps } from '../view/mappers/mappers';
 
 export const TokenContext = createContext();
 
-const TokenProvider = ({token, children}) => 
-    (
-        <TokenContext.Provider value={'Sample Token'}>
+const TokenProvider = ({token, children}) =>{
+
+    if(token === null){
+        token = localStorage.token;
+    }
+    
+    return (
+        <TokenContext.Provider value={token}>
             {children}
         </TokenContext.Provider>
     );
+}
 
 TokenProvider.propTypes = {
     token: PropTypes.string,

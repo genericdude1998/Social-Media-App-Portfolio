@@ -21,6 +21,7 @@ const Login = ({
 }) => {
 
     setCookie('token', token);
+    localStorage.clear();
     
     return (
         <div className={styles.baseLogin}>
