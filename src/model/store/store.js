@@ -14,8 +14,7 @@ const persistConfig = {
 
 
 const middleWare = applyMiddleware(logger, thunk);
-
-const rootReducer = combineReducers(
+const appReducer = combineReducers(
     {
         login: loginReducer,
         feed: feedReducer,
@@ -24,8 +23,15 @@ const rootReducer = combineReducers(
         theme: toggleThemeReducer,
         ncc: NCCReducer,
     });
+
+const rootReducer = (state,action) => {
+    if(action.type === 'USER_LOGOUT'){
+        return appReducer(undefined,action);
+    }
+    return appReducer(state,action);
+}
     
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = createStore(persistedReducer, middleWare);
 
-export const persistor = persistStore(store); 
+export const persistor = persistStore(store);

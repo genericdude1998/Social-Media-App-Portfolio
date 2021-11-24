@@ -6,10 +6,6 @@ import { mapTokenStateToProps } from '../view/mappers/mappers';
 export const TokenContext = createContext();
 
 const TokenProvider = ({token, children}) =>{
-
-    if(token === null){
-        token = localStorage.persist.root.login.token;
-    }
     
     return (
         <TokenContext.Provider value={token}>

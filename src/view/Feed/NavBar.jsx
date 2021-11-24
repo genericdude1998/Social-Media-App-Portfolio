@@ -4,6 +4,7 @@ import UserLink from './UserLink';
 import styles from './NavBar.css';
 import { ThemeContext } from '../theme/ThemeProvider';
 import Logo from '../../../assets/Logo.png';
+import {store} from '../../../src/model/store/store'
 
 const NavBar = () => {
     const {theme, onToggleTheme} = React.useContext(ThemeContext);
