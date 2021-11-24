@@ -164,3 +164,7 @@ export function doSendCommentThunk(content, event, postId){
         });
     }
 }
+
+export function doUserLogout(){
+    return {type: actionTypes.USER_LOGOUT}
+}

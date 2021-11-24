@@ -4,7 +4,7 @@ import UserLink from './UserLink';
 import styles from './NavBar.css';
 import { ThemeContext } from '../theme/ThemeProvider';
 import Logo from '../../../assets/Logo.png';
-import {store} from '../../../src/model/store/store'
+import ConnectedLogoutButton from './LogoutButton';
 
 const NavBar = () => {
     const {theme, onToggleTheme} = React.useContext(ThemeContext);
@@ -27,10 +27,12 @@ const NavBar = () => {
                     id={1} 
                     name={'Me'} 
                     className={`${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}`} />
-                <NavLink 
-                    to='/' 
+                <ConnectedLogoutButton 
+                    to={'/'}
                     className={`${styles.logout} ${theme === 'dark' ? styles.dark : null}`}
-                >Log Out</NavLink>
+                >
+                    Logout
+                </ConnectedLogoutButton>
                 <button className={styles.baseToggleThemeButton} onClick={onToggleTheme}>Toggle Theme</button>
             </div>
         </div>

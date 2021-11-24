@@ -1,4 +1,4 @@
-import { doCloseComments, doGetPostsThunk, doGetUserThunk, doOpenComments, doSendCommentThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetCommentContent, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../model/actionCreators/actionCreators';
+import { doCloseComments, doGetPostsThunk, doGetUserThunk, doOpenComments, doSendCommentThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetCommentContent, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme, doUserLogout } from '../../model/actionCreators/actionCreators';
 import { loginStateSelector, feedStateSelector, userInfoStateSelector, NPCStateSelector, themeStateSelector, NCCStateSelector, TokenStateSelector } from '../../model/selectors/selectors';
 
 export function mapLoginDispatchToProps(dispatch){
@@ -68,4 +68,10 @@ export function mapNCCStateToProps(state){
 
 export function mapTokenStateToProps(state){
     return TokenStateSelector(state); 
+}
+
+export function mapLogoutDispatchToProps(dispatch){
+    return {
+        onLogoutUser: () => dispatch(doUserLogout()),
+    }
 }
