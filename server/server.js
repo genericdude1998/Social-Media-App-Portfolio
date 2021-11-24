@@ -69,7 +69,7 @@ const devServer = (devServer) => {
 
 function authenticateUserLogin(username,password){
     if(username && password){
-        return username === 'Adam' && password === '1234' ? true:false
+        return username === 'Admin' && password === '1234' ? true:false
     }
 }
 
