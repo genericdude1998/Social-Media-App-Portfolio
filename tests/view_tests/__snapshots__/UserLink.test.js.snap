@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UserLink should match snapshot 1`] = `
-<Link
+<NavLink
+  className={[Function]}
   to="/userInfo/0"
 >
   mock_name
-</Link>
+</NavLink>
 `;

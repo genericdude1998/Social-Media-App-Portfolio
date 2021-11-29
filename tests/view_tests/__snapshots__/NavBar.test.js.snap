@@ -4,31 +4,41 @@ exports[`NavBar should match Snapshot when theme is dark 1`] = `
 <div
   className="baseNavBar dark"
 >
+  <img
+    className="logo"
+    src={null}
+  />
   <div
     className="baseNavBarContent dark"
   >
-    <Link
-      className="baseNavBarLink dark"
+    <NavLink
+      className={[Function]}
       to="/feed"
     >
       Feed
-    </Link>
-    <Link
-      className="baseNavBarLink dark"
+    </NavLink>
+    <NavLink
+      className={[Function]}
       to="/createPost"
     >
       Create New Post
-    </Link>
+    </NavLink>
     <UserLink
       className="baseNavBarLink dark"
       id={1}
       name="Me"
     />
+    <Connect(Logoutbutton)
+      className="logout dark"
+      to="/"
+    >
+      Logout
+    </Connect(Logoutbutton)>
     <button
       className="baseToggleThemeButton"
       onClick={[MockFunction]}
     >
-      Toggle Dark/Light Theme
+      Toggle Theme
     </button>
   </div>
 </div>
@@ -38,31 +48,41 @@ exports[`NavBar should match Snapshot when theme is light 1`] = `
 <div
   className="baseNavBar null"
 >
+  <img
+    className="logo"
+    src={null}
+  />
   <div
     className="baseNavBarContent null"
   >
-    <Link
-      className="baseNavBarLink null"
+    <NavLink
+      className={[Function]}
       to="/feed"
     >
       Feed
-    </Link>
-    <Link
-      className="baseNavBarLink null"
+    </NavLink>
+    <NavLink
+      className={[Function]}
       to="/createPost"
     >
       Create New Post
-    </Link>
+    </NavLink>
     <UserLink
       className="baseNavBarLink null"
       id={1}
       name="Me"
     />
+    <Connect(Logoutbutton)
+      className="logout null"
+      to="/"
+    >
+      Logout
+    </Connect(Logoutbutton)>
     <button
       className="baseToggleThemeButton"
       onClick={[MockFunction]}
     >
-      Toggle Dark/Light Theme
+      Toggle Theme
     </button>
   </div>
 </div>

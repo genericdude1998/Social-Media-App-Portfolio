@@ -3,7 +3,7 @@ module.exports = {
     resetMocks: false,
     setupFilesAfterEnv: ['./tests/jestSetup.js'],
     moduleNameMapper: {
-        '\\.(css|less)$': 'identity-obj-proxy',
+        '\\.(css|less|png)$': 'identity-obj-proxy',
     },
     snapshotSerializers: ['enzyme-to-json/serializer'],
 };

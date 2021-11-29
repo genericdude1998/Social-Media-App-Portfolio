@@ -4,6 +4,11 @@ exports[`NCC should matchSnapshot when dark theme 1`] = `
 <div
   className="baseNPC dark"
 >
+  <h1
+    className="baseNPCHeader"
+  >
+    Type the content of your comment
+  </h1>
   <form
     className="baseNPCForm dark"
   >
@@ -12,10 +17,9 @@ exports[`NCC should matchSnapshot when dark theme 1`] = `
     >
       Content:
     </label>
-    <input
+    <textarea
       className="baseNPCInput dark"
       onChange={[MockFunction]}
-      type="text"
     />
     <button
       className="baseNPCButton dark"
@@ -31,6 +35,11 @@ exports[`NCC should matchSnapshot when light theme 1`] = `
 <div
   className="baseNPC null"
 >
+  <h1
+    className="baseNPCHeader"
+  >
+    Type the content of your comment
+  </h1>
   <form
     className="baseNPCForm null"
   >
@@ -39,10 +48,9 @@ exports[`NCC should matchSnapshot when light theme 1`] = `
     >
       Content:
     </label>
-    <input
+    <textarea
       className="baseNPCInput null"
       onChange={[MockFunction]}
-      type="text"
     />
     <button
       className="baseNPCButton null"

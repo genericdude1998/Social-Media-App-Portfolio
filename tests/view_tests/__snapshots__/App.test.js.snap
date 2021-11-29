@@ -2,42 +2,60 @@
 
 exports[`App should match snapshot 1`] = `
 <div>
-  <Connect(ThemeProvider)>
-    <BrowserRouter>
-      <Routes>
-        <Route
-          element={<Memo(Connect(Login)) />}
-          path="/"
-        />
-        <Route
-          element={
-            <React.Fragment>
-              <NavBar />
-              <WithThemeHOC />
-            </React.Fragment>
-          }
-          path="/feed"
-        />
-        <Route
-          element={
-            <React.Fragment>
-              <NavBar />
-              <WithThemeHOC />
-            </React.Fragment>
-          }
-          path="/userInfo/:id"
-        />
-        <Route
-          element={
-            <React.Fragment>
-              <NavBar />
-              <WithThemeHOC />
-            </React.Fragment>
-          }
-          path="/createPost"
-        />
-      </Routes>
-    </BrowserRouter>
-  </Connect(ThemeProvider)>
+  <Connect(TokenProvider)>
+    <Connect(ThemeProvider)>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            element={<Memo(Connect(Login)) />}
+            path="/"
+          />
+          <Route
+            element={
+              <AuthRoute
+                element={
+                  <React.Fragment>
+                    <NavBar />
+                    <WithThemeHOC />
+                  </React.Fragment>
+                }
+              />
+            }
+            path="/feed"
+          />
+          <Route
+            element={
+              <AuthRoute
+                element={
+                  <React.Fragment>
+                    <NavBar />
+                    <WithThemeHOC />
+                  </React.Fragment>
+                }
+              />
+            }
+            path="/userInfo/:id"
+          />
+          <Route
+            element={
+              <AuthRoute
+                element={
+                  <React.Fragment>
+                    <NavBar />
+                    <WithThemeHOC />
+                  </React.Fragment>
+                }
+              />
+            }
+            path="/createPost"
+          />
+          <Route
+            element={<NotAuthorised />}
+            path="/notAuthorised"
+          />
+        </Routes>
+      </BrowserRouter>
+    </Connect(ThemeProvider)>
+  </Connect(TokenProvider)>
 </div>
 `;
