@@ -25,6 +25,7 @@ import {
     doSetCommentContent,
     doClearCommentContent,
     doSendCommentThunk,
+    doUserLogout,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
@@ -45,6 +46,8 @@ const expectedGetUserFailure = {type: actionTypes.GET_USER_FAILURE, error: mockE
 const expectedSendPostRequest = {type: actionTypes.SEND_POST_REQUEST};
 const expectedSendPostSuccess = {type: actionTypes.SEND_POST_SUCCESS};
 const expectedSendPostFailure = {type: actionTypes.SEND_POST_FAILURE, error: mockErrorMessage};
+
+const expectedUserLogoutAction = {type: actionTypes.USER_LOGOUT}
 
 const mockDispatch = jest.fn();
 const mockNavigate = jest.fn();
@@ -313,5 +316,11 @@ describe('doSendCommentThunk', () => {
                 postId: mockId,
             });
             expect(mockDispatch).toHaveBeenLastCalledWith(doSendCommentFailure(mockErrorMessage))});
+    });
+});
+
+describe('doUserLogout', () => {
+    it('should an action with expected type', () => {
+        expect(doUserLogout()).toEqual(expectedUserLogoutAction)
     });
 });
