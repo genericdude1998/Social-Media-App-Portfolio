@@ -52,3 +52,6 @@ export const mockUsers = [
 ];
 
 export const mockDispatch = jest.fn();
+
+export const mockActiveNavData = {isActive: true};
+export const mockInActiveNavData = {isActive: false};

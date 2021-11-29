@@ -4,14 +4,10 @@ import { ThemeContext } from '../../src/view/theme/ThemeProvider';
 import NavBar from '../../src/view/Feed/NavBar';
 import { mockTheme } from '../mockValues';
 import { NavLink } from 'react-router-dom';
-
+import {mockActiveNavData, mockInActiveNavData} from '../mockValues';
 jest.spyOn(React, 'useContext').mockImplementation(() => {
     return {theme:mockTheme, onToggleTheme: jest.fn()}
 });
-
-const mockActiveNavData = {isActive: true};
-const mockInActiveNavData = {isActive: false};
-
 
 describe('NavBar', () => {
     it('should call useContext with expected params', () => {

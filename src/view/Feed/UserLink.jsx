@@ -6,7 +6,9 @@ import styles from './NavBar.css';
 
 const UserLink = ({id, name, className}) => {
     return (
-        <NavLink to={`/userInfo/${id}`} className={(navData) => `${className} ${navData.isActive ? styles.active : null}`}>{name}</NavLink>
+        <NavLink to={`/userInfo/${id}`} className={(navData) => `${className} ${navData.isActive ? styles.active : null}`}>
+            {name}
+        </NavLink>
     );
 }
 
