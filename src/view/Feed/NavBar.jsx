@@ -6,8 +6,11 @@ import { ThemeContext } from '../theme/ThemeProvider';
 import Logo from '../../../assets/Logo.png';
 import ConnectedLogoutButton from './LogoutButton';
 
+
+
 const NavBar = () => {
     const {theme, onToggleTheme} = React.useContext(ThemeContext);
+    
     return (
         <div className={`${styles.baseNavBar} ${theme === 'dark' ? styles.dark : null}`}>
             <img src={Logo} className={styles.logo}/>
@@ -16,12 +19,16 @@ const NavBar = () => {
                     to='/feed' 
                     className={(navData) => {
                         return `${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null}
-                        ${navData.isActive ? styles.active : null}`
-                    }}
+                        ${navData.isActive ? styles.active : null}`}
+                    }
                 >Feed</NavLink>
                 <NavLink 
                     to='/createPost' 
-                    className={(navData) => `${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null} ${navData.isActive ? styles.active : null}`}
+                    className={(navData) => {
+                        return `
+                            ${styles.baseNavBarLink} ${theme === 'dark' ? styles.dark : null} 
+                            ${navData.isActive ? styles.active : null}`}
+                    }
                 >Create New Post</NavLink>
                 <UserLink 
                     id={1} 
