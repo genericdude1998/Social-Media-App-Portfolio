@@ -5,7 +5,7 @@ import { mapTokenStateToProps } from '../view/mappers/mappers';
 
 export const TokenContext = createContext();
 
-const TokenProvider = ({token, children}) =>{
+export const TokenProvider = ({token, children}) =>{
     
     return (
         <TokenContext.Provider value={token}>
