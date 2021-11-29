@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { mapLogoutDispatchToProps } from '../mappers/mappers';
 
-const Logoutbutton = (props) => {
+export const Logoutbutton = (props) => {
     const {children, onLogoutUser} = props;
     return (
         <NavLink

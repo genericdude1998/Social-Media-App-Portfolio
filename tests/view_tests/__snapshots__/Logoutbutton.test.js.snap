@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectedLogOutButton should matchSnapshot 1`] = `
+<NavLink
+  onClick={[MockFunction]}
+  onLogoutUser={[MockFunction]}
+/>
+`;
