@@ -18,6 +18,6 @@ export function themeStateSelector(state) {
     return state.theme;
 }
 
-export function TokenStateSelector(state){
+export function tokenStateSelector(state){
     return {token: state.login.token};
 }

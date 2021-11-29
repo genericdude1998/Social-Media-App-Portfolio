@@ -1,5 +1,5 @@
-import { feedStateSelector, loginStateSelector, NCCStateSelector, NPCStateSelector, themeStateSelector, userInfoStateSelector } from '../../../src/model/selectors/selectors';
-import { mockFeedInitialState, mockLoginReducerInitialState, mockNCCInitialState, mockNPCInitialState, mockStoreInitialState, mockThemeInitialState, mockUserInfoInitialState } from '../../mockValues';
+import { feedStateSelector, loginStateSelector, NCCStateSelector, NPCStateSelector, themeStateSelector, tokenStateSelector, userInfoStateSelector } from '../../../src/model/selectors/selectors';
+import { mockFeedInitialState, mockLoginReducerInitialState, mockNCCInitialState, mockNPCInitialState, mockStoreInitialState, mockThemeInitialState, mockTokenInitialState, mockUserInfoInitialState } from '../../mockValues';
 
 describe('loginStateSelector', () => {
     it('should return the login state', () => {
@@ -33,5 +33,11 @@ describe('NCCStateSelector', () => {
 describe('themeStateSelector', () => {
     it('should return the NCC state', () => {
         expect(themeStateSelector(mockStoreInitialState)).toEqual(mockThemeInitialState);
+    });
+});
+
+describe('tokenStateSelector', () => {
+    it('should return token', () => {
+        expect(tokenStateSelector(mockStoreInitialState)).toEqual(mockTokenInitialState);
     });
 });

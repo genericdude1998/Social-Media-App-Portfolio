@@ -13,6 +13,7 @@ export const mockStoreInitialState = {
     ncc: mockNCCInitialState,
     theme: mockThemeInitialState,
 };
+export const mockTokenInitialState = {token: mockStoreInitialState.login.token}
 export const mockUsername = 'username';
 export const mockPassword = 'password';
 export const correctUsername = 'Adam';
