@@ -81,7 +81,6 @@ describe('doSendUsernameAndPasswordThunk', () => {
     });
     it('should call dispatch with SEND_LOGIN_REQUEST and LOGIN_REQUEST_SUCCESS when given correct credentials', () => {
         axios.post.mockImplementation(() => Promise.resolve({data: mockToken}));
-
         const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword, mockEvent);
         return thunk(mockDispatch).then(() => {
             expect(axios.post).toHaveBeenCalledWith('/login', {
@@ -91,7 +90,7 @@ describe('doSendUsernameAndPasswordThunk', () => {
             expect(mockDispatch).toHaveBeenCalledWith(doSendLoginRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doLoginRequestSuccess(mockToken))});
     });
-    it('should call dispatch with SEND_LOGIN_REQUEST and LOGIN_REQUEST_FAILURE when given correct credentials', () => {
+    it('should call dispatch with SEND_LOGIN_REQUEST and LOGIN_REQUEST_FAILURE when given incorrect credentials', () => {
         axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
         const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword, mockEvent);
