@@ -1,6 +1,6 @@
-import { doGetPostsThunk, doGetUserThunk, doOpenComments, doSendCommentThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetCommentContent, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme } from '../../../src/model/actionCreators/actionCreators';
-import { feedStateSelector, loginStateSelector, NCCStateSelector, NPCStateSelector, themeStateSelector, userInfoStateSelector } from '../../../src/model/selectors/selectors';
-import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps, mapUserStateToProps, mapUserDispatchToProps, mapNPCDispatchToProps, mapNPCStateToProps, mapThemeDispatchToProps, mapThemeStateToProps, mapCommentsDispatchToProps, mapNCCDispatchToProps, mapNCCStateToProps } from '../../../src/view/mappers/mappers';
+import { doGetPostsThunk, doGetUserThunk, doOpenComments, doSendCommentThunk, doSendPostThunk, doSendUsernameAndPasswordThunk, doSetCommentContent, doSetPassword, doSetPostContent, doSetUsername, doToggleTheme, doUserLogout } from '../../../src/model/actionCreators/actionCreators';
+import { feedStateSelector, loginStateSelector, NCCStateSelector, NPCStateSelector, themeStateSelector, tokenStateSelector, userInfoStateSelector } from '../../../src/model/selectors/selectors';
+import { mapLoginDispatchToProps, mapLoginStateToProps, mapFeedDispatchToProps, mapFeedStateToProps, mapUserStateToProps, mapUserDispatchToProps, mapNPCDispatchToProps, mapNPCStateToProps, mapThemeDispatchToProps, mapThemeStateToProps, mapCommentsDispatchToProps, mapNCCDispatchToProps, mapNCCStateToProps, mapTokenStateToProps, mapLogoutDispatchToProps } from '../../../src/view/mappers/mappers';
 import {mockContent, mockEvent, mockId, mockNavigate, mockPassword, mockStoreInitialState, mockToken, mockUsername} from '../../mockValues'
 
 const mockDispatch =  jest.fn();
@@ -192,5 +192,23 @@ describe('mapNCCStateToProps', () => {
     it('should return expected state', () => {
         mapNCCStateToProps(mockStoreInitialState);
         expect(NCCStateSelector).toHaveBeenCalledWith(mockStoreInitialState);
+    });
+});
+
+describe('mapTokenStateToProps', () => {
+    it('should return exprectedState', () => {
+        mapTokenStateToProps(mockStoreInitialState);
+        expect(tokenStateSelector).toHaveBeenCalledWith(mockStoreInitialState);
+    });
+});
+
+describe('mapLogoutDispatchToProps', () => {
+    it('should return an object with onLogoutuser func', () => {
+        expect(typeof(mapLogoutDispatchToProps(mockDispatch))).toBe('object');
+        expect(typeof(mapLogoutDispatchToProps(mockDispatch).onLogoutUser)).toBe('function');
+    });
+    it('should call dispatch with expected params', () => {
+        mapLogoutDispatchToProps(mockDispatch).onLogoutUser();
+        expect(mockDispatch).toHaveBeenCalledWith(doUserLogout());
     });
 });
