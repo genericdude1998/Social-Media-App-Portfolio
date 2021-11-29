@@ -6,6 +6,7 @@ import { TokenContext } from './TokenContextProvider';
 
 const AuthRoute = ({element: Element}) => {
     const token = React.useContext(TokenContext);
+    console.log(token);
     return (token ? Element : <Navigate to={'/notAuthorised'}/>
     );
 }

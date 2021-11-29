@@ -1,5 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+import AuthRoute from '../../src/helpers/AuthRoute';
 import { refreshPosts } from '../../src/helpers/feedHelpers';
 import { Redirect } from '../../src/helpers/Redirect';
 import { mockPath, mockToken, mockDispatch } from '../mockValues';
@@ -23,3 +24,16 @@ describe('refreshPosts', () => {
         expect(mockDispatch).toHaveBeenCalledWith(mockDoGetPostsThunk());
     });
 });
+
+describe('AuthRoute', () => {
+    it('should render the prop element when given a token', () => {
+        jest.spyOn(React, 'useContext').mockImplementation(() => mockToken);
+        const wrapper = shallow(<AuthRoute element={<h1>Hello</h1>}></AuthRoute>);
+        expect(wrapper).toMatchSnapshot();
+    });
+    it('should render the prop element when NOT given a token', () => {
+        jest.spyOn(React, 'useContext').mockImplementation(() => undefined);
+        const wrapper = shallow(<AuthRoute element={<h1>Hello</h1>}></AuthRoute>);
+        expect(wrapper).toMatchSnapshot();
+    });
+})

@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AuthRoute should render the prop element when NOT given a token 1`] = `
+<Navigate
+  to="/notAuthorised"
+/>
+`;
+
+exports[`AuthRoute should render the prop element when given a token 1`] = `
+<h1>
+  Hello
+</h1>
+`;
+
 exports[`Redirect should matchSnapshot when given token 1`] = `
 <Navigate
   to="/"
