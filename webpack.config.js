@@ -51,5 +51,5 @@ module.exports = {
         historyApiFallback: true,
     },
     // add a custom index.html as the template
-    plugins: [new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') })],
+    plugins: [new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html'), favicon : './src/favicon.png' })],
 };
