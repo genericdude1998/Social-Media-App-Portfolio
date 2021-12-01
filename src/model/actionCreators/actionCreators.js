@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLoginToken } from '../../../server/api';
+import { getLoginToken, getPosts } from '../../../server/api';
 import { actionTypes } from '../actionTypes/actionTypes';
 
 export function doSetUsername(username){
@@ -62,9 +62,18 @@ export function doGetPostsFailure(error){
 }
 
 export function doGetPostsThunk(){
+    // return function GetPostsThunk(dispatch){
+    //     dispatch(doGetPostsRequest());
+    //     return axios.get('/posts').then((res) => {
+    //         const posts = res.data;
+    //         dispatch(doGetPostsSuccess(posts));
+    //     }).catch(error => {
+    //         const errorMessage = error.response.data;
+    //         dispatch(doGetPostsFailure(errorMessage));
+    //     });
+    // }
     return function GetPostsThunk(dispatch){
-        dispatch(doGetPostsRequest());
-        return axios.get('/posts').then((res) => {
+        getPosts('sample_token').then(res => {
             const posts = res.data;
             dispatch(doGetPostsSuccess(posts));
         }).catch(error => {
