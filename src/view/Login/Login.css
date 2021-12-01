@@ -3,7 +3,7 @@
 }
 
 .baseLogin{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     min-width: 600px;
     background-color: lightblue;
