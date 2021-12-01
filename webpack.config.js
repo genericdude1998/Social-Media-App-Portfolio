@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const server = require('./server/server');
+// const server = require('./server/server');
 
 module.exports = {
     // the output bundle won't be optimized for production but suitable for development
@@ -47,7 +47,7 @@ module.exports = {
     },
     devServer:{
         port: 3000,
-        onBeforeSetupMiddleware: server,
+        // onBeforeSetupMiddleware: server, this is the express server not used for the live version
         historyApiFallback: true,
     },
     // add a custom index.html as the template
