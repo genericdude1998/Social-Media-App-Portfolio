@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getLoginToken } from '../../../server/api';
 import { actionTypes } from '../actionTypes/actionTypes';
 
 export function doSetUsername(username){
@@ -24,10 +25,19 @@ export function doSendUsernameAndPasswordThunk(username, password, event){
     return function(dispatch){
         event.preventDefault();
         dispatch(doSendLoginRequest());
-        return axios.post('/login', {
-            username:username,
-            password:password,
-        }).then((res) => {
+        // return axios.post('/login', {
+        //     username:username,
+        //     password:password,
+        // }).then((res) => {
+        //     const token = res.data;
+        //     dispatch(doLoginRequestSuccess(token));
+        //     localStorage.token = token;
+        // }).catch(error => {
+        //     console.log(error);
+        //     const errorMessage = error.response.data;
+        //     dispatch(doLoginRequestFailure(errorMessage));
+        // });
+        getLoginToken(username,password).then((res) => {
             const token = res.data;
             dispatch(doLoginRequestSuccess(token));
             localStorage.token = token;
