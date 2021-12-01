@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { getLoginToken, getPosts, getUser, sendPost } from '../../../server/api';
+import { getLoginToken, getPosts, getUser, sendComment, sendPost } from '../../../server/api';
 import { actionTypes } from '../actionTypes/actionTypes';
 
 export function doSetUsername(username){
@@ -184,18 +183,26 @@ export function doClearCommentContent(){
 export function doSendCommentThunk(content, event, postId){
     event.preventDefault();
     return function(dispatch){
+        // dispatch(doSendCommentRequest());
+        // return axios.post('/newComment',{
+        //     content:content,
+        //     postId: postId,
+        // }).then(() => {
+        //     dispatch(doClearCommentContent());
+        //     dispatch(doGetPostsThunk());
+        //     event.target[0].value = '';
+        // }).catch(error => {
+        //     const errorMessage = error.response.data;
+        //     dispatch(doSendCommentFailure(errorMessage));
+        // });
         dispatch(doSendCommentRequest());
-        return axios.post('/newComment',{
-            content:content,
-            postId: postId,
-        }).then(() => {
+        sendComment(content, postId).then(() => {
             dispatch(doClearCommentContent());
             dispatch(doGetPostsThunk());
             event.target[0].value = '';
-        }).catch(error => {
-            const errorMessage = error.response.data;
-            dispatch(doSendCommentFailure(errorMessage));
-        });
+        }).catch(err => {
+            dispatch(doSendCommentFailure(err));
+        })
     }
 }
 

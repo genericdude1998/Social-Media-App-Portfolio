@@ -60,3 +60,15 @@ export function sendPost(content){
         }, 100);
     });
 }
+
+export function sendComment(content, postId){
+
+    return new Promise((res) => {
+        const newComment = {name: 'Me', content: content, date: new Date().toLocaleString()}
+        posts[postId].comments.push(newComment);
+
+        setTimeout(() => {
+            res({data: 'posted a new comment!'});
+        }, 100);
+    });
+}
