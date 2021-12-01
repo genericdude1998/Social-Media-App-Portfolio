@@ -2033,7 +2033,7 @@ var User = function User(_ref) {
     onFetchUser(id);
   }, [id]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _User_css__WEBPACK_IMPORTED_MODULE_4__["default"].baseUser
+    className: "".concat(_User_css__WEBPACK_IMPORTED_MODULE_4__["default"].baseUser, " ").concat(theme === 'dark' ? _User_css__WEBPACK_IMPORTED_MODULE_4__["default"].dark : null)
   }, user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "".concat(_User_css__WEBPACK_IMPORTED_MODULE_4__["default"].baseUserContent, " ").concat(theme === 'dark' ? _User_css__WEBPACK_IMPORTED_MODULE_4__["default"].dark : null)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "City: ", user.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Joined: ", user.joined), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Description:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.desc)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Loading"));
