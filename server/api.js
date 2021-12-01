@@ -42,3 +42,21 @@ export function getUser(id){
         }, 100);
     });
 }
+
+export function sendPost(content){
+
+    return new Promise((res) => {
+        const newPost = {
+            id: posts.length, 
+            name: 'Me', 
+            content: content, 
+            date: new Date().toLocaleString(), 
+            comments:[],
+        }
+        posts.push(newPost);
+
+        setTimeout(() => {
+            res({data: 'posted a new post!'});
+        }, 100);
+    });
+}

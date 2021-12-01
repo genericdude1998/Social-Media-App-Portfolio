@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLoginToken, getPosts, getUser } from '../../../server/api';
+import { getLoginToken, getPosts, getUser, sendPost } from '../../../server/api';
 import { actionTypes } from '../actionTypes/actionTypes';
 
 export function doSetUsername(username){
@@ -134,15 +134,22 @@ export function doSendPostFailure(error){
 export function doSendPostThunk(content,event, navigate){
     event.preventDefault();
     return function(dispatch){
+        // dispatch(doSendPostRequest());
+        // return axios.post('/newPost',{
+        //     content:content,
+        // }).then(() => {
+        //     //refreshPosts(dispatch, doGetPostsThunk);
+        //     navigate('/feed');
+        // }).catch(error => {
+        //     const errorMessage = error.response.data;
+        //     dispatch(doSendPostFailure(errorMessage));
+        // });
         dispatch(doSendPostRequest());
-        return axios.post('/newPost',{
-            content:content,
-        }).then(() => {
-            //refreshPosts(dispatch, doGetPostsThunk);
+        sendPost(content).then(() => {
+            //     //refreshPosts(dispatch, doGetPostsThunk);
             navigate('/feed');
-        }).catch(error => {
-            const errorMessage = error.response.data;
-            dispatch(doSendPostFailure(errorMessage));
+        }).catch(err => {
+            dispatch(doSendPostFailure(err));
         });
     }
 }
