@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, BrowserRouter, Routes, HashRouter } from 'react-router-dom';
 import ConnectedLogin from './view/Login/Login';
 import ConnectedFeedWithTheme from './view/Feed/Feed';
 import ConnectedUser from './view/UsersInfo/User';
@@ -15,7 +15,7 @@ const App = () => {
         <div>
             <ConnectedTokenProvider>
                 <ConnectedThemeProvider>
-                    <BrowserRouter>
+                    <HashRouter>
                         <Routes>
                             <Route path='/' element={<ConnectedLogin />}/>
                             <Route path='/feed' element={
@@ -50,7 +50,7 @@ const App = () => {
                             }/>
                             <Route  path='/notAuthorised' element={<NotAuthorised/>}/>
                         </Routes>
-                    </BrowserRouter>
+                    </HashRouter>
                 </ConnectedThemeProvider>
             </ConnectedTokenProvider>
         </div>
