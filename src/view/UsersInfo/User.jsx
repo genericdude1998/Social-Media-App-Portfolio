@@ -13,7 +13,7 @@ export const User = ({onFetchUser, user, theme}) => {
         onFetchUser(id);
     }, [id]);
     return (
-        <div className={styles.baseUser}>
+        <div className={`${styles.baseUser} ${theme === 'dark' ? styles.dark : null}`}>
             {user ? 
                 <div className={`${styles.baseUserContent} ${theme === 'dark' ? styles.dark : null}`}>
                     <h1>{user.name}</h1>
