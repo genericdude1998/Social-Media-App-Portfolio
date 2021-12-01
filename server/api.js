@@ -1,4 +1,5 @@
 import {posts} from './posts';
+import { users } from './users';
 
 export function getLoginToken(username,password){
 
@@ -28,5 +29,16 @@ export function getPosts(token){
     });
 }
 
-getPosts('whatevertoken').then(res => console.log(res));
+export function getUser(id){
 
+    return new Promise((res,rej) => {
+        setTimeout(() => {
+            if(id){
+                res({data: users[id]});
+            }
+            else{
+                rej({response:{data:'no id given'}});
+            }
+        }, 100);
+    });
+}
