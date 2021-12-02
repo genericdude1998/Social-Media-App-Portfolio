@@ -134,12 +134,12 @@ describe('doGetPostsThunk', () => {
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsSuccess(mockPosts))});
     });
-    it('should call dispatch with SEND_LOGIN_REQUEST and GET_POSTS_FAILURE when failing', () => {
-        axios.get.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
-
+    it('should call dispatch with GET_POSTS_REQUEST and GET_POSTS_FAILURE when failing', () => {
+        const mockGetPostsReject = getPosts.mockRejectedValue({response:{data: mockErrorMessage}});
+        
         const thunk = doGetPostsThunk();
         return thunk(mockDispatch).then(() => {
-            expect(axios.get).toHaveBeenCalledWith('/posts');
+            expect(mockGetPostsReject).toHaveBeenCalledWith('sample_token');
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsFailure(mockErrorMessage))});
     });
@@ -174,7 +174,7 @@ describe('doGetUserThunk', () => {
             expect(mockDispatch).toHaveBeenCalledWith(doGetUserRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetUserSuccess(mockUser))});
     });
-    it('should call dispatch with SEND_LOGIN_REQUEST and GET_POSTS_FAILURE when failing', () => {
+    it('should call dispatch with GET_USER_REQUEST and GET_USER_FAILURE when failing', () => {
         axios.get.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
         const thunk = doGetUserThunk(mockId);
