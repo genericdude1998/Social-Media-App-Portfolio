@@ -204,12 +204,13 @@ export function doSendCommentThunk(content, event, postId){
         //     dispatch(doSendCommentFailure(errorMessage));
         // });
         dispatch(doSendCommentRequest());
-        sendComment(content, postId).then(() => {
+        return sendComment(content, postId).then(() => {
             dispatch(doClearCommentContent());
             dispatch(doGetPostsThunk());
             event.target[0].value = '';
         }).catch(err => {
-            dispatch(doSendCommentFailure(err));
+            const errorMessage = err.response.data;
+            dispatch(doSendCommentFailure(errorMessage));
         })
     }
 }
