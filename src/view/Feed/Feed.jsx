@@ -7,14 +7,14 @@ import PropTypes from 'prop-types';
 import withTheme from '../theme/withTheme';
 import ProgressBar from './ProgressBar';
 
-export const Feed = ({posts, onFetchPosts, loading, theme}) => {
+export const Feed = ({posts, onFetchPosts, loading, theme, percentage}) => {
     React.useEffect(() => {
         onFetchPosts();
     }, []);
     return (
         <div className={`${styles.baseFeed} ${theme === 'dark' ? styles.dark : null}`}>
             <ul>
-                {loading ? <ProgressBar label={'feed:'} max={'100'}/>:
+                {loading ? <ProgressBar label={'feed:'} max={'100'} percentage={percentage}/>:
                     posts.map(post => {
                         return (<li key={post.id}>
                             <Post 

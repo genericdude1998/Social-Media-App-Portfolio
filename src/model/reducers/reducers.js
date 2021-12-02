@@ -1,5 +1,5 @@
 import { actionTypes } from '../actionTypes/actionTypes';
-import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment, applySetFeedLoading } from '../appliers/feedReducerAppliers';
+import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment, applySetFeedLoading, applySetFeedProgressBar } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
 import { applySetPostContent, applyClearPost } from '../appliers/NPCReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
@@ -30,6 +30,7 @@ export function loginReducer(state = loginReducerInitialState, action = 'default
 export function feedReducer(state = feedReducerInitialState, action={type: 'default'}) {
     switch (action.type) {
     case actionTypes.SET_FEED_LOADING: return applySetFeedLoading(state, action);
+    case actionTypes.SET_FEED_PROGRESSBAR: return applySetFeedProgressBar(state, action);
     case actionTypes.GET_POSTS_REQUEST: return applyGetPostsRequest(state,action);
     case actionTypes.GET_POSTS_SUCCESS: return applyGetPostsSuccess(state,action);
     case actionTypes.GET_POSTS_FAILURE: return applyGetPostsFailure(state,action);

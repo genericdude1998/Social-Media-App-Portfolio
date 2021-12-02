@@ -2,6 +2,11 @@ export function applySetFeedLoading(state,action){
     return {...state, loading: action.loading};
 }
 
+export function applySetFeedProgressBar(state,action){
+    return {...state, percentage: action.percentage};
+}
+
+
 export function applyGetPostsRequest(state){
     return state;
 }
