@@ -30,6 +30,7 @@ import {
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
 import axios from 'axios';
+import { getLoginToken, getPosts } from '../../../server/api';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
 const expectedSetUsernameAction = {type: actionTypes.SET_USERNAME, username: mockUsername};
@@ -52,7 +53,7 @@ const expectedUserLogoutAction = {type: actionTypes.USER_LOGOUT}
 const mockDispatch = jest.fn();
 const mockNavigate = jest.fn();
 
-jest.mock('axios');
+jest.mock('../../../server/api');
 jest.mock('../../../src/helpers/feedHelpers');
 
 afterEach(() => {
@@ -83,21 +84,20 @@ describe('doSendUsernameAndPasswordThunk', () => {
         expect(typeof(thunk)).toBe('function');
     });
     it('should call dispatch with SEND_LOGIN_REQUEST and LOGIN_REQUEST_SUCCESS when given correct credentials', () => {
-        axios.post.mockImplementation(() => Promise.resolve({data: mockToken}));
+        const mockGetLoginTokenResolve = getLoginToken.mockResolvedValue({data: mockToken});
+
         const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword, mockEvent);
         return thunk(mockDispatch).then(() => {
-            expect(axios.post).toHaveBeenCalledWith('/login', {
-                username: correctUsername,
-                password: correctPassword,
-            });
+            expect(mockGetLoginTokenResolve).toHaveBeenCalledWith(correctUsername, correctPassword);
             expect(mockDispatch).toHaveBeenCalledWith(doSendLoginRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doLoginRequestSuccess(mockToken))});
     });
     it('should call dispatch with SEND_LOGIN_REQUEST and LOGIN_REQUEST_FAILURE when given incorrect credentials', () => {
-        axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
+        const mockGetLoginTokenReject = getLoginToken.mockRejectedValue({response:{data: mockErrorMessage}});
 
         const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword, mockEvent);
         return thunk(mockDispatch).then(() => {
+            expect(mockGetLoginTokenReject).toHaveBeenCalledWith(correctUsername, correctPassword);
             expect(mockDispatch).toHaveBeenCalledWith(doSendLoginRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doLoginRequestFailure(mockErrorMessage))});
     });
@@ -125,11 +125,12 @@ describe('doGetPostsThunk', () => {
         expect(typeof(thunk)).toBe('function');
     });
     it('should call dispatch with GET_POST_REQUEST and GET_POST_SUCCESS when succeeding', () => {
-        axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
-
+        
+        const mockGetPostsResolve = getPosts.mockResolvedValue({data: mockPosts});
+        
         const thunk = doGetPostsThunk();
         return thunk(mockDispatch).then(() => {
-            expect(axios.get).toHaveBeenCalledWith('/posts');
+            expect(mockGetPostsResolve).toHaveBeenCalledWith('sample_token');
             expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsSuccess(mockPosts))});
     });

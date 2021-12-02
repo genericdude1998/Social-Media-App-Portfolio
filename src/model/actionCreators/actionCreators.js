@@ -36,7 +36,7 @@ export function doSendUsernameAndPasswordThunk(username, password, event){
         //     const errorMessage = error.response.data;
         //     dispatch(doLoginRequestFailure(errorMessage));
         // });
-        getLoginToken(username,password).then((res) => {
+        return getLoginToken(username,password).then((res) => {
             const token = res.data;
             dispatch(doLoginRequestSuccess(token));
             localStorage.token = token;
@@ -72,7 +72,8 @@ export function doGetPostsThunk(){
     //     });
     // }
     return function GetPostsThunk(dispatch){
-        getPosts('sample_token').then(res => {
+        dispatch(doGetPostsRequest());
+        return getPosts('sample_token').then(res => {
             const posts = res.data;
             dispatch(doGetPostsSuccess(posts));
         }).catch(error => {
