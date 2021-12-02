@@ -5,3 +5,7 @@ export function applySetPostContent(state,action){
 export function applySendPostFailure(state,action){
     return {...state, newPostError: action.error}
 }
+
+export function applyClearPost(state){
+    return{...state, content: ''}
+}

@@ -1,7 +1,7 @@
 import { actionTypes } from '../actionTypes/actionTypes';
 import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../appliers/feedReducerAppliers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../appliers/loginReducerAppliers';
-import { applySetPostContent } from '../appliers/NPCReducerAppliers';
+import { applySetPostContent, applyClearPost } from '../appliers/NPCReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../appliers/userInfoReducerAppliers';
 import { applySendPostFailure } from '../appliers/NPCReducerAppliers';
 import { applyToggleTheme } from '../appliers/toggleThemeReducerAppliers';
@@ -51,6 +51,7 @@ export function NPCReducer(state = sendPostInitialState,action = {type:'default'
     switch (action.type) {
     case actionTypes.SET_POST_CONTENT: return applySetPostContent(state,action);
     case actionTypes.SEND_POST_FAILURE: return applySendPostFailure(state,action);
+    case actionTypes.CLEAR_POST_CONTENT: return applyClearPost(state,action);
     default: return state;
     }
 }
