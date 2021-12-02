@@ -2,7 +2,7 @@
 
 exports[`User should match snapshot if list is undefined 1`] = `
 <div
-  className="baseUser"
+  className="baseUser null"
 >
   <h1>
     Loading
@@ -12,7 +12,7 @@ exports[`User should match snapshot if list is undefined 1`] = `
 
 exports[`User should match snapshot if theme dark 1`] = `
 <div
-  className="baseUser"
+  className="baseUser dark"
 >
   <div
     className="baseUserContent dark"
@@ -38,7 +38,7 @@ exports[`User should match snapshot if theme dark 1`] = `
 
 exports[`User should match snapshot if user is not undefined 1`] = `
 <div
-  className="baseUser"
+  className="baseUser null"
 >
   <div
     className="baseUserContent null"

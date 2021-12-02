@@ -29,7 +29,6 @@ import {
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
-import axios from 'axios';
 import { getLoginToken, getPosts, getUser, sendPost, sendComment } from '../../../server/api';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
