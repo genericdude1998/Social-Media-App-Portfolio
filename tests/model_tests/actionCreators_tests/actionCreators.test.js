@@ -30,7 +30,7 @@ import {
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
 import axios from 'axios';
-import { getLoginToken, getPosts } from '../../../server/api';
+import { getLoginToken, getPosts, getUser } from '../../../server/api';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
 const expectedSetUsernameAction = {type: actionTypes.SET_USERNAME, username: mockUsername};
@@ -166,20 +166,20 @@ describe('doGetUserThunk', () => {
         expect(typeof(thunk)).toBe('function');
     });
     it('should call dispatch with GET_USER_REQUEST and GET_USER_SUCCESS when succeeding', () => {
-        axios.get.mockImplementation(() => Promise.resolve({data: mockUser}));
+        getUser.mockImplementation(() => Promise.resolve({data: mockUser}));
 
         const thunk = doGetUserThunk(mockId);
         return thunk(mockDispatch).then(() => {
-            expect(axios.get).toHaveBeenCalledWith(`/users/${mockId}`);
+            expect(getUser).toHaveBeenCalledWith(mockId);
             expect(mockDispatch).toHaveBeenCalledWith(doGetUserRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetUserSuccess(mockUser))});
     });
     it('should call dispatch with GET_USER_REQUEST and GET_USER_FAILURE when failing', () => {
-        axios.get.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
+        getUser.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
         const thunk = doGetUserThunk(mockId);
         return thunk(mockDispatch).then(() => {
-            expect(axios.get).toHaveBeenCalledWith(`/users/${mockId}`);
+            expect(getUser).toHaveBeenCalledWith(mockId);
             expect(mockDispatch).toHaveBeenCalledWith(doGetUserRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetUserFailure(mockErrorMessage))});
     });

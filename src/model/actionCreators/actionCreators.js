@@ -105,12 +105,12 @@ export function doGetUserThunk(id){
         //     const errorMessage = error.response.data;
         //     dispatch(doGetUserFailure(errorMessage));
         // });
-        getUser(id).then(res => {
+        return getUser(id).then(res => {
             const user = res.data;
             dispatch(doGetUserSuccess(user));
         }).catch(error => {
             const errorMessage = error.response.data;
-            dispatch(doGetPostsFailure(errorMessage));
+            dispatch(doGetUserFailure(errorMessage));
         });
     }
 }
