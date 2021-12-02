@@ -20,7 +20,7 @@ export function getPosts(token){
     return new Promise((res,rej) => {
         setTimeout(() => {
             if(token){
-                res({data: posts});
+                res({data: [...posts]});
             }
             else{
                 rej({response:{data:'no token given!'}});
@@ -65,7 +65,7 @@ export function sendComment(content, postId){
 
     return new Promise((res) => {
         const newComment = {name: 'Me', content: content, date: new Date().toLocaleString()}
-        posts[postId].comments.push(newComment);
+        posts[postId].comments = [...posts[postId].comments, newComment];
 
         setTimeout(() => {
             res({data: 'posted a new comment!'});
