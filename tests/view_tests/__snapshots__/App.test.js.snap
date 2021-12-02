@@ -4,7 +4,7 @@ exports[`App should match snapshot 1`] = `
 <div>
   <Connect(TokenProvider)>
     <Connect(ThemeProvider)>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
             element={<Memo(Connect(Login)) />}
@@ -54,7 +54,7 @@ exports[`App should match snapshot 1`] = `
             path="/notAuthorised"
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Connect(ThemeProvider)>
   </Connect(TokenProvider)>
 </div>
