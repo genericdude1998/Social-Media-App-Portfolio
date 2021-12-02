@@ -30,7 +30,7 @@ import {
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
 import axios from 'axios';
-import { getLoginToken, getPosts, getUser } from '../../../server/api';
+import { getLoginToken, getPosts, getUser, sendPost } from '../../../server/api';
 
 const expectedSendLoginRequest = {type: actionTypes.SEND_LOGIN_REQUEST}
 const expectedSetUsernameAction = {type: actionTypes.SET_USERNAME, username: mockUsername};
@@ -206,27 +206,23 @@ describe('doSendPostThunk', () => {
         expect(typeof(thunk)).toBe('function');
     });
     it('should call dispatch with SEND_POST_REQUEST and doGetPostsThunk() when succeeding', () => {
-        axios.post.mockImplementation(() => Promise.resolve({data: mockPost}));
-        axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
+        sendPost.mockImplementation(() => Promise.resolve({data: mockPost}));
+        // axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
 
         const thunk = doSendPostThunk(mockContent, mockEvent, mockNavigate);
         return thunk(mockDispatch).then(() => {
-            expect(axios.post).toHaveBeenCalledWith('/newPost',{
-                content: mockContent,
-            });
+            expect(sendPost).toHaveBeenCalledWith(mockContent);
             expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());
             //expect(refreshPosts).toHaveBeenCalledWith(mockDispatch, doGetPostsThunk); not needed
             
         });
     });
     it('should call dispatch with SEND_POST_REQUEST and SEND_POSTS_FAILURE when failing', () => {
-        axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
+        sendPost.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
         const thunk = doSendPostThunk(mockContent, mockEvent);
         return thunk(mockDispatch).then(() => {
-            expect(axios.post).toHaveBeenCalledWith('/newPost',{
-                content: mockContent,
-            });
+            expect(sendPost).toHaveBeenCalledWith(mockContent);
             expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doSendPostFailure(mockErrorMessage))});
     });

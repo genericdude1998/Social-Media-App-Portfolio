@@ -149,13 +149,14 @@ export function doSendPostThunk(content,event, navigate){
         //     dispatch(doSendPostFailure(errorMessage));
         // });
         dispatch(doSendPostRequest());
-        sendPost(content).then(() => {
+        return sendPost(content).then(() => {
             //     //refreshPosts(dispatch, doGetPostsThunk);
             //clear the npc content in redux store
             dispatch(doClearPostContent());
             navigate('/feed');
         }).catch(err => {
-            dispatch(doSendPostFailure(err));
+            const errorMessage = err.response.data;
+            dispatch(doSendPostFailure(errorMessage));
         });
     }
 }
