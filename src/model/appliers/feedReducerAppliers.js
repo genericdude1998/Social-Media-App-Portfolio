@@ -1,3 +1,7 @@
+export function applySetFeedLoading(state,action){
+    return {...state, loading: action.loading};
+}
+
 export function applyGetPostsRequest(state){
     return state;
 }

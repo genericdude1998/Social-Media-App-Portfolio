@@ -39,6 +39,10 @@ export function doSendUsernameAndPasswordThunk(username, password, event){
     }
 }
 
+export function doSetFeedLoading(loading){
+    return {type: actionTypes.SET_FEED_LOADING, loading: loading};
+}
+
 export function doGetPostsRequest() {
     return {type: actionTypes.GET_POSTS_REQUEST}
 }
@@ -54,9 +58,11 @@ export function doGetPostsFailure(error){
 export function doGetPostsThunk(){
     return function GetPostsThunk(dispatch){
         dispatch(doGetPostsRequest());
+        dispatch(doSetFeedLoading(true));
         return axios.get('/posts').then((res) => {
             const posts = res.data;
             dispatch(doGetPostsSuccess(posts));
+            dispatch(doSetFeedLoading(false));
         }).catch(error => {
             const errorMessage = error.response.data;
             dispatch(doGetPostsFailure(errorMessage));
