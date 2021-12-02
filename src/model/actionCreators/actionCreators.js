@@ -62,12 +62,12 @@ export function doGetPostsFailure(error){
 export function doGetPostsThunk(){
     return function GetPostsThunk(dispatch){
         dispatch(doGetPostsRequest());
-        dispatch(doSetFeedProgressBar(75)); //set bar to 50%
         dispatch(doSetFeedLoading(true));
+        dispatch(doSetFeedProgressBar('mid')); //set bar to 50%
         return axios.get('/posts').then((res) => {
             const posts = res.data;
             dispatch(doGetPostsSuccess(posts));
-            dispatch(doSetFeedProgressBar(100)); //set bar to 100%
+            dispatch(doSetFeedProgressBar('full')); //set bar to 100%
             dispatch(doSetFeedLoading(false));
         }).catch(error => {
             const errorMessage = error.response.data;

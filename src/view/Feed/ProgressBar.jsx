@@ -1,10 +1,13 @@
 import React from 'react';
+import styles from './ProgressBar.css'
 
-const ProgressBar = ({label, max, percentage}) => {
+const ProgressBar = ({label, percentage = 'empty'}) => {
     return (
-        <div>
+        <div className={styles.progressBar}>
             <label>{label}</label>
-            <progress max={max} value={percentage}></progress>
+            <div className={styles.barContainer}>
+                <div className={styles.bar}></div>  
+            </div>
         </div>
     );
 }

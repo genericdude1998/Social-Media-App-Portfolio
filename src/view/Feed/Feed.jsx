@@ -14,7 +14,7 @@ export const Feed = ({posts, onFetchPosts, loading, theme, percentage}) => {
     return (
         <div className={`${styles.baseFeed} ${theme === 'dark' ? styles.dark : null}`}>
             <ul>
-                {loading ? <ProgressBar label={'feed:'} max={'100'} percentage={percentage}/>:
+                {loading ? <ProgressBar label={'Loading:'} max={'100'} percentage={percentage}/>:
                     posts.map(post => {
                         return (<li key={post.id}>
                             <Post 
