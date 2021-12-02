@@ -25,7 +25,7 @@ export function getPosts(token){
             else{
                 rej({response:{data:'no token given!'}});
             }
-        }, 3000);
+        }, 10000000);
     });
 }
 
