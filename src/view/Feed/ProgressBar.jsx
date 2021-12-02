@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ProgressBar = ({label, max, value}) => {
+const ProgressBar = ({label, max, percentage}) => {
     return (
         <div>
             <label>{label}</label>
-            <progress max={max} value={value}></progress>
+            <progress max={max} value={percentage}></progress>
         </div>
     );
 }

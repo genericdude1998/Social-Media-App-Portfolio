@@ -52,6 +52,10 @@ export function doSetFeedLoading(loading){
     return {type: actionTypes.SET_FEED_LOADING, loading: loading};
 }
 
+export function doSetFeedProgressBar(percentage){
+    return {type: actionTypes.SET_FEED_PROGRESSBAR, percentage: percentage};
+}
+
 export function doGetPostsRequest() {
     return {type: actionTypes.GET_POSTS_REQUEST}
 }
@@ -77,10 +81,12 @@ export function doGetPostsThunk(){
     // }
     return function GetPostsThunk(dispatch){
         dispatch(doGetPostsRequest());
+        dispatch(doSetFeedProgressBar(75)); //set bar to 50%
         dispatch(doSetFeedLoading(true));
         return getPosts('sample_token').then(res => {
             const posts = res.data;
             dispatch(doGetPostsSuccess(posts));
+            dispatch(doSetFeedProgressBar(100)); //set bar to 100%
             dispatch(doSetFeedLoading(false));
         }).catch(error => {
             const errorMessage = error.response.data;
