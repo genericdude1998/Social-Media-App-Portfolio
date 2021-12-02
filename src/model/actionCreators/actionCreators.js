@@ -105,6 +105,10 @@ export function doSendPostFailure(error){
     return {type: actionTypes.SEND_POST_FAILURE, error:error}
 }
 
+export function doClearPostContent(){
+    return {type: actionTypes.CLEAR_POST_CONTENT}
+}
+
 export function doSendPostThunk(content,event, navigate){
     event.preventDefault();
     return function(dispatch){
@@ -113,6 +117,7 @@ export function doSendPostThunk(content,event, navigate){
             content:content,
         }).then(() => {
             //refreshPosts(dispatch, doGetPostsThunk);
+            dispatch(doClearPostContent());
             navigate('/feed');
         }).catch(error => {
             const errorMessage = error.response.data;
