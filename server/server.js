@@ -22,7 +22,7 @@ const devServer = (devServer) => {
             res.json(token);
         }
         else{
-            res.status(401, {errorMessage: 'username or password are wrong please try again!'}).send();
+            res.status(401).send({errorMessage: 'username or password are wrong please try again!'});
         }
     });
 
