@@ -22,7 +22,7 @@ const devServer = (devServer) => {
             res.json(token);
         }
         else{
-            res.send(401, {errorMessage: 'username or password are wrong please try again!'});
+            res.status(401, {errorMessage: 'username or password are wrong please try again!'});
         }
     });
 
@@ -59,10 +59,9 @@ const devServer = (devServer) => {
         console.log(`${userToken} used to access users`);
         if(userToken && userToken === token){
             res.json(users.module[userId]);
-            res.send();
         }
         else{
-            res.send(401, 'not Authorised!')
+            res.status(401, 'not Authorised!')
         }
     })
 }
