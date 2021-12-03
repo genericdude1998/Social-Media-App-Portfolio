@@ -5,13 +5,13 @@ import styles from '../Login/LoginError.css'
 const LoginError = ({error}) => {
     return (
         <div className={styles.baseError}>
-            {error ? error.errorMessage: null}
+            {error ? error: null}
         </div>
     );
 }
 
 LoginError.propTypes = {
-    error: PropTypes.object,
+    error: PropTypes.string,
 }
 
 export default LoginError;
