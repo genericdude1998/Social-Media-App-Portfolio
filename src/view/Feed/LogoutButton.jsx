@@ -4,11 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { mapLogoutDispatchToProps } from '../mappers/mappers';
 
 export const Logoutbutton = (props) => {
-    const {children, onLogoutUser} = props;
+    const {to, className, children, onLogoutUser} = props;
     return (
         <NavLink
+            className={className}
+            to={to}
             onClick={onLogoutUser}
-            {...props}
         >{children}</NavLink>
     );
 }
