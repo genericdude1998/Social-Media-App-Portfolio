@@ -1562,18 +1562,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _mappers_mappers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mappers/mappers */ "./src/view/mappers/mappers.js");
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 
 
 
 
 var Logoutbutton = function Logoutbutton(props) {
-  var children = props.children,
+  var to = props.to,
+      className = props.className,
+      children = props.children,
       onLogoutUser = props.onLogoutUser;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, _extends({
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
+    className: className,
+    to: to,
     onClick: onLogoutUser
-  }, props), children);
+  }, children);
 };
 var ConnectedLogoutButton = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(undefined, _mappers_mappers__WEBPACK_IMPORTED_MODULE_2__.mapLogoutDispatchToProps)(Logoutbutton);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ConnectedLogoutButton);
@@ -1954,11 +1956,11 @@ var LoginError = function LoginError(_ref) {
   var error = _ref.error;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _Login_LoginError_css__WEBPACK_IMPORTED_MODULE_2__["default"].baseError
-  }, error ? error.errorMessage : null);
+  }, error ? error : null);
 };
 
 LoginError.propTypes = {
-  error: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().object)
+  error: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginError);
 
