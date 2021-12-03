@@ -18,6 +18,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _posts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./posts */ "./server/posts.js");
 /* harmony import */ var _users__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users */ "./server/users.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 function getLoginToken(username, password) {
@@ -42,7 +54,7 @@ function getPosts(token) {
     setTimeout(function () {
       if (token) {
         res({
-          data: _posts__WEBPACK_IMPORTED_MODULE_0__.posts
+          data: _toConsumableArray(_posts__WEBPACK_IMPORTED_MODULE_0__.posts)
         });
       } else {
         rej({
@@ -51,7 +63,7 @@ function getPosts(token) {
           }
         });
       }
-    }, 100);
+    }, 1000);
   });
 }
 function getUser(id) {
@@ -95,7 +107,7 @@ function sendComment(content, postId) {
       content: content,
       date: new Date().toLocaleString()
     };
-    _posts__WEBPACK_IMPORTED_MODULE_0__.posts[postId].comments.push(newComment);
+    _posts__WEBPACK_IMPORTED_MODULE_0__.posts[postId].comments = [].concat(_toConsumableArray(_posts__WEBPACK_IMPORTED_MODULE_0__.posts[postId].comments), [newComment]);
     setTimeout(function () {
       res({
         data: 'posted a new comment!'
@@ -375,6 +387,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "doLoginRequestSuccess": () => (/* binding */ doLoginRequestSuccess),
 /* harmony export */   "doLoginRequestFailure": () => (/* binding */ doLoginRequestFailure),
 /* harmony export */   "doSendUsernameAndPasswordThunk": () => (/* binding */ doSendUsernameAndPasswordThunk),
+/* harmony export */   "doSetFeedLoading": () => (/* binding */ doSetFeedLoading),
+/* harmony export */   "doSetFeedProgressBar": () => (/* binding */ doSetFeedProgressBar),
 /* harmony export */   "doGetPostsRequest": () => (/* binding */ doGetPostsRequest),
 /* harmony export */   "doGetPostsSuccess": () => (/* binding */ doGetPostsSuccess),
 /* harmony export */   "doGetPostsFailure": () => (/* binding */ doGetPostsFailure),
@@ -387,6 +401,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "doSendPostRequest": () => (/* binding */ doSendPostRequest),
 /* harmony export */   "doSendPostSuccess": () => (/* binding */ doSendPostSuccess),
 /* harmony export */   "doSendPostFailure": () => (/* binding */ doSendPostFailure),
+/* harmony export */   "doClearPostContent": () => (/* binding */ doClearPostContent),
 /* harmony export */   "doSendPostThunk": () => (/* binding */ doSendPostThunk),
 /* harmony export */   "doToggleTheme": () => (/* binding */ doToggleTheme),
 /* harmony export */   "doOpenComments": () => (/* binding */ doOpenComments),
@@ -447,7 +462,7 @@ function doSendUsernameAndPasswordThunk(username, password, event) {
     //     dispatch(doLoginRequestFailure(errorMessage));
     // });
 
-    (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.getLoginToken)(username, password).then(function (res) {
+    return (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.getLoginToken)(username, password).then(function (res) {
       var token = res.data;
       dispatch(doLoginRequestSuccess(token));
       localStorage.token = token;
@@ -456,6 +471,18 @@ function doSendUsernameAndPasswordThunk(username, password, event) {
       var errorMessage = error.response.data;
       dispatch(doLoginRequestFailure(errorMessage));
     });
+  };
+}
+function doSetFeedLoading(loading) {
+  return {
+    type: _actionTypes_actionTypes__WEBPACK_IMPORTED_MODULE_1__.actionTypes.SET_FEED_LOADING,
+    loading: loading
+  };
+}
+function doSetFeedProgressBar(percentage) {
+  return {
+    type: _actionTypes_actionTypes__WEBPACK_IMPORTED_MODULE_1__.actionTypes.SET_FEED_PROGRESSBAR,
+    percentage: percentage
   };
 }
 function doGetPostsRequest() {
@@ -487,9 +514,16 @@ function doGetPostsThunk() {
   //     });
   // }
   return function GetPostsThunk(dispatch) {
-    (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.getPosts)('sample_token').then(function (res) {
+    dispatch(doGetPostsRequest());
+    dispatch(doSetFeedLoading(true));
+    dispatch(doSetFeedProgressBar('mid')); //set bar to 50%
+
+    return (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.getPosts)('sample_token').then(function (res) {
       var posts = res.data;
       dispatch(doGetPostsSuccess(posts));
+      dispatch(doSetFeedProgressBar('full')); //set bar to 100%
+
+      dispatch(doSetFeedLoading(false));
     })["catch"](function (error) {
       var errorMessage = error.response.data;
       dispatch(doGetPostsFailure(errorMessage));
@@ -523,12 +557,12 @@ function doGetUserThunk(id) {
     //     dispatch(doGetUserFailure(errorMessage));
     // });
 
-    (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.getUser)(id).then(function (res) {
+    return (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.getUser)(id).then(function (res) {
       var user = res.data;
       dispatch(doGetUserSuccess(user));
     })["catch"](function (error) {
       var errorMessage = error.response.data;
-      dispatch(doGetPostsFailure(errorMessage));
+      dispatch(doGetUserFailure(errorMessage));
     });
   };
 }
@@ -554,6 +588,11 @@ function doSendPostFailure(error) {
     error: error
   };
 }
+function doClearPostContent() {
+  return {
+    type: _actionTypes_actionTypes__WEBPACK_IMPORTED_MODULE_1__.actionTypes.CLEAR_POST_CONTENT
+  };
+}
 function doSendPostThunk(content, event, navigate) {
   event.preventDefault();
   return function (dispatch) {
@@ -568,11 +607,14 @@ function doSendPostThunk(content, event, navigate) {
     //     dispatch(doSendPostFailure(errorMessage));
     // });
     dispatch(doSendPostRequest());
-    (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.sendPost)(content).then(function () {
+    return (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.sendPost)(content).then(function () {
       //     //refreshPosts(dispatch, doGetPostsThunk);
+      //clear the npc content in redux store
+      dispatch(doClearPostContent());
       navigate('/feed');
     })["catch"](function (err) {
-      dispatch(doSendPostFailure(err));
+      var errorMessage = err.response.data;
+      dispatch(doSendPostFailure(errorMessage));
     });
   };
 }
@@ -631,12 +673,13 @@ function doSendCommentThunk(content, event, postId) {
     //     dispatch(doSendCommentFailure(errorMessage));
     // });
     dispatch(doSendCommentRequest());
-    (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.sendComment)(content, postId).then(function () {
+    return (0,_server_api__WEBPACK_IMPORTED_MODULE_0__.sendComment)(content, postId).then(function () {
       dispatch(doClearCommentContent());
       dispatch(doGetPostsThunk());
       event.target[0].value = '';
     })["catch"](function (err) {
-      dispatch(doSendCommentFailure(err));
+      var errorMessage = err.response.data;
+      dispatch(doSendCommentFailure(errorMessage));
     });
   };
 }
@@ -665,6 +708,8 @@ var actionTypes = {
   SEND_LOGIN_REQUEST: 'SEND_LOGIN_REQUEST',
   LOGIN_REQUEST_SUCCESS: 'LOGIN_REQUEST_SUCCESS',
   LOGIN_REQUEST_FAILURE: 'LOGIN_REQUEST_FAILURE',
+  SET_FEED_LOADING: 'SET_FEED_LOADING',
+  SET_FEED_PROGRESSBAR: 'SET_FEED_PROGRESSBAR',
   GET_POSTS_REQUEST: 'GET_POSTS_REQUEST',
   GET_POSTS_SUCCESS: 'GET_POSTS_SUCCESS',
   GET_POSTS_FAILURE: 'GET_POSTS_FAILURE',
@@ -682,6 +727,7 @@ var actionTypes = {
   SEND_COMMENT_REQUEST: 'SEND_COMMENT_REQUEST',
   SEND_COMMENT_FAILURE: 'SEND_COMMENT_FAILURE',
   CLEAR_COMMENT_CONTENT: 'CLEAR_COMMENT_CONTENT',
+  CLEAR_POST_CONTENT: 'CLEAR_POST_CONTENT',
   USER_LOGOUT: 'USER_LOGOUT'
 };
 
@@ -697,7 +743,8 @@ var actionTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "applySetPostContent": () => (/* binding */ applySetPostContent),
-/* harmony export */   "applySendPostFailure": () => (/* binding */ applySendPostFailure)
+/* harmony export */   "applySendPostFailure": () => (/* binding */ applySendPostFailure),
+/* harmony export */   "applyClearPost": () => (/* binding */ applyClearPost)
 /* harmony export */ });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -715,6 +762,11 @@ function applySendPostFailure(state, action) {
     newPostError: action.error
   });
 }
+function applyClearPost(state) {
+  return _objectSpread(_objectSpread({}, state), {}, {
+    content: ''
+  });
+}
 
 /***/ }),
 
@@ -727,6 +779,8 @@ function applySendPostFailure(state, action) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "applySetFeedLoading": () => (/* binding */ applySetFeedLoading),
+/* harmony export */   "applySetFeedProgressBar": () => (/* binding */ applySetFeedProgressBar),
 /* harmony export */   "applyGetPostsRequest": () => (/* binding */ applyGetPostsRequest),
 /* harmony export */   "applyGetPostsSuccess": () => (/* binding */ applyGetPostsSuccess),
 /* harmony export */   "applyGetPostsFailure": () => (/* binding */ applyGetPostsFailure),
@@ -754,6 +808,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function applySetFeedLoading(state, action) {
+  return _objectSpread(_objectSpread({}, state), {}, {
+    loading: action.loading
+  });
+}
+function applySetFeedProgressBar(state, action) {
+  return _objectSpread(_objectSpread({}, state), {}, {
+    percentage: action.percentage
+  });
+}
 function applyGetPostsRequest(state) {
   return state;
 }
@@ -949,7 +1013,8 @@ var loginReducerInitialState = {
   error: null
 };
 var feedReducerInitialState = {
-  posts: []
+  posts: [],
+  loading: false
 };
 var userInfoReducerInitialState = {};
 var sendPostInitialState = {
@@ -994,6 +1059,12 @@ function feedReducer() {
   };
 
   switch (action.type) {
+    case _actionTypes_actionTypes__WEBPACK_IMPORTED_MODULE_0__.actionTypes.SET_FEED_LOADING:
+      return (0,_appliers_feedReducerAppliers__WEBPACK_IMPORTED_MODULE_1__.applySetFeedLoading)(state, action);
+
+    case _actionTypes_actionTypes__WEBPACK_IMPORTED_MODULE_0__.actionTypes.SET_FEED_PROGRESSBAR:
+      return (0,_appliers_feedReducerAppliers__WEBPACK_IMPORTED_MODULE_1__.applySetFeedProgressBar)(state, action);
+
     case _actionTypes_actionTypes__WEBPACK_IMPORTED_MODULE_0__.actionTypes.GET_POSTS_REQUEST:
       return (0,_appliers_feedReducerAppliers__WEBPACK_IMPORTED_MODULE_1__.applyGetPostsRequest)(state, action);
 
@@ -1045,6 +1116,9 @@ function NPCReducer() {
 
     case _actionTypes_actionTypes__WEBPACK_IMPORTED_MODULE_0__.actionTypes.SEND_POST_FAILURE:
       return (0,_appliers_NPCReducerAppliers__WEBPACK_IMPORTED_MODULE_3__.applySendPostFailure)(state, action);
+
+    case _actionTypes_actionTypes__WEBPACK_IMPORTED_MODULE_0__.actionTypes.CLEAR_POST_CONTENT:
+      return (0,_appliers_NPCReducerAppliers__WEBPACK_IMPORTED_MODULE_3__.applyClearPost)(state, action);
 
     default:
       return state;
@@ -1425,6 +1499,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _theme_withTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../theme/withTheme */ "./src/view/theme/withTheme.js");
+/* harmony import */ var _ProgressBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ProgressBar */ "./src/view/Feed/ProgressBar.jsx");
+
 
 
 
@@ -1435,13 +1511,19 @@ __webpack_require__.r(__webpack_exports__);
 var Feed = function Feed(_ref) {
   var posts = _ref.posts,
       onFetchPosts = _ref.onFetchPosts,
-      theme = _ref.theme;
+      loading = _ref.loading,
+      theme = _ref.theme,
+      percentage = _ref.percentage;
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     onFetchPosts();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "".concat(_Feed_css__WEBPACK_IMPORTED_MODULE_4__["default"].baseFeed, " ").concat(theme === 'dark' ? _Feed_css__WEBPACK_IMPORTED_MODULE_4__["default"].dark : null)
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, posts ? posts.map(function (post) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProgressBar__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: 'Loading:',
+    max: '100',
+    percentage: percentage
+  }) : posts.map(function (post) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
       key: post.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Post__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1452,7 +1534,7 @@ var Feed = function Feed(_ref) {
       comments: post.comments,
       openComments: post.openComments
     }));
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Loading")));
+  })));
 };
 Feed.propTypes = {
   posts: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().array),
@@ -1696,6 +1778,39 @@ Post.propTypes = {
 };
 var ConnectedPost = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.connect)(undefined, _mappers_mappers__WEBPACK_IMPORTED_MODULE_6__.mapCommentsDispatchToProps)(Post);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_theme_withTheme__WEBPACK_IMPORTED_MODULE_4__["default"])(ConnectedPost));
+
+/***/ }),
+
+/***/ "./src/view/Feed/ProgressBar.jsx":
+/*!***************************************!*\
+  !*** ./src/view/Feed/ProgressBar.jsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ProgressBar_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProgressBar.css */ "./src/view/Feed/ProgressBar.css");
+
+
+
+var ProgressBar = function ProgressBar(_ref) {
+  var label = _ref.label,
+      _ref$percentage = _ref.percentage,
+      percentage = _ref$percentage === void 0 ? 'empty' : _ref$percentage;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _ProgressBar_css__WEBPACK_IMPORTED_MODULE_1__["default"].progressBar
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _ProgressBar_css__WEBPACK_IMPORTED_MODULE_1__["default"].barContainer
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _ProgressBar_css__WEBPACK_IMPORTED_MODULE_1__["default"].bar
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProgressBar);
 
 /***/ }),
 
@@ -2530,6 +2645,42 @@ ___CSS_LOADER_EXPORT___.locals = {
 	"basePostDate": "TdgLL4swmYsb9ZLdMD3M",
 	"basePostLink": "mW6LYoQAToVaa8g88S5T",
 	"dark": "u3fBO_Pe9ar843GckJ07"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/view/Feed/ProgressBar.css":
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/view/Feed/ProgressBar.css ***!
+  \*********************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "*{\n    box-sizing: border-box;\n    margin: 0;\n}\n.pwpX0D4jz_l32oU50qiX {\n    height: 100px;\n    width: 300px;\n    display: flex;\n    flex-direction: column;\n    justify-items: flex-end;\n    align-items: center;\n    font-weight: bold;\n}\n\n.hh1PNhSg8S7stmj_eqOj{\n    border-radius: 20px;\n    height: 80%;\n    width: 20%;\n    background-color: white;\n    animation: CucGZvx0qejhj8GgUjn6 1.5s  infinite;\n}\n\n.sjJMS0wWLfjy6QRKbNvi{\n    margin-top: 10px;\n    border-radius: 20px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background-color: darkblue;\n    height: 20%;\n    width: 70%;\n}\n\n@keyframes CucGZvx0qejhj8GgUjn6 {\n\n    33% {\n      transform: translate(-50px);\n    }\n    66% {\n        transform: translate(50px);\n      }\n    100% {\n        transform: translate(0px);\n    }\n  }\n\n\n.YTPQk25H06Lzpdkd3bpD{\n\n}\n.ehuQvJBVuUkWXCeWgT96{\n\n}\n.DI35nb7cEh0Fq1na82PN{\n\n}", "",{"version":3,"sources":["webpack://./src/view/Feed/ProgressBar.css"],"names":[],"mappings":"AAAA;IACI,sBAAsB;IACtB,SAAS;AACb;AACA;IACI,aAAa;IACb,YAAY;IACZ,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,iBAAiB;AACrB;;AAEA;IACI,mBAAmB;IACnB,WAAW;IACX,UAAU;IACV,uBAAuB;IACvB,8CAA0C;AAC9C;;AAEA;IACI,gBAAgB;IAChB,mBAAmB;IACnB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,0BAA0B;IAC1B,WAAW;IACX,UAAU;AACd;;AAEA;;IAEI;MACE,2BAA2B;IAC7B;IACA;QACI,0BAA0B;MAC5B;IACF;QACI,yBAAyB;IAC7B;EACF;;;AAGF;;AAEA;AACA;;AAEA;AACA;;AAEA","sourcesContent":["*{\n    box-sizing: border-box;\n    margin: 0;\n}\n.progressBar {\n    height: 100px;\n    width: 300px;\n    display: flex;\n    flex-direction: column;\n    justify-items: flex-end;\n    align-items: center;\n    font-weight: bold;\n}\n\n.bar{\n    border-radius: 20px;\n    height: 80%;\n    width: 20%;\n    background-color: white;\n    animation: animate-positive 1.5s  infinite;\n}\n\n.barContainer{\n    margin-top: 10px;\n    border-radius: 20px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background-color: darkblue;\n    height: 20%;\n    width: 70%;\n}\n\n@keyframes animate-positive {\n\n    33% {\n      transform: translate(-50px);\n    }\n    66% {\n        transform: translate(50px);\n      }\n    100% {\n        transform: translate(0px);\n    }\n  }\n\n\n.empty{\n\n}\n.mid{\n\n}\n.full{\n\n}"],"sourceRoot":""}]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"progressBar": "pwpX0D4jz_l32oU50qiX",
+	"bar": "hh1PNhSg8S7stmj_eqOj",
+	"animate-positive": "CucGZvx0qejhj8GgUjn6",
+	"barContainer": "sjJMS0wWLfjy6QRKbNvi",
+	"empty": "YTPQk25H06Lzpdkd3bpD",
+	"mid": "ehuQvJBVuUkWXCeWgT96",
+	"full": "DI35nb7cEh0Fq1na82PN"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39736,6 +39887,61 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_Post_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_Post_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_Post_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/view/Feed/ProgressBar.css":
+/*!***************************************!*\
+  !*** ./src/view/Feed/ProgressBar.css ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_ProgressBar_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./ProgressBar.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/view/Feed/ProgressBar.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_ProgressBar_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_ProgressBar_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_ProgressBar_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_ProgressBar_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
