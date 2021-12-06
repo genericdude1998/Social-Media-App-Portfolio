@@ -29,3 +29,8 @@
     background-color: maroon;
     color: white;
 }
+
+.dark h5{
+    background-color: maroon;
+    color: darksalmon;
+}
