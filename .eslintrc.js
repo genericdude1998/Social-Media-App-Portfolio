@@ -1,6 +1,6 @@
 module.exports = {
-    extends: ['eslint:recommended','plugin:jest/recommended', 'plugin:react/recommended'],
-    plugins:['jest', 'react'],
+    extends: ['eslint:recommended','plugin:jest/recommended', 'plugin:react/recommended', 'plugin:cypress/recommended'],
+    plugins:['chai-expect','jest', 'react'],
     parserOptions: {
         ecmaVersion: 6,
     },
