@@ -4,10 +4,7 @@ describe('Login Procedure', () => {
         cy.get('input[type=text]').type('Admin');
         cy.get('input[type=password]').type('1234');
         cy.get('button[type=submit]').click();
-        
-        cy.get('input[class=k4R139FB0uqddBSTNWHr]').each(el => cy.wrap(el).type('hello!!!'));
-        cy.get('button[type=submit]').first().click();
-        cy.wait(2000);
-        cy.get('button[class=h2YUy_yiJ2J6ezi56ytx]').click();
+
+        cy.get('a[class=i_4yHM7F5skO2msZbvWd null]').click();
     });
 });
