@@ -9,5 +9,6 @@ describe('Login Procedure', () => {
         cy.get('button[type=submit]').first().click();
         cy.wait(2000);
         cy.get('button[class=h2YUy_yiJ2J6ezi56ytx]').click();
+        cy.get('p').contains('hello!!!');
     });
 });
