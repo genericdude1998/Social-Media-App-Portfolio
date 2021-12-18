@@ -8,7 +8,7 @@
     "start": "webpack serve",
     "build": "webpack",
     "predeploy": "npm run build",
-    "cypress": "cypress run --browser chrome --headed --no-exit",
+    "cypress": "cypress run --browser chrome --headed",
     "test": "npx jest --watchAll",
     "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext .js --ext .jsx",

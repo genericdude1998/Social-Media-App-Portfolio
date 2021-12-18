@@ -1,4 +1,4 @@
-describe('Login Procedure', () => {
+describe('Feed', () => {
     it('should correctly create a new comment', () => {
         cy.visit('https://genericdude1998.github.io/Social-Media-App-Portfolio/#/');
         cy.get('input[type=text]').type('Admin');
