@@ -1,7 +1,7 @@
 import { applySetUsername, applySetPassword, applySendLoginRequest, applyLoginRequestSuccess, applyLoginRequestFailure } from '../../../src/model/appliers/loginReducerAppliers';
 import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure, doSendPostFailure, doSetPostContent, doSetCommentContent, doSendCommentFailure, doClearCommentContent } from '../../../src/model/actionCreators/actionCreators';
 import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNewPostInitialState, mockContent, mockNPCInitialState, mockNPCNewState} from '../../mockValues';
-import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment, applySetFeedLoading, applySetFeedProgressBar } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../../../src/model/appliers/userInfoReducerAppliers';
 import { applyClearPost, applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
@@ -155,5 +155,15 @@ describe('applyClearComment', () => {
 describe('applyClearPost', () => {
     it('should return expected state', () => {
         expect(applyClearPost(mockNPCNewState)).toEqual(mockNPCInitialState);
+    });
+});
+describe('applySetFeedLoading', () => {
+    it('should return expected state', () => {
+        expect(applySetFeedLoading(mockFeedInitialState, {loading:true})).toEqual({...mockFeedInitialState, loading:true});
+    });
+});
+describe('applySetFeedProgressBar', () => {
+    it('should return expected state', () => {
+        expect(applySetFeedProgressBar(mockFeedInitialState, {percentage:50})).toEqual({...mockFeedInitialState, percentage:50});
     });
 });

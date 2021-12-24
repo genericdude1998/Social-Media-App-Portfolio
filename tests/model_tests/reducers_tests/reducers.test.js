@@ -22,7 +22,7 @@ import {
 import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNPCInitialState, mockContent, mockId, mockNCCInitialState, mockThemeInitialState } from '../../mockValues';
 import { feedReducer, loginReducer, NCCReducer, NPCReducer, toggleThemeReducer, userInfoReducer } from '../../../src/model/reducers/reducers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../../../src/model/appliers/loginReducerAppliers';
-import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment, applySetFeedLoading } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserRequest, applyGetUserSuccess, applyGetUserFailure } from '../../../src/model/appliers/userInfoReducerAppliers';
 import { applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
 import { applyToggleTheme } from '../../../src/model/appliers/toggleThemeReducerAppliers';
