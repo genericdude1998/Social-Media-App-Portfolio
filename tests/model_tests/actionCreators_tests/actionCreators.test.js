@@ -26,6 +26,8 @@ import {
     doClearCommentContent,
     doSendCommentThunk,
     doUserLogout,
+    doSetFeedLoading,
+    doSetFeedProgressBar,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
@@ -96,7 +98,7 @@ describe('doSendUsernameAndPasswordThunk', () => {
     it('should call dispatch with SEND_LOGIN_REQUEST and LOGIN_REQUEST_FAILURE when given incorrect credentials', () => {
         axios.post.mockImplementation(() => Promise.reject({response:{data: mockErrorMessage}}));
 
-        const thunk = doSendUsernameAndPasswordThunk(correctUsername,correctPassword, mockEvent);
+        const thunk = doSendUsernameAndPasswordThunk('incorrect name',correctPassword, mockEvent);
         return thunk(mockDispatch).then(() => {
             expect(mockDispatch).toHaveBeenCalledWith(doSendLoginRequest());
             expect(mockDispatch).toHaveBeenLastCalledWith(doLoginRequestFailure(mockErrorMessage))});
@@ -130,7 +132,10 @@ describe('doGetPostsThunk', () => {
         const thunk = doGetPostsThunk();
         return thunk(mockDispatch).then(() => {
             expect(axios.get).toHaveBeenCalledWith('/posts');
-            expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
+            expect(mockDispatch).toHaveBeenNthCalledWith(1, doGetPostsRequest());
+            expect(mockDispatch).toHaveBeenNthCalledWith(2, doSetFeedLoading(true));
+            expect(mockDispatch).toHaveBeenNthCalledWith(3, doSetFeedProgressBar('mid'));
+
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsSuccess(mockPosts))});
     });
     it('should call dispatch with SEND_LOGIN_REQUEST and GET_POSTS_FAILURE when failing', () => {

@@ -6,4 +6,5 @@ module.exports = {
         '\\.(css|less|png)$': 'identity-obj-proxy',
     },
     snapshotSerializers: ['enzyme-to-json/serializer'],
+    modulePathIgnorePatterns: ['/cypress/'],
 };
