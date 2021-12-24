@@ -36,6 +36,15 @@ describe('Feed', () => {
         />);
         expect(wrapper).toMatchSnapshot();
     });
+    it('should match snapshot if loading is true', () => {
+        let wrapper = shallow(<Feed
+            loading={true}
+            posts={undefined}
+            onFetchPosts={mockOnFetchPosts}
+            theme={'mock_theme'}
+        />);
+        expect(wrapper).toMatchSnapshot();
+    });
     it('should match snapshot if theme is light', () => {
         let wrapper = shallow(
             <Feed

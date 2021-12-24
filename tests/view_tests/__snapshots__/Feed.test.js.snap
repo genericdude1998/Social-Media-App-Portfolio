@@ -47,6 +47,19 @@ exports[`Feed should match snapshot if list is undefined 1`] = `
 </div>
 `;
 
+exports[`Feed should match snapshot if loading is true 1`] = `
+<div
+  className="baseFeed null"
+>
+  <ul>
+    <ProgressBar
+      label="Loading:"
+      max="100"
+    />
+  </ul>
+</div>
+`;
+
 exports[`Feed should match snapshot if theme is dark 1`] = `
 <div
   className="baseFeed dark"
