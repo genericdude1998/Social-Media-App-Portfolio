@@ -37,6 +37,10 @@ Feed.propTypes = {
     theme: PropTypes.string,
 }
 
+Feed.defaultProps = {
+    posts: [],
+}
+
 
 const ConnectedFeed = connect(mapFeedStateToProps, mapFeedDispatchToProps)(Feed);
 

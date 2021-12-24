@@ -43,11 +43,7 @@ exports[`Feed should match snapshot if list is undefined 1`] = `
 <div
   className="baseFeed null"
 >
-  <ul>
-    <h1>
-      Loading
-    </h1>
-  </ul>
+  <ul />
 </div>
 `;
 

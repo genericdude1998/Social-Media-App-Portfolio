@@ -6,7 +6,7 @@ import {mockError} from '../mockValues';
 it('should render an error message when given an error', () => {
     let loginErrorWrapper = shallow(
         <LoginError
-            error={mockError}
+            error={mockError.errorMessage}
         />
     );
     expect(loginErrorWrapper).toMatchSnapshot();
