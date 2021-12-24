@@ -135,6 +135,8 @@ describe('doGetPostsThunk', () => {
             expect(mockDispatch).toHaveBeenNthCalledWith(1, doGetPostsRequest());
             expect(mockDispatch).toHaveBeenNthCalledWith(2, doSetFeedLoading(true));
             expect(mockDispatch).toHaveBeenNthCalledWith(3, doSetFeedProgressBar('mid'));
+            expect(mockDispatch).toHaveBeenNthCalledWith(4, doSetFeedProgressBar('full'));
+            expect(mockDispatch).toHaveBeenNthCalledWith(5, doSetFeedLoading(false));
 
             expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsSuccess(mockPosts))});
     });

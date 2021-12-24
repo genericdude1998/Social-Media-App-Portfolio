@@ -66,9 +66,9 @@ export function doGetPostsThunk(){
         dispatch(doSetFeedProgressBar('mid')); //set bar to 50%
         return axios.get('/posts').then((res) => {
             const posts = res.data;
-            dispatch(doGetPostsSuccess(posts));
             dispatch(doSetFeedProgressBar('full')); //set bar to 100%
             dispatch(doSetFeedLoading(false));
+            dispatch(doGetPostsSuccess(posts));
         }).catch(error => {
             const errorMessage = error.response.data;
             dispatch(doGetPostsFailure(errorMessage));
