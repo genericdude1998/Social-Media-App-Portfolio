@@ -18,7 +18,7 @@ I also implemented a simple Express.js Server with JWT authentication to cover t
 - CSS modules
 - React
 - Redux
-- Jest/Enzyme
+- Jest
 - Cypress
 - Enzyme
 - Express.js
