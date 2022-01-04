@@ -19,11 +19,13 @@ import {
     doClearCommentContent,
     doToggleTheme,
     doClearPostContent,
+    doSetFeedLoading,
+    doSetFeedProgressBar,
 } from '../../../src/model/actionCreators/actionCreators';
 import { mockPassword, mockUsername, mockLoginReducerInitialState, mockToken, mockErrorMessage, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNPCInitialState, mockContent, mockId, mockNCCInitialState, mockThemeInitialState } from '../../mockValues';
 import { feedReducer, loginReducer, NCCReducer, NPCReducer, toggleThemeReducer, userInfoReducer } from '../../../src/model/reducers/reducers';
 import { applyLoginRequestFailure, applyLoginRequestSuccess, applySendLoginRequest, applySetPassword, applySetUsername } from '../../../src/model/appliers/loginReducerAppliers';
-import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../../../src/model/appliers/feedReducerAppliers';
+import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment, applySetFeedLoading, applySetFeedProgressBar } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserRequest, applyGetUserSuccess, applyGetUserFailure } from '../../../src/model/appliers/userInfoReducerAppliers';
 import { applyClearPost, applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
 import { applyToggleTheme } from '../../../src/model/appliers/toggleThemeReducerAppliers';
@@ -55,6 +57,9 @@ const sendPostFailureAction = doSendPostFailure(mockErrorMessage);
 
 const openCommentsAction = doOpenComments(mockId);
 const closeCommentsAction = doCloseComments(mockId);
+
+const setFeedLoadingAction = doSetFeedLoading(true);
+const setFeedProgressBarAction = doSetFeedProgressBar(50);
 
 const clearPostContentAction = doClearPostContent()
 
@@ -113,6 +118,15 @@ describe('feedReducer', () => {
     it('should call applyCloseComments with expected params when given CLOSE_COMMENTS action', () => {
         feedReducer(mockFeedInitialState, closeCommentsAction);
         expect(applyCloseComments).toHaveBeenCalledWith(mockFeedInitialState, closeCommentsAction);
+    });
+
+    it('should call applySetFeedLoading with expected params when given SET_FEED_LOADING action', () => {
+        feedReducer(mockFeedInitialState, setFeedLoadingAction);
+        expect(applySetFeedLoading).toHaveBeenCalledWith(mockFeedInitialState, setFeedLoadingAction);
+    });
+    it('should call applySetFeedProgressBar with expected params when given SET_FEED_PROGRESSBAR action', () => {
+        feedReducer(mockFeedInitialState, setFeedProgressBarAction);
+        expect(applySetFeedProgressBar).toHaveBeenCalledWith(mockFeedInitialState, setFeedProgressBarAction);
     });
     it('should return initial state when default case', () => {
         expect(feedReducer(mockFeedInitialState, defaultAction)).toBe(mockFeedInitialState);
