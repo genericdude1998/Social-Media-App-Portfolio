@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Feed should match snapshot if list is empty 1`] = `
+<div
+  className="baseFeed null"
+>
+  <ul />
+</div>
+`;
+
 exports[`Feed should match snapshot if list is not undefined 1`] = `
 <div
   className="baseFeed null"
@@ -39,14 +47,15 @@ exports[`Feed should match snapshot if list is not undefined 1`] = `
 </div>
 `;
 
-exports[`Feed should match snapshot if list is undefined 1`] = `
+exports[`Feed should match snapshot if loading is true 1`] = `
 <div
   className="baseFeed null"
 >
   <ul>
-    <h1>
-      Loading
-    </h1>
+    <ProgressBar
+      label="Loading:"
+      max="100"
+    />
   </ul>
 </div>
 `;

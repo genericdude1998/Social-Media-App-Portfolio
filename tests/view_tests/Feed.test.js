@@ -28,8 +28,17 @@ describe('Feed', () => {
     it('should match snapshot if list is not undefined', () => {
         expect(wrapper).toMatchSnapshot();
     });
-    it('should match snapshot if list is undefined', () => {
+    it('should match snapshot if list is empty', () => {
         let wrapper = shallow(<Feed
+            posts={[]}
+            onFetchPosts={mockOnFetchPosts}
+            theme={'mock_theme'}
+        />);
+        expect(wrapper).toMatchSnapshot();
+    });
+    it('should match snapshot if loading is true', () => {
+        let wrapper = shallow(<Feed
+            loading={true}
             posts={undefined}
             onFetchPosts={mockOnFetchPosts}
             theme={'mock_theme'}
