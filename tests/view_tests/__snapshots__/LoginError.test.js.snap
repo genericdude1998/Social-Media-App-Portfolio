@@ -4,7 +4,7 @@ exports[`should render an error message when given an error 1`] = `
 <div
   className="baseError"
 >
-  Mock Error Message!
+  <Component />
 </div>
 `;
 

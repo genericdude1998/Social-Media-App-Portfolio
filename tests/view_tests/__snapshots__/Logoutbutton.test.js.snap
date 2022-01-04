@@ -3,6 +3,5 @@
 exports[`ConnectedLogOutButton should matchSnapshot 1`] = `
 <NavLink
   onClick={[MockFunction]}
-  onLogoutUser={[MockFunction]}
 />
 `;
