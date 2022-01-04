@@ -1,9 +1,9 @@
 import { applySetUsername, applySetPassword, applySendLoginRequest, applyLoginRequestSuccess, applyLoginRequestFailure } from '../../../src/model/appliers/loginReducerAppliers';
 import { doSetUsername, doSetPassword, doLoginRequestSuccess, doLoginRequestFailure, doGetPostsSuccess, doGetPostsFailure, doGetUserSuccess, doGetUserFailure, doSendPostFailure, doSetPostContent, doSetCommentContent, doSendCommentFailure, doClearCommentContent } from '../../../src/model/actionCreators/actionCreators';
-import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNewPostInitialState, mockContent} from '../../mockValues';
+import {mockUsername, mockPassword, mockToken, mockErrorMessage, mockLoginReducerInitialState, mockFeedInitialState, mockPosts, mockUserInfoInitialState, mockUser, mockNewPostInitialState, mockContent, mockNPCInitialState, mockNPCNewState} from '../../mockValues';
 import { applyClearComment, applyCloseComments, applyGetPostsFailure, applyGetPostsRequest, applyGetPostsSuccess, applyOpenComments, applySendCommentFailure, applySetComment } from '../../../src/model/appliers/feedReducerAppliers';
 import { applyGetUserFailure, applyGetUserRequest, applyGetUserSuccess } from '../../../src/model/appliers/userInfoReducerAppliers';
-import { applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
+import { applyClearPost, applySendPostFailure, applySetPostContent } from '../../../src/model/appliers/NPCReducerAppliers';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import { applyToggleTheme } from '../../../src/model/appliers/toggleThemeReducerAppliers';
 
@@ -149,5 +149,10 @@ describe('applySendCommentFailure', () => {
 describe('applyClearComment', () => {
     it('should return expected state', () => {
         expect(applyClearComment(mockInitialNewCommentState, doClearCommentContent())).toEqual(mockSendNewCommentClearedState);
+    });
+});
+describe('applyClearPost', () => {
+    it('should return expected state', () => {
+        expect(applyClearPost(mockNPCNewState)).toEqual(mockNPCInitialState);
     });
 });

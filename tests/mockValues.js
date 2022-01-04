@@ -1,6 +1,7 @@
 export const mockUserInfoInitialState = {}
 export const mockFeedInitialState = {loading: false, posts: []};
-export const mockNPCInitialState = {newPostError:null, content: null};
+export const mockNPCInitialState = {newPostError:null, content:null};
+export const mockNPCNewState = {newPostError:null, content: 'new state post'};
 export const mockNCCInitialState = {newCommentError: null, content: null};
 export const mockTheme = 'mock_theme'
 export const mockThemeInitialState = {theme: 'light'};

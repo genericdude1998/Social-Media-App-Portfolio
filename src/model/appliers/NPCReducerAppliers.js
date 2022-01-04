@@ -7,5 +7,5 @@ export function applySendPostFailure(state,action){
 }
 
 export function applyClearPost(state){
-    return{...state, content: ''}
+    return{...state, content:null}
 }
