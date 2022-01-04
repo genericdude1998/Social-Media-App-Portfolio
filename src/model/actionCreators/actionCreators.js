@@ -32,7 +32,6 @@ export function doSendUsernameAndPasswordThunk(username, password, event){
             dispatch(doLoginRequestSuccess(token));
             localStorage.token = token;
         }).catch(error => {
-            console.log(error.response);
             const errorMessage = error.response.data;
             dispatch(doLoginRequestFailure(errorMessage));
         });
