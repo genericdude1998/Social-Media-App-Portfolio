@@ -26,6 +26,8 @@ import {
     doClearCommentContent,
     doSendCommentThunk,
     doUserLogout,
+    doSetFeedLoading,
+    doSetFeedProgressBar,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
@@ -130,8 +132,13 @@ describe('doGetPostsThunk', () => {
         const thunk = doGetPostsThunk();
         return thunk(mockDispatch).then(() => {
             expect(mockGetPostsResolve).toHaveBeenCalledWith('sample_token');
-            expect(mockDispatch).toHaveBeenCalledWith(doGetPostsRequest());
-            expect(mockDispatch).toHaveBeenLastCalledWith(doGetPostsSuccess(mockPosts))});
+            expect(mockDispatch).toHaveBeenNthCalledWith(1, doGetPostsRequest());
+            expect(mockDispatch).toHaveBeenNthCalledWith(2, doSetFeedLoading(true));
+            expect(mockDispatch).toHaveBeenNthCalledWith(3, doSetFeedProgressBar('mid'));
+            expect(mockDispatch).toHaveBeenNthCalledWith(4, doGetPostsSuccess(mockPosts));
+            expect(mockDispatch).toHaveBeenNthCalledWith(5, doSetFeedProgressBar('full'));
+            expect(mockDispatch).toHaveBeenNthCalledWith(6, doSetFeedLoading(false));
+        })
     });
     it('should call dispatch with GET_POSTS_REQUEST and GET_POSTS_FAILURE when failing', () => {
         const mockGetPostsReject = getPosts.mockRejectedValue({response:{data: mockErrorMessage}});
