@@ -3,7 +3,7 @@
 
 The App allows you to browse through a list of posts with the ability to comment on them or create your own post!
 
-To begin you can look at the Environments tab or click [here](https://genericdude1998.github.io/Social-Media-App-Portfolio/#/feed)
+To begin you can look at the Environments tab or click [here](https://genericdude1998.github.io/Social-Media-App-Portfolio/#/)
 
 ## Description
 
