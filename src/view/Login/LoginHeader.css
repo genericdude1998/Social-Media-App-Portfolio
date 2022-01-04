@@ -1,0 +1,10 @@
+.baseLoginHeader{
+    width: 100vw;
+    text-align: center;
+    min-width: 600px;
+}
+
+img{
+    height: 250px;
+    width: 250px;
+}

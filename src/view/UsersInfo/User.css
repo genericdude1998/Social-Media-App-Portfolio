@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.baseUser{
+    background-color:  #0077b6;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.baseUserContent{
+    color: white;
+    height: 100%;
+    font-size: 1rem;
+}
+
+.baseUserContent > h1{
+    text-align: center;
+}
+.baseUserContent > *{
+    padding-top: 50px;
+}
+
+.dark{
+    background-color: #ee3e38;
+    color: white;
+}

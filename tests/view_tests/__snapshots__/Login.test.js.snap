@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should matchsnapshot 1`] = `
+<div
+  className="baseLogin"
+>
+  <LoginHeader />
+  <LoginForm
+    onChangePassword={[MockFunction]}
+    onChangeUsername={[MockFunction]}
+    onSubmitLogin={[MockFunction]}
+    password=""
+    username=""
+  />
+  <LoginError />
+  <LoginFooter />
+  <Redirect
+    path="/feed"
+    token={null}
+  />
+</div>
+`;

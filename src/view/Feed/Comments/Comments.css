@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+.baseCommentsList{
+    list-style: none;
+}
+
+.baseComment{
+    color: white;
+    background-color: darkblue;
+    max-width: 100vh;
+    word-wrap:break-word;
+    border: 5px white solid
+}
+
+.baseName{
+    color: royalblue;
+    margin-right: 5px;
+}
+
+.baseDate{
+   text-align: right;
+   margin-right: 20px;
+}
+
+.dark{
+    background-color: maroon;
+    color: white;
+}
+
+.dark h5{
+    background-color: maroon;
+    color: darksalmon;
+}

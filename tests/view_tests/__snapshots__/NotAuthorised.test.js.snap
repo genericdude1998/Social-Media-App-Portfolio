@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotAuthorised should match snap 1`] = `
+<div
+  className="notAuth"
+>
+  You do not have the required authorisation. Please go back to 
+  <Link
+    className="link"
+    to="/"
+  >
+    Login
+  </Link>
+</div>
+`;

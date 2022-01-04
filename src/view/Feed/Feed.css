@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+    padding: 0px; 
+}
+
+.baseFeed{
+    padding-top: 30px;
+    background-color: #0077b6;
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+ul{
+    list-style: none;
+}
+
+.dark{
+    background-color: #ee3e38;
+    margin-top: 0px;
+    padding: 30px;
+    color: white;
+}
+

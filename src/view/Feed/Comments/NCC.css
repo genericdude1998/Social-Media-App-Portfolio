@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+.baseNCC{
+    background-color: darkblue;
+    height: 50px;
+    margin: 0px;
+}
+
+.baseNCCForm{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 15px;
+    align-items: center;
+}
+
+.baseNCCLabel{
+    color: royalblue;
+    margin-right: 5px;
+}
+
+.baseNCCInput{
+    margin-right: 5px;
+}
+
+.baseNCCButton{
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.dark{
+    background-color: darkred;
+    color: white;
+}

@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+.baseCommentsSection{
+    background-color:darkblue;
+    margin-bottom: 30px;
+}
+
+.dark{
+    background-color: darkred;
+}

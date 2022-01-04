@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NCC should matchSnapshot when dark theme 1`] = `
+<div
+  className="baseNCC dark"
+>
+  <form
+    className="baseNCCForm"
+  >
+    <label
+      className="baseNCCLabel dark"
+    >
+      Comment
+    </label>
+    <input
+      className="baseNCCInput"
+      onChange={[MockFunction]}
+      type="text"
+    />
+    <button
+      className="baseNCCButton"
+      type="submit"
+    >
+      Send Comment
+    </button>
+  </form>
+</div>
+`;
+
+exports[`NCC should matchSnapshot when light theme 1`] = `
+<div
+  className="baseNCC null"
+>
+  <form
+    className="baseNCCForm"
+  >
+    <label
+      className="baseNCCLabel null"
+    >
+      Comment
+    </label>
+    <input
+      className="baseNCCInput"
+      onChange={[MockFunction]}
+      type="text"
+    />
+    <button
+      className="baseNCCButton"
+      type="submit"
+    >
+      Send Comment
+    </button>
+  </form>
+</div>
+`;

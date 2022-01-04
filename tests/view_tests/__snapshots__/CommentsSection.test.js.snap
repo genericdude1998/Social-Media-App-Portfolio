@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentsSection should match snapshot when closed comments 1`] = `
+<div
+  className="baseCommentsSection null"
+>
+  <WithThemeHOC
+    postId={0}
+  />
+  <ToggleComments
+    comments={
+      Array [
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "1",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "2",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "3",
+          "name": "mock_name",
+        },
+      ]
+    }
+    onCloseComments={[MockFunction]}
+    onOpenComments={[MockFunction]}
+    openComments={false}
+    postId={0}
+  />
+</div>
+`;
+
+exports[`CommentsSection should match snapshot when dark 1`] = `
+<div
+  className="baseCommentsSection dark"
+>
+  <WithThemeHOC
+    postId={0}
+  />
+  <ToggleComments
+    comments={
+      Array [
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "1",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "2",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "3",
+          "name": "mock_name",
+        },
+      ]
+    }
+    onCloseComments={[MockFunction]}
+    onOpenComments={[MockFunction]}
+    openComments={true}
+    postId={0}
+  />
+  <WithThemeHOC
+    comments={
+      Array [
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "1",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "2",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "3",
+          "name": "mock_name",
+        },
+      ]
+    }
+    postId={0}
+  />
+</div>
+`;
+
+exports[`CommentsSection should match snapshot when given a 0 length comments array 1`] = `
+<div
+  className="baseCommentsSection dark"
+>
+  <WithThemeHOC
+    postId={0}
+  />
+  <WithThemeHOC
+    comments={Array []}
+    postId={0}
+  />
+</div>
+`;
+
+exports[`CommentsSection should match snapshot when light 1`] = `
+<div
+  className="baseCommentsSection null"
+>
+  <WithThemeHOC
+    postId={0}
+  />
+  <ToggleComments
+    comments={
+      Array [
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "1",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "2",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "3",
+          "name": "mock_name",
+        },
+      ]
+    }
+    onCloseComments={[MockFunction]}
+    onOpenComments={[MockFunction]}
+    openComments={true}
+    postId={0}
+  />
+  <WithThemeHOC
+    comments={
+      Array [
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "1",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "2",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "3",
+          "name": "mock_name",
+        },
+      ]
+    }
+    postId={0}
+  />
+</div>
+`;
+
+exports[`CommentsSection should match snapshot when open comments 1`] = `
+<div
+  className="baseCommentsSection null"
+>
+  <WithThemeHOC
+    postId={0}
+  />
+  <ToggleComments
+    comments={
+      Array [
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "1",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "2",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "3",
+          "name": "mock_name",
+        },
+      ]
+    }
+    onCloseComments={[MockFunction]}
+    onOpenComments={[MockFunction]}
+    openComments={true}
+    postId={0}
+  />
+  <WithThemeHOC
+    comments={
+      Array [
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "1",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "2",
+          "name": "mock_name",
+        },
+        Object {
+          "content": "mock_content",
+          "date": "mock_date",
+          "id": "3",
+          "name": "mock_name",
+        },
+      ]
+    }
+    postId={0}
+  />
+</div>
+`;

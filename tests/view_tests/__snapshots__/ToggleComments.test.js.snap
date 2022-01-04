@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleComments should match snap when given false open comments 1`] = `
+<button
+  className="baseOpenCommentsButton"
+  onClick={[Function]}
+>
+  Open Comments
+</button>
+`;
+
+exports[`ToggleComments should match snap when given true open comments 1`] = `
+<button
+  className="baseOpenCommentsButton"
+  onClick={[Function]}
+>
+  Close Comments
+</button>
+`;

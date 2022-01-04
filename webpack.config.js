@@ -1,16 +1,21 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const server = require('./server/server');
 
 module.exports = {
     // the output bundle won't be optimized for production but suitable for development
     mode: 'development',
     // the app entry point is /src/index.js
     entry: path.resolve(__dirname, 'src', 'index.js'),
+    devtool:'source-map',
     output: {
- 
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
         // the filename of the JS bundle will be bundle.js
         filename: 'bundle.js',
+    },
+    resolve:{
+        extensions:['.js', '.jsx'],
     },
     module: {
         rules: [
@@ -34,11 +39,17 @@ module.exports = {
                     
                     }],
             },
+            {
+                test:/\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     devServer:{
         port: 3000,
+        onBeforeSetupMiddleware: server,
+        historyApiFallback: true,
     },
     // add a custom index.html as the template
-    plugins: [new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') })],
+    plugins: [new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') /*favicon : './src/favicon.png'*/ })],
 };

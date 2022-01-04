@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments should matchSnapshot when given a dark theme prop 1`] = `
+<div>
+  <ul
+    className="baseCommentsList dark"
+  >
+    <li
+      className="baseComment dark"
+      key="0"
+    >
+      <h5
+        className="baseName dark"
+      >
+        mock_name
+      </h5>
+      <p
+        className="dark"
+      >
+        mock_content
+      </p>
+      <p
+        className="baseDate dark"
+      >
+        mock_date
+      </p>
+    </li>
+    <li
+      className="baseComment dark"
+      key="1"
+    >
+      <h5
+        className="baseName dark"
+      >
+        mock_name
+      </h5>
+      <p
+        className="dark"
+      >
+        mock_content
+      </p>
+      <p
+        className="baseDate dark"
+      >
+        mock_date
+      </p>
+    </li>
+    <li
+      className="baseComment dark"
+      key="2"
+    >
+      <h5
+        className="baseName dark"
+      >
+        mock_name
+      </h5>
+      <p
+        className="dark"
+      >
+        mock_content
+      </p>
+      <p
+        className="baseDate dark"
+      >
+        mock_date
+      </p>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Comments should matchSnapshot when given an array of comments 1`] = `
+<div>
+  <ul
+    className="baseCommentsList null"
+  >
+    <li
+      className="baseComment null"
+      key="0"
+    >
+      <h5
+        className="baseName null"
+      >
+        mock_name
+      </h5>
+      <p
+        className="null"
+      >
+        mock_content
+      </p>
+      <p
+        className="baseDate null"
+      >
+        mock_date
+      </p>
+    </li>
+    <li
+      className="baseComment null"
+      key="1"
+    >
+      <h5
+        className="baseName null"
+      >
+        mock_name
+      </h5>
+      <p
+        className="null"
+      >
+        mock_content
+      </p>
+      <p
+        className="baseDate null"
+      >
+        mock_date
+      </p>
+    </li>
+    <li
+      className="baseComment null"
+      key="2"
+    >
+      <h5
+        className="baseName null"
+      >
+        mock_name
+      </h5>
+      <p
+        className="null"
+      >
+        mock_content
+      </p>
+      <p
+        className="baseDate null"
+      >
+        mock_date
+      </p>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Comments should matchSnapshot when given an empty array of comments 1`] = `
+<div>
+  <ul
+    className="baseCommentsList null"
+  />
+</div>
+`;

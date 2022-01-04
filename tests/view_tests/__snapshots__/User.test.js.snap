@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User should match snapshot if list is undefined 1`] = `
+<div
+  className="baseUser null"
+>
+  <h1>
+    Loading
+  </h1>
+</div>
+`;
+
+exports[`User should match snapshot if theme dark 1`] = `
+<div
+  className="baseUser dark"
+>
+  <div
+    className="baseUserContent dark"
+  >
+    <h1>
+      mock_name
+    </h1>
+    <h3>
+      City: 
+      NY
+    </h3>
+    <h3>
+      Joined: 
+      mock_date
+    </h3>
+    <h3>
+      Description:
+    </h3>
+    <p />
+  </div>
+</div>
+`;
+
+exports[`User should match snapshot if user is not undefined 1`] = `
+<div
+  className="baseUser null"
+>
+  <div
+    className="baseUserContent null"
+  >
+    <h1>
+      mock_name
+    </h1>
+    <h3>
+      City: 
+      NY
+    </h3>
+    <h3>
+      Joined: 
+      mock_date
+    </h3>
+    <h3>
+      Description:
+    </h3>
+    <p />
+  </div>
+</div>
+`;

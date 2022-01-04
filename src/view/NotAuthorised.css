@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+.notAuth{
+    font-size: 3vw;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10vw;
+    height: 50vh;
+    background-color: royalblue;
+}
+
+.link{
+    text-decoration: none;
+    font-weight: bold;
+}

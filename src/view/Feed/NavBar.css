@@ -1,0 +1,72 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+.active{
+    border-bottom: 3px red solid;
+}
+
+.baseNavBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: darkblue;
+    height: 100px;
+    width: 100vw;
+    min-width: 500px;
+    line-height: 30px;
+}
+
+.baseNavBarContent{
+    font-size: 20px;
+    height: 100px;
+    width: 50%;
+    min-width: 450px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.baseNavBarLink{
+    color: white;
+    text-decoration: none;
+}
+
+.baseToggleThemeButton{
+    height: 30%;
+    color: white;
+    background-color: darkred;
+    border: 2px solid black
+}
+
+.logo{
+    min-height: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.logout{
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 5px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+}
+
+.dark{
+    background-color: darkred;
+    color: white;
+}
+
+.dark .baseToggleThemeButton{
+    background-color: darkblue;
+}
+
+.dark .logout{
+    background-color: white;
+    color: black;
+}
+

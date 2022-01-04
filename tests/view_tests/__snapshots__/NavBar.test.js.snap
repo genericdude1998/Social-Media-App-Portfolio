@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should match Snapshot when theme is dark 1`] = `
+<div
+  className="baseNavBar dark"
+>
+  <img
+    className="logo"
+    src={null}
+  />
+  <div
+    className="baseNavBarContent dark"
+  >
+    <NavLink
+      className={[Function]}
+      to="/feed"
+    >
+      Feed
+    </NavLink>
+    <NavLink
+      className={[Function]}
+      to="/createPost"
+    >
+      Create New Post
+    </NavLink>
+    <UserLink
+      className="baseNavBarLink dark"
+      id={1}
+      name="Me"
+    />
+    <Connect(Logoutbutton)
+      className="logout dark"
+      to="/"
+    >
+      Logout
+    </Connect(Logoutbutton)>
+    <button
+      className="baseToggleThemeButton"
+      onClick={[MockFunction]}
+    >
+      Toggle Theme
+    </button>
+  </div>
+</div>
+`;
+
+exports[`NavBar should match Snapshot when theme is light 1`] = `
+<div
+  className="baseNavBar null"
+>
+  <img
+    className="logo"
+    src={null}
+  />
+  <div
+    className="baseNavBarContent null"
+  >
+    <NavLink
+      className={[Function]}
+      to="/feed"
+    >
+      Feed
+    </NavLink>
+    <NavLink
+      className={[Function]}
+      to="/createPost"
+    >
+      Create New Post
+    </NavLink>
+    <UserLink
+      className="baseNavBarLink null"
+      id={1}
+      name="Me"
+    />
+    <Connect(Logoutbutton)
+      className="logout null"
+      to="/"
+    >
+      Logout
+    </Connect(Logoutbutton)>
+    <button
+      className="baseToggleThemeButton"
+      onClick={[MockFunction]}
+    >
+      Toggle Theme
+    </button>
+  </div>
+</div>
+`;
