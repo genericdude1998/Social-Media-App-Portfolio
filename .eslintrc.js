@@ -19,6 +19,7 @@ module.exports = {
         quotes: ['error', 'single', { avoidEscape: true }],
         'comma-dangle': ['error', 'always-multiline'],
         'indent': ['error', 4],
+        'jest/no-conditional-expect': 'off',
     },
     ignorePatterns: ['dist', 'node_modules'],
 };
