@@ -467,7 +467,6 @@ function doSendUsernameAndPasswordThunk(username, password, event) {
       dispatch(doLoginRequestSuccess(token));
       localStorage.token = token;
     })["catch"](function (error) {
-      console.log(error);
       var errorMessage = error.response.data;
       dispatch(doLoginRequestFailure(errorMessage));
     });
@@ -764,7 +763,7 @@ function applySendPostFailure(state, action) {
 }
 function applyClearPost(state) {
   return _objectSpread(_objectSpread({}, state), {}, {
-    content: ''
+    content: null
   });
 }
 
@@ -1960,7 +1959,7 @@ var LoginError = function LoginError(_ref) {
 };
 
 LoginError.propTypes = {
-  error: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
+  error: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().object)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginError);
 
@@ -2402,7 +2401,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*{\n    box-sizing: border-box;\n    margin: 0px;\n}\n\n.vKdEb01BS4zyP45iP7T9{\n    list-style: none;\n}\n\n.Vlj5dsia9TxtynNxNAGi{\n    color: white;\n    background-color: darkblue;\n    max-width: 100vh;\n    word-wrap:break-word;\n    border: 5px white solid\n}\n\n.JfvB3IrHf1ADiyJz1pgv{\n    color: royalblue;\n    margin-right: 5px;\n}\n\n.OOzHi5QYGq5sIMy2Uma7{\n   text-align: right;\n   margin-right: 20px;\n}\n\n.pbuMd797lwXcvOsKPcoD{\n    background-color: maroon;\n    color: white;\n}", "",{"version":3,"sources":["webpack://./src/view/Feed/Comments/Comments.css"],"names":[],"mappings":"AAAA;IACI,sBAAsB;IACtB,WAAW;AACf;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,0BAA0B;IAC1B,gBAAgB;IAChB,oBAAoB;IACpB;AACJ;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;GACG,iBAAiB;GACjB,kBAAkB;AACrB;;AAEA;IACI,wBAAwB;IACxB,YAAY;AAChB","sourcesContent":["*{\n    box-sizing: border-box;\n    margin: 0px;\n}\n\n.baseCommentsList{\n    list-style: none;\n}\n\n.baseComment{\n    color: white;\n    background-color: darkblue;\n    max-width: 100vh;\n    word-wrap:break-word;\n    border: 5px white solid\n}\n\n.baseName{\n    color: royalblue;\n    margin-right: 5px;\n}\n\n.baseDate{\n   text-align: right;\n   margin-right: 20px;\n}\n\n.dark{\n    background-color: maroon;\n    color: white;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "*{\n    box-sizing: border-box;\n    margin: 0px;\n}\n\n.vKdEb01BS4zyP45iP7T9{\n    list-style: none;\n}\n\n.Vlj5dsia9TxtynNxNAGi{\n    color: white;\n    background-color: darkblue;\n    max-width: 100vh;\n    word-wrap:break-word;\n    border: 5px white solid\n}\n\n.JfvB3IrHf1ADiyJz1pgv{\n    color: royalblue;\n    margin-right: 5px;\n}\n\n.OOzHi5QYGq5sIMy2Uma7{\n   text-align: right;\n   margin-right: 20px;\n}\n\n.pbuMd797lwXcvOsKPcoD{\n    background-color: maroon;\n    color: white;\n}\n\n.pbuMd797lwXcvOsKPcoD h5{\n    background-color: maroon;\n    color: darksalmon;\n}", "",{"version":3,"sources":["webpack://./src/view/Feed/Comments/Comments.css"],"names":[],"mappings":"AAAA;IACI,sBAAsB;IACtB,WAAW;AACf;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,0BAA0B;IAC1B,gBAAgB;IAChB,oBAAoB;IACpB;AACJ;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;GACG,iBAAiB;GACjB,kBAAkB;AACrB;;AAEA;IACI,wBAAwB;IACxB,YAAY;AAChB;;AAEA;IACI,wBAAwB;IACxB,iBAAiB;AACrB","sourcesContent":["*{\n    box-sizing: border-box;\n    margin: 0px;\n}\n\n.baseCommentsList{\n    list-style: none;\n}\n\n.baseComment{\n    color: white;\n    background-color: darkblue;\n    max-width: 100vh;\n    word-wrap:break-word;\n    border: 5px white solid\n}\n\n.baseName{\n    color: royalblue;\n    margin-right: 5px;\n}\n\n.baseDate{\n   text-align: right;\n   margin-right: 20px;\n}\n\n.dark{\n    background-color: maroon;\n    color: white;\n}\n\n.dark h5{\n    background-color: maroon;\n    color: darksalmon;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"baseCommentsList": "vKdEb01BS4zyP45iP7T9",
@@ -2709,7 +2708,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;\n}\n\n.xoV3ekcCKRIvujAyso0u{\n    min-height: 100vh;\n    width: 100vw;\n    min-width: 600px;\n    background-color: lightblue;\n}", "",{"version":3,"sources":["webpack://./src/view/Login/Login.css"],"names":[],"mappings":"AAAA;IACI,gFAAgF;AACpF;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,gBAAgB;IAChB,2BAA2B;AAC/B","sourcesContent":["* {\n    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;\n}\n\n.baseLogin{\n    min-height: 100vh;\n    width: 100vw;\n    min-width: 600px;\n    background-color: lightblue;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".xoV3ekcCKRIvujAyso0u{\n    min-height: 100vh;\n    width: 100vw;\n    min-width: 600px;\n    background-color: lightblue;\n}", "",{"version":3,"sources":["webpack://./src/view/Login/Login.css"],"names":[],"mappings":"AAAA;IACI,iBAAiB;IACjB,YAAY;IACZ,gBAAgB;IAChB,2BAA2B;AAC/B","sourcesContent":[".baseLogin{\n    min-height: 100vh;\n    width: 100vw;\n    min-width: 600px;\n    background-color: lightblue;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"baseLogin": "xoV3ekcCKRIvujAyso0u"
