@@ -17,6 +17,7 @@ Take a look at the highlights of this project:
 - [React View Components](https://github.com/genericdude1998/Social-Media-App-Portfolio/tree/develop/src/view)
 - [Testing](https://github.com/genericdude1998/Social-Media-App-Portfolio/tree/develop/tests)
 - [Cypress](https://github.com/genericdude1998/Social-Media-App-Portfolio/tree/develop/cypress/integration)
+- [Express.js Server](https://github.com/genericdude1998/Social-Media-App-Portfolio/tree/master/server)
 
 
 I also implemented a simple Express.js Server with JWT authentication to cover the back-end. You can take a look at the server-integrated version of the App [here](https://github.com/genericdude1998/Social-Media-App-Portfolio/tree/develop/server) 
