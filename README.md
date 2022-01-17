@@ -1,3 +1,6 @@
+# Template:
+[![genericdude998](https://circleci.com/github/genericdude1998/Social-Media-App-Portfolio.svg?style=svg)]
+
 # My Simple Social Media App
 **Welcome to my Porfolio Social Media App!**
 
