@@ -9,7 +9,7 @@
     "build": "webpack",
     "predeploy": "npm run build",
     "cypress": "cypress run --browser chrome --headed",
-    "test": "npx jest --watchAll",
+    "test": "npx jest",
     "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext .js --ext .jsx",
     "format": "eslint --fix . --ext .js && eslint --fix --ext .jsx"
