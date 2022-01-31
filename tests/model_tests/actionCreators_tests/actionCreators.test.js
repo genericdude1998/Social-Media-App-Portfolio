@@ -216,7 +216,6 @@ describe('doSendPostThunk', () => {
     });
     it('should call dispatch with SEND_POST_REQUEST and doGetPostsThunk() when succeeding', () => {
         axios.post.mockImplementation(() => Promise.resolve({data: mockPost}));
-        axios.get.mockImplementation(() => Promise.resolve({data: mockPosts}));
 
         const thunk = doSendPostThunk(mockContent, mockEvent, mockNavigate);
         return thunk(mockDispatch).then(() => {
