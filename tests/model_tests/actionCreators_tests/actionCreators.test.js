@@ -269,6 +269,14 @@ describe('doSendCommentRequest', () => {
     });
 });
 
+
+describe('doSendCommentSuccess', () => {
+    it('should return expected action', () => {
+        const expectedAction = {type: actionTypes.SEND_COMMENT_SUCCESS};
+        expect(doSendCommentSuccess()).toEqual(expectedAction);
+    });
+});
+
 describe('doSendCommentFailure', () => {
     it('should return expected action', () => {
         const expectedAction = {type: actionTypes.SEND_COMMENT_FAILURE, error:mockErrorMessage}
