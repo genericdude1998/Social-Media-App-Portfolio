@@ -127,8 +127,7 @@ export function doSendPostThunk(content,event, navigate){
         return axios.post('/newPost',{
             content:content,
         }).then(() => {
-            //refreshPosts(dispatch, doGetPostsThunk);
-            dispatch(doGetPostsSuccess());
+            dispatch(doSendPostSuccess());
             dispatch(doClearPostContent());
             navigate('/feed');
         }).catch(error => {
@@ -154,6 +153,10 @@ export function doSendCommentRequest(){
     return {type: actionTypes.SEND_COMMENT_REQUEST}
 }
 
+export function doSendCommentSuccess(){
+    return {type: actionTypes.SEND_COMMENT_SUCCESS}
+}
+
 export function doSendCommentFailure(error){
     return {type: actionTypes.SEND_COMMENT_FAILURE, error:error}
 }
@@ -173,6 +176,7 @@ export function doSendCommentThunk(content, event, postId){
             content:content,
             postId: postId,
         }).then(() => {
+            dispatch(doSendCommentSuccess())
             dispatch(doClearCommentContent());
             dispatch(doGetPostsThunk());
             event.target[0].value = '';
