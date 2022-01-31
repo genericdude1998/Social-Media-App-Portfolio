@@ -128,6 +128,7 @@ export function doSendPostThunk(content,event, navigate){
             content:content,
         }).then(() => {
             //refreshPosts(dispatch, doGetPostsThunk);
+            dispatch(doGetPostsSuccess());
             dispatch(doClearPostContent());
             navigate('/feed');
         }).catch(error => {

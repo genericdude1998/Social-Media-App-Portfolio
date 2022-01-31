@@ -20,6 +20,7 @@ module.exports = {
         'comma-dangle': ['error', 'always-multiline'],
         'indent': ['error', 4],
         'no-debugger': ['off'],
+        'jest/expect-expect': ['off'],
     },
     ignorePatterns: ['dist', 'node_modules'],
 };
