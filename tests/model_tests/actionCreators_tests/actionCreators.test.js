@@ -62,6 +62,7 @@ afterEach(() => {
 })
 
 describe('doSetUsername', () => {
+    debugger;
     it('should return an action object with expected type and username payload', () => {
         expect(doSetUsername(mockUsername)).toEqual(expectedSetUsernameAction);
     });
