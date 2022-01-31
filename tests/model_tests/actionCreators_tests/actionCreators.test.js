@@ -28,6 +28,8 @@ import {
     doUserLogout,
     doSetFeedLoading,
     doSetFeedProgressBar,
+    doClearPostContent,
+    doSendCommentSuccess,
 } from '../../../src/model/actionCreators/actionCreators';
 import { actionTypes } from '../../../src/model/actionTypes/actionTypes';
 import {mockUsername, mockPassword, correctUsername, correctPassword, mockToken, mockErrorMessage, mockEvent, mockPosts, mockUser, mockId, mockPost, mockContent, mockEventOnSubmitNewComment} from '../../mockValues';
@@ -222,7 +224,8 @@ describe('doSendPostThunk', () => {
                 content: mockContent,
             });
             expect(mockDispatch).toHaveBeenCalledWith(doSendPostRequest());
-            //expect(refreshPosts).toHaveBeenCalledWith(mockDispatch, doGetPostsThunk); not needed
+            expect(mockDispatch).toHaveBeenCalledWith(doClearPostContent());
+            expect(mockDispatch).toHaveBeenCalledWith(doSendPostSuccess());
             
         });
     });
@@ -307,8 +310,9 @@ describe('doSendCommentThunk', () => {
                 content: mockContent,
                 postId: mockId,
             });
-            expect(mockDispatch).toHaveBeenNthCalledWith(2, doClearCommentContent());
-            expect(mockDispatch).toHaveBeenLastCalledWith(expect.any(Function)); // you can solve this in another way as well
+            expect(mockDispatch).toHaveBeenCalledWith(doClearCommentContent());
+            expect(mockDispatch).toHaveBeenCalledWith(expect.any(Function));
+            expect(mockDispatch).toHaveBeenCalledWith(doSendCommentSuccess());
             expect(mockEventOnSubmitNewComment.preventDefault).toHaveBeenCalled();
             expect(mockEventOnSubmitNewComment.target[0].value).toBe('');
         });

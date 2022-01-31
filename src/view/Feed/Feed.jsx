@@ -35,6 +35,8 @@ Feed.propTypes = {
     posts: PropTypes.array,
     onFetchPosts: PropTypes.func,
     theme: PropTypes.string,
+    loading: PropTypes.bool,
+    percentage: PropTypes.string,
 }
 
 Feed.defaultProps = {
