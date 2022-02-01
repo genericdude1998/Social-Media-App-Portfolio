@@ -269,7 +269,6 @@ describe('doSendCommentRequest', () => {
     });
 });
 
-
 describe('doSendCommentSuccess', () => {
     it('should return expected action', () => {
         const expectedAction = {type: actionTypes.SEND_COMMENT_SUCCESS};
